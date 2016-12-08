@@ -5,8 +5,8 @@
 Run:
 
 ```bash
-❯ npm install // in both master and demo repos
-❯ npm start // in demo repo
+❯ npm install
+❯ npm start
 ```
 
 and go to `http://localhost:8888`.
