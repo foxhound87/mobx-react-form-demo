@@ -40,9 +40,9 @@ Change the code into `src/form/_.extend.js` enabling the `../../master/src` dir:
 // import MobxReactForm from 'mobx-react-form'; // eslint-disable-line // <<< COMMENT
 // import MobxReactForm from '../../master/lib'; // load from build
 import MobxReactForm from '../../master/src'; // load from source // <<< DECOMMENT
-```
+``
 
-# Run
+the Run:
 
 ```bash
 ❯ npm install // in both master and demo repos
