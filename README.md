@@ -23,7 +23,7 @@ In order to link the demo code to the `mobx-reac-form` repo, clone both the repo
 
 ```bash
 ❯ git clone -b master git@github.com:foxhound87/mobx-react-form.git mobx-react-form--master
-❯ git clone -b demo git@github.com:foxhound87/mobx-react-form-demo.git mobx-react-form-demo--master
+❯ git clone -b master git@github.com:foxhound87/mobx-react-form-demo.git mobx-react-form-demo--master
 ```
 
 then we have different directories for each branch like this:
