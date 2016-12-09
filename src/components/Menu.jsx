@@ -36,6 +36,7 @@ export default observer(({ data }) => (
         <option value="companyWidgets">Company (React Widgets)</option>
         <option value="companySimple">Company (Simple)</option>
         <option value="nestedFields">Nested Fields</option>
+        <option value="markdown">Markdown</option>
       </select>
     </span>
   </div>

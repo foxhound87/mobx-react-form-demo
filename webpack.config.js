@@ -7,10 +7,13 @@ const postcssUrl = require('postcss-url');
 const loaders = [{
   test: /\.jsx?$/,
   exclude: /node_modules/,
-  loader: 'babel',
+  loader: 'babel-loader',
 }, {
   test: /\.json$/,
   loader: 'json-loader',
+}, {
+  test: /\.md$/,
+  loader: 'raw-loader',
 }, {
   test: /\.gif$/,
   loader: 'url-loader?mimetype=image/png',

@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
+import FormMarkdown from './forms/FormMarkdown';
 import FormWithNestedFields from './forms/FormWithNestedFields';
 import FormRegisterMaterial from './forms/FormRegisterMaterial';
 import FormRegisterSimple from './forms/FormRegisterSimple';
@@ -9,6 +10,9 @@ import FormCompanySimple from './forms/FormCompanySimple';
 
 export default observer(({ menu, forms }) => {
   switch (true) {
+
+    case menu.markdown:
+      return (<FormMarkdown form={forms.markdown} />);
 
     case menu.nestedFields:
       return (<FormWithNestedFields form={forms.nestedFields} />);

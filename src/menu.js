@@ -1,4 +1,5 @@
 export default {
+  markdown: false,
   nestedFields: false,
   registerMaterial: true,
   registerSimple: false,

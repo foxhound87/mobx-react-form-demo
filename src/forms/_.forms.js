@@ -2,6 +2,7 @@ import validatorjs from 'validatorjs';
 import Form from './_.extend';
 
 // forms
+import markdown from './markdown';
 import nestedFields from './nestedFields';
 import registerSimple from './registerSimple';
 import registerMaterial from './registerMaterial';
@@ -26,6 +27,7 @@ class NestedFieldsForm extends Form {
   // }
 }
 
+class MarkdownForm extends Form {}
 class RegisterMaterialForm extends Form {}
 class RegisterSimpleForm extends Form {}
 class CompanySimpleForm extends Form {}
@@ -36,6 +38,10 @@ export default {
   nestedFields: new NestedFieldsForm({
     plugins, ...nestedFields,
   }, 'Nested Fields'),
+
+  markdown: new MarkdownForm({
+    plugins, ...markdown,
+  }, 'Markdown'),
 
   registerMaterial: new RegisterMaterialForm({
     plugins, ...registerMaterial,
