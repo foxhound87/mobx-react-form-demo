@@ -1,5 +1,3 @@
-// const fields = {};
-
 const fields = [
   'club.name',
   'club.city',
