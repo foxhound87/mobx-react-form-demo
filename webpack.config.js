@@ -29,7 +29,7 @@ const loaders = [{
 }];
 
 const postcss = $webpack => [
-  postcssImport({ addDependencyTo: $webpack }),
+  postcssImport(),
   postcssUrl('inline'),
 ];
 
