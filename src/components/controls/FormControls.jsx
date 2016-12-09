@@ -1,10 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import ReactTooltip from 'react-tooltip';
 
 export default observer(({ form, options = null }) => (
   <div>
-    <ReactTooltip />
 
     <br />
     <br />
