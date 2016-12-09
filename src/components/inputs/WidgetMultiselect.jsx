@@ -6,13 +6,15 @@ export default observer(({ field, options = [] }) => (
   <div>
 
     <div>
-      <b>{field.label}</b>
+      <label htmlFor={field.id}>{field.label}</label>
       <i>{field.error}</i>
     </div>
+
     <Multiselect
-      data={options}
+      id={field.id}
       value={field.value}
       onChange={field.sync}
+      data={options}
     />
 
   </div>

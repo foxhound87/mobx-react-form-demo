@@ -6,16 +6,17 @@ export default observer(({ field, options = [] }) => (
   <div>
 
     <div>
-      <b>{field.label}</b>
+      <label htmlFor={field.id}>{field.label}</label>
       <i>{field.error}</i>
     </div>
 
     <Select
       multi
-      options={options}
+      id={field.id}
       value={field.value}
       name={field.name}
       onChange={field.sync}
+      options={options}
       resetValue={[]}
     />
 

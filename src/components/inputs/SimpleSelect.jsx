@@ -5,11 +5,12 @@ export default observer(({ field, options = [] }) => (
   <div>
 
     <div>
-      <b>{field.label}</b>
+      <label htmlFor={field.id}>{field.label}</label>
       <i>{field.error}</i>
     </div>
 
     <select
+      id={field.id}
       value={field.value}
       name={field.name}
       onChange={field.sync}

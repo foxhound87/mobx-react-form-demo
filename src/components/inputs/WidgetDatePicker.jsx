@@ -6,13 +6,15 @@ export default observer(({ field }) => (
   <div>
 
     <div>
-      <b>{field.label}</b>
+      <label htmlFor={field.id}>{field.label}</label>
       <i>{field.error}</i>
     </div>
+
     <DateTimePicker
-      time={false}
+      id={field.id}
       value={field.value}
       onChange={field.sync}
+      time={false}
     />
 
   </div>
