@@ -1,9 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import MaterialTextField from './inputs/MaterialTextField';
-import MaterialToggle from './inputs/MaterialToggle';
-import FormControls from './controls/FormControls';
+import MaterialTextField from '../inputs/MaterialTextField';
+import MaterialToggle from '../inputs/MaterialToggle';
+import FormControls from '../controls/FormControls';
 
 export default observer(({ form }) => (
   <div className="container material">

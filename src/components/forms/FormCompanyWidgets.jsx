@@ -1,11 +1,11 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import Input from './inputs/SimpleInput';
-import WidgetDatePicker from './inputs/WidgetDatePicker';
-import WidgetDropdownList from './inputs/WidgetDropdownList';
-import WidgetMultiselect from './inputs/WidgetMultiselect';
-import FormControls from './controls/FormControls';
+import Input from '../inputs/SimpleInput';
+import WidgetDatePicker from '../inputs/WidgetDatePicker';
+import WidgetDropdownList from '../inputs/WidgetDropdownList';
+import WidgetMultiselect from '../inputs/WidgetMultiselect';
+import FormControls from '../controls/FormControls';
 
 const widgetProductsOptions = [
   'iPhone', 'Watch', 'iMac', 'Mac Pro', 'MacBook Air', 'MacBook Pro',

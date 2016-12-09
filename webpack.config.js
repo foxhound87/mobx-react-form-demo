@@ -32,7 +32,7 @@ const postcss = $webpack => [
 
 module.exports = {
   devtool: 'eval-source-map',
-  entry: path.resolve('.', 'src', 'main.jsx'),
+  entry: path.resolve('.', 'src', 'entry.jsx'),
   resolve: {
     root: path.resolve('.', 'src'),
     modulesDirectories: ['node_modules', path.resolve('.', 'node_modules')],

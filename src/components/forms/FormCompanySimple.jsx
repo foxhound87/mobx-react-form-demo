@@ -1,10 +1,10 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import Input from './inputs/SimpleInput';
-import Select from './inputs/SimpleSelect';
-import MultiSelect from './inputs/ReactMultiSelect';
-import FormControls from './controls/FormControls';
+import Input from '../inputs/SimpleInput';
+import Select from '../inputs/SimpleSelect';
+import MultiSelect from '../inputs/ReactMultiSelect';
+import FormControls from '../controls/FormControls';
 
 const simpleProductsOptions = [
   'iPhone', 'Watch', 'iMac', 'Mac Pro', 'MacBook Air', 'MacBook Pro',

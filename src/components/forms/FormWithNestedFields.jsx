@@ -1,10 +1,10 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import ClubFieldset from './fieldsets/ClubFieldset';
-import NestedAllMembersFieldset from './fieldsets/NestedAllMembersFieldset';
-import FormControls from './controls/FormControls';
-import FieldControl from './controls/FieldControls';
+import ClubFieldset from '../fieldsets/ClubFieldset';
+import NestedAllMembersFieldset from '../fieldsets/NestedAllMembersFieldset';
+import FormControls from '../controls/FormControls';
+import FieldControl from '../controls/FieldControls';
 
 export default observer(({ form }) => (
   <div className="container normal">

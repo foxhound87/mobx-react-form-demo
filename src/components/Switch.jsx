@@ -1,11 +1,11 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import FormWithNestedFields from './FormWithNestedFields';
-import FormRegisterMaterial from './FormRegisterMaterial';
-import FormRegisterSimple from './FormRegisterSimple';
-import FormCompanyWidgets from './FormCompanyWidgets';
-import FormCompanySimple from './FormCompanySimple';
+import FormWithNestedFields from './forms/FormWithNestedFields';
+import FormRegisterMaterial from './forms/FormRegisterMaterial';
+import FormRegisterSimple from './forms/FormRegisterSimple';
+import FormCompanyWidgets from './forms/FormCompanyWidgets';
+import FormCompanySimple from './forms/FormCompanySimple';
 
 export default observer(({ menu, forms }) => {
   switch (true) {

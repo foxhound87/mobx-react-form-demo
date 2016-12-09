@@ -1,9 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import Input from './inputs/SimpleInput';
-import Checkbox from './inputs/SimpleCheckbox';
-import FormControls from './controls/FormControls';
+import Input from '../inputs/SimpleInput';
+import Checkbox from '../inputs/SimpleCheckbox';
+import FormControls from '../controls/FormControls';
 
 export default observer(({ form }) => (
   <div className="container normal">
