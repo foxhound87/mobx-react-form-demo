@@ -2,11 +2,11 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import _ from 'lodash';
 
-const DataTip = observer(({ text, field, icon }) => (
+const DataTip = observer(({ text, label, icon }) => (
   <i
     className={`fa fa-${icon}`}
-    data-tip={!_.isInteger(_.parseInt(field.label))
-      ? `${text} ${field.label}`
+    data-tip={!_.isInteger(_.parseInt(label))
+      ? `${text} ${label}`
       : text}
   />
 ));
@@ -16,7 +16,7 @@ export default observer(({ field, labels = true, options = {} }) => (
     {(!options || options.onAdd) &&
       <button type="button" onClick={field.onAdd}>
         <DataTip
-          field={field}
+          label={field.label}
           text={'Add'}
           icon="plus-circle"
         /> {labels && 'Add'}
@@ -24,23 +24,15 @@ export default observer(({ field, labels = true, options = {} }) => (
     {(!options || options.onDel) &&
       <button type="button" onClick={field.onDel}>
         <DataTip
-          field={field}
+          label={field.label}
           text={'Remove'}
           icon="times-circle"
         /> {labels && 'Remove'}
       </button>}
-    {(!options || options.onSubmit) &&
-      <button type="button" onClick={field.onSubmit}>
-        <DataTip
-          field={field}
-          text={'Submit'}
-          icon="times-circle"
-        /> {labels && 'Submit'}
-      </button>}
     {(!options || options.onClear) &&
       <button type="button" onClick={field.onClear}>
         <DataTip
-          field={field}
+          label={field.label}
           text={'Clear'}
           icon="eraser" />
         {labels && 'Clear'}
@@ -48,7 +40,7 @@ export default observer(({ field, labels = true, options = {} }) => (
     {(!options || options.onReset) &&
       <button type="button" onClick={field.onReset}>
         <DataTip
-          field={field}
+          label={field.label}
           text={'Reset'}
           icon="refresh" />
         {labels && 'Reset'}

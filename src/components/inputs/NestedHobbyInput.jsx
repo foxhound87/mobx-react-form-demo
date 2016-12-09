@@ -24,7 +24,7 @@ export default observer(({ field }) => (
         field={field}
         labels={false}
         options={{
-          onSubmit: true,
+          onDel: true,
           onClear: true,
           onReset: true,
         }}

@@ -2,6 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 import NestedMemberInput from '../inputs/NestedMemberInput';
+import FieldControl from '../controls/FieldControls';
 
 export default observer(({ field }) => (
   <div>
@@ -10,16 +11,17 @@ export default observer(({ field }) => (
       <div className="left">
         <b>{field.label}</b>
       </div>
+
       <div className="right">
-        <button type="button" onClick={field.onClear}>
-          <i className="fa fa-eraser" data-tip="Clear All Members" />
-        </button>
-        <button type="button" onClick={field.onReset}>
-          <i className="fa fa-refresh" data-tip="Reset All Members" />
-        </button>
-        <button type="button" onClick={field.onAdd}>
-          <i className="fa fa-plus-circle" data-tip="Add New Member" />
-        </button>
+        <FieldControl
+          field={field}
+          labels={false}
+          options={{
+            onAdd: true,
+            onClear: true,
+            onReset: true,
+          }}
+        />
       </div>
     </div>
     <hr />

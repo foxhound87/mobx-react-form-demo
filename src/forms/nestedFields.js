@@ -27,13 +27,13 @@ const values = {
 };
 
 const labels = {
-  'club': 'Label Club',
-  'club.name': 'Label Club Name',
-  'club.city': 'Label Club City',
-  'members': 'Label Members',
-  'members[].firstname': 'Label Member FirstName',
-  'members[].lastname': 'Label Member LastName',
-  'members[].hobbies': 'Label Member Hobby',
+  'club': 'Club',
+  'club.name': 'Club Name',
+  'club.city': 'Club City',
+  'members': 'All Members',
+  'members[].firstname': 'Member FirstName',
+  'members[].lastname': 'Member LastName',
+  'members[].hobbies': 'Member Hobby',
 };
 
 export default { fields, values, labels };
