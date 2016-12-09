@@ -12,7 +12,7 @@ body {
 
 a {
   cursor: pointer;
-  color: #fff;
+  color: #F87666;
 }
 
 button {
@@ -91,10 +91,14 @@ button:focus {
 .container {
   width: 400px;
   background: #fff;
-  color: #F87666;
+  color: #555;
   top: 0;
   left: 0;
   bottom: 0;
+}
+
+.container h2 {
+  color: #F87666;
 }
 
 .container form {
