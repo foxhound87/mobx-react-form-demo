@@ -33,7 +33,7 @@ const labels = {
   'members': 'All Members',
   'members[].firstname': 'Member FirstName',
   'members[].lastname': 'Member LastName',
-  'members[].hobbies': 'Member Hobby',
+  'members[].hobbies': 'Member Hobbies',
 };
 
 export default { fields, values, labels };
