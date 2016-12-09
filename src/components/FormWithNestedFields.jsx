@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 import Input from './inputs/SimpleInput';
-import NestedMembersFieldset from './fieldsets/NestedMembersFieldset';
+import NestedAllMembersFieldset from './fieldsets/NestedAllMembersFieldset';
 import FormControls from './controls/FormControls';
 import FieldControl from './controls/FieldControls';
 
@@ -52,7 +52,7 @@ export default observer(({ form }) => (
       <br />
       <br />
 
-      {<NestedMembersFieldset field={form.$('members')} />}
+      {<NestedAllMembersFieldset field={form.$('members')} />}
 
       <FormControls
         form={form}

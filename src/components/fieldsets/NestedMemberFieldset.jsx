@@ -1,9 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import Input from './SimpleInput';
 import NestedHobbyFieldset from '../fieldsets/NestedHobbyFieldset';
 import FieldControl from '../controls/FieldControls';
+import Input from '../inputs/SimpleInput';
 
 export default observer(({ field }) => (
   <fieldset className="center">

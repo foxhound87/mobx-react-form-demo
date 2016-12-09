@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import NestedMemberInput from '../inputs/NestedMemberInput';
+import NestedMemberFieldset from './NestedMemberFieldset';
 import FieldControl from '../controls/FieldControls';
 
 export default observer(({ field }) => (
@@ -27,7 +27,7 @@ export default observer(({ field }) => (
     <hr />
 
     {field.map(member => member &&
-      <NestedMemberInput key={member.key} field={member} />)}
+      <NestedMemberFieldset key={member.key} field={member} />)}
 
   </div>
 ));
