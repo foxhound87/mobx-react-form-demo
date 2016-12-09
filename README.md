@@ -46,7 +46,7 @@ Change the code into `src/form/_.extend.js` enabling the `../../master/src` dir:
 import MobxReactForm from '../../master/src'; // load from source // <<< DECOMMENT
 ```
 
-then Run in both master and demo repos:
+then Run in both `mobx-react-form` and `mobx-react-form-demo` repos:
 
 ```bash
 ❯ npm install
