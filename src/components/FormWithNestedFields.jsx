@@ -5,6 +5,7 @@ import ReactTooltip from 'react-tooltip';
 import Input from './inputs/SimpleInput';
 import NestedMembersFieldset from './fieldsets/NestedMembersFieldset';
 import FormControls from './controls/FormControls';
+import FieldControl from './controls/FieldControls';
 
 export default observer(({ form }) => (
   <div className="container normal">
@@ -16,13 +17,16 @@ export default observer(({ form }) => (
         <div className="left">
           <b>{form.$('club').label}</b>
         </div>
+
         <div className="right">
-          <button type="button" onClick={form.$('club').onClear}>
-            <i className="fa fa-eraser" data-tip="Clear Club" />
-          </button>
-          <button type="button" onClick={form.$('club').onReset}>
-            <i className="fa fa-refresh" data-tip="Reset Club" />
-          </button>
+          <FieldControl
+            field={form.$('club')}
+            labels={false}
+            options={{
+              onClear: true,
+              onReset: true,
+            }}
+          />
         </div>
       </div>
       <hr />
@@ -33,12 +37,17 @@ export default observer(({ form }) => (
         <br />
         <br />
         <div>
-          <button type="button" onClick={form.$('club').onClear}>
-            <i className="fa fa-eraser" data-tip="Clear Club" />
-          </button>
-          <button type="button" onClick={form.$('club').onReset}>
-            <i className="fa fa-refresh" data-tip="Reset Club" />
-          </button>
+
+          <FieldControl
+            field={form.$('club')}
+            labels={false}
+            options={{
+              onSubmit: false,
+              onClear: true,
+              onReset: true,
+            }}
+          />
+
         </div>
       </fieldset>
 
@@ -47,7 +56,14 @@ export default observer(({ form }) => (
 
       {<NestedMembersFieldset field={form.$('members')} />}
 
-      <FormControls form={form} />
+      <FormControls
+        form={form}
+        options={{
+          onSubmit: true,
+          onReset: true,
+          onClear: true,
+        }}
+      />
 
     </form>
   </div>

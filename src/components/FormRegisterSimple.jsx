@@ -16,7 +16,15 @@ export default observer(({ form }) => (
       <Input field={form.$('password')} type="password" />
       <Input field={form.$('devSkills')} />
       <Checkbox field={form.$('terms')} />
-      <FormControls form={form} />
+
+      <FormControls
+        form={form}
+        options={{
+          onSubmit: true,
+          onReset: true,
+          onClear: true,
+        }}
+      />
     </form>
   </div>
 ));

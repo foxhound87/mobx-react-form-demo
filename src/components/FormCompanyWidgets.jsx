@@ -33,7 +33,14 @@ export default observer(({ form }) => (
         options={widgetProductsOptions}
       />
 
-      <FormControls form={form} />
+      <FormControls
+        form={form}
+        options={{
+          onSubmit: true,
+          onReset: true,
+          onClear: true,
+        }}
+      />
 
     </form>
   </div>

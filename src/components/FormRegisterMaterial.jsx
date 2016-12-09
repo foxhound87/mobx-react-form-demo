@@ -17,7 +17,16 @@ export default observer(({ form }) => (
       <MaterialTextField field={form.$('password')} type="password" />
       <MaterialTextField field={form.$('devSkills')} />
       <MaterialToggle field={form.$('terms')} />
-      <FormControls form={form} />
+
+      <FormControls
+        form={form}
+        options={{
+          onSubmit: true,
+          onReset: true,
+          onClear: true,
+        }}
+      />
+
     </form>
   </div>
 ));

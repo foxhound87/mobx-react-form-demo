@@ -1,6 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
+import FieldControl from '../controls/FieldControls';
+
 export default observer(({ field }) => (
   <div>
 
@@ -18,15 +20,15 @@ export default observer(({ field }) => (
     </span>
 
     <span>
-      <button type="button" onClick={field.onDel}>
-        <i className="fa fa-times-circle" data-tip="Remove" />
-      </button>
-      <button type="button" onClick={field.onClear}>
-        <i className="fa fa-eraser" data-tip="Clear" />
-      </button>
-      <button type="button" onClick={field.onReset}>
-        <i className="fa fa-refresh" data-tip="Reset" />
-      </button>
+      <FieldControl
+        field={field}
+        labels={false}
+        options={{
+          onSubmit: true,
+          onClear: true,
+          onReset: true,
+        }}
+      />
     </span>
 
   </div>

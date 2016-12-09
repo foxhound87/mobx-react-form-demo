@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 
 import Input from './SimpleInput';
 import NestedHobbyFieldset from '../fieldsets/NestedHobbyFieldset';
+import FieldControl from '../controls/FieldControls';
 
 export default observer(({ field }) => (
   <fieldset className="center">
@@ -12,15 +13,15 @@ export default observer(({ field }) => (
 
     <br />
     <span>
-      <button type="button" onClick={field.onDel}>
-        <i className="fa fa-times-circle" data-tip="Remove Member" />
-      </button>
-      <button type="button" onClick={field.onClear}>
-        <i className="fa fa-eraser" data-tip="Clear Member" />
-      </button>
-      <button type="button" onClick={field.onReset}>
-        <i className="fa fa-refresh" data-tip="Reset Member" />
-      </button>
+      <FieldControl
+        field={field}
+        labels={false}
+        options={{
+          onDel: true,
+          onClear: true,
+          onReset: true,
+        }}
+      />
     </span>
 
     <br />
