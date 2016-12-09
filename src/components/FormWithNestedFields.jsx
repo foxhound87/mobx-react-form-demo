@@ -1,6 +1,5 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import ReactTooltip from 'react-tooltip';
 
 import Input from './inputs/SimpleInput';
 import NestedMembersFieldset from './fieldsets/NestedMembersFieldset';
@@ -9,7 +8,6 @@ import FieldControl from './controls/FieldControls';
 
 export default observer(({ form }) => (
   <div className="container normal">
-    <ReactTooltip />
     <form>
       <h2>Nested Fields</h2>
 

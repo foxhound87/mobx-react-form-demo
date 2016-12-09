@@ -13,7 +13,7 @@ const DataTip = observer(({ text, field, icon }) => (
 
 export default observer(({ field, labels = true, options = {} }) => (
   <span>
-    {!options || options.onAdd &&
+    {(!options || options.onAdd) &&
       <button type="button" onClick={field.onAdd}>
         <DataTip
           field={field}
@@ -21,7 +21,7 @@ export default observer(({ field, labels = true, options = {} }) => (
           icon="plus-circle"
         /> {labels && 'Add'}
       </button>}
-    {!options || options.onDel &&
+    {(!options || options.onDel) &&
       <button type="button" onClick={field.onDel}>
         <DataTip
           field={field}
@@ -29,7 +29,7 @@ export default observer(({ field, labels = true, options = {} }) => (
           icon="times-circle"
         /> {labels && 'Remove'}
       </button>}
-    {!options || options.onSubmit &&
+    {(!options || options.onSubmit) &&
       <button type="button" onClick={field.onSubmit}>
         <DataTip
           field={field}
@@ -37,7 +37,7 @@ export default observer(({ field, labels = true, options = {} }) => (
           icon="times-circle"
         /> {labels && 'Submit'}
       </button>}
-    {!options || options.onClear &&
+    {(!options || options.onClear) &&
       <button type="button" onClick={field.onClear}>
         <DataTip
           field={field}
@@ -45,7 +45,7 @@ export default observer(({ field, labels = true, options = {} }) => (
           icon="eraser" />
         {labels && 'Clear'}
       </button>}
-    {!options || options.onReset &&
+    {(!options || options.onReset) &&
       <button type="button" onClick={field.onReset}>
         <DataTip
           field={field}

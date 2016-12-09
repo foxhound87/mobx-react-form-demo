@@ -38,14 +38,7 @@ export default observer(({ form }) => (
         options={multiProductsOptions}
       />
 
-      <FormControls
-        form={form}
-        options={{
-          onSubmit: true,
-          onReset: true,
-          onClear: true,
-        }}
-      />
+      <FormControls form={form} />
 
     </form>
   </div>
