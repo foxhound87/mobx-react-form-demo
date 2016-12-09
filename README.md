@@ -19,7 +19,7 @@ and go to `http://localhost:8888`.
 
 # Projects Linking
 
-In order to link the demo code to the `mobx-reac-form` repo, clone both the repos as follows:
+In order to link the demo code to the `mobx-react-form` repo, clone both the repos as follows:
 
 ```bash
 ❯ git clone -b master git@github.com:foxhound87/mobx-react-form.git mobx-react-form--master
