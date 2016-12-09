@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import Input from './inputs/SimpleInput';
+import ClubFieldset from './fieldsets/ClubFieldset';
 import NestedAllMembersFieldset from './fieldsets/NestedAllMembersFieldset';
 import FormControls from './controls/FormControls';
 import FieldControl from './controls/FieldControls';
@@ -29,30 +29,12 @@ export default observer(({ form }) => (
       </div>
       <hr />
 
-      <fieldset className="center">
-        <Input field={form.$('club.name')} />
-        <Input field={form.$('club.city')} />
-        <br />
-        <br />
-        <div>
-
-          <FieldControl
-            field={form.$('club')}
-            labels={false}
-            options={{
-              onSubmit: false,
-              onClear: true,
-              onReset: true,
-            }}
-          />
-
-        </div>
-      </fieldset>
+      <ClubFieldset club={form.$('club')} />
 
       <br />
       <br />
 
-      {<NestedAllMembersFieldset field={form.$('members')} />}
+      {<NestedAllMembersFieldset members={form.$('members')} />}
 
       <FormControls
         form={form}

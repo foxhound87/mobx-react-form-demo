@@ -4,17 +4,17 @@ import { observer } from 'mobx-react';
 import NestedMemberFieldset from './NestedMemberFieldset';
 import FieldControl from '../controls/FieldControls';
 
-export default observer(({ field }) => (
+export default observer(({ members }) => (
   <div>
 
     <div className="clearfix">
       <div className="left">
-        <b>{field.label}</b>
+        <b>{members.label}</b>
       </div>
 
       <div className="right">
         <FieldControl
-          field={field}
+          field={members}
           labels={false}
           options={{
             onAdd: true,
@@ -26,8 +26,8 @@ export default observer(({ field }) => (
     </div>
     <hr />
 
-    {field.map(member => member &&
-      <NestedMemberFieldset key={member.key} field={member} />)}
+    {members.map(member => member &&
+      <NestedMemberFieldset key={member.key} member={member} />)}
 
   </div>
 ));

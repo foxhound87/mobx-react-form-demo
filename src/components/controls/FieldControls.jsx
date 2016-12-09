@@ -37,7 +37,8 @@ export default observer(({ field, labels = true, options = {} }) => (
         <DataTip
           label={field.label}
           text={'Clear'}
-          icon="eraser" />
+          icon="eraser"
+        />
         {labels && 'Clear'}
       </button>}
 
@@ -46,7 +47,8 @@ export default observer(({ field, labels = true, options = {} }) => (
         <DataTip
           label={field.label}
           text={'Reset'}
-          icon="refresh" />
+          icon="refresh"
+        />
         {labels && 'Reset'}
       </button>}
 

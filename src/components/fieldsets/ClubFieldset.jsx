@@ -1,33 +1,29 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import NestedHobbyFieldset from '../fieldsets/NestedHobbyFieldset';
 import FieldControl from '../controls/FieldControls';
 import Input from '../inputs/SimpleInput';
 
-export default observer(({ member }) => (
+export default observer(({ club }) => (
   <fieldset className="center">
 
-    <Input field={member.$('firstname')} />
-    <Input field={member.$('lastname')} />
-
+    <Input field={club.$('name')} />
+    <Input field={club.$('city')} />
     <br />
-    <span>
+    <br />
+    <div>
+
       <FieldControl
-        field={member}
+        field={club}
         labels={false}
         options={{
-          onDel: true,
+          onSubmit: false,
           onClear: true,
           onReset: true,
         }}
       />
-    </span>
 
-    <br />
-    <br />
-
-    <NestedHobbyFieldset hobbies={member.$('hobbies')} />
+    </div>
 
   </fieldset>
 ));
