@@ -1,4 +1,4 @@
-# [Mobx React Form](https://github.com/foxhound87/mobx-react-form) Demo
+# [MobX React Form](https://github.com/foxhound87/mobx-react-form) Demo
 
 ## Live Demo
 
