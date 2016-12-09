@@ -11,10 +11,10 @@ const DataTip = observer(({ text, label, icon }) => (
   />
 ));
 
-export default observer(({ field, labels = true, options = {} }) => (
+export default observer(({ field, labels = true, controls = {} }) => (
   <span>
 
-    {(!options || options.onAdd) &&
+    {(!controls || controls.onAdd) &&
       <button type="button" onClick={field.onAdd}>
         <DataTip
           label={field.label}
@@ -23,7 +23,7 @@ export default observer(({ field, labels = true, options = {} }) => (
         /> {labels && 'Add'}
       </button>}
 
-    {(!options || options.onDel) &&
+    {(!controls || controls.onDel) &&
       <button type="button" onClick={field.onDel}>
         <DataTip
           label={field.label}
@@ -32,7 +32,7 @@ export default observer(({ field, labels = true, options = {} }) => (
         /> {labels && 'Remove'}
       </button>}
 
-    {(!options || options.onClear) &&
+    {(!controls || controls.onClear) &&
       <button type="button" onClick={field.onClear}>
         <DataTip
           label={field.label}
@@ -42,7 +42,7 @@ export default observer(({ field, labels = true, options = {} }) => (
         {labels && 'Clear'}
       </button>}
 
-    {(!options || options.onReset) &&
+    {(!controls || controls.onReset) &&
       <button type="button" onClick={field.onReset}>
         <DataTip
           label={field.label}

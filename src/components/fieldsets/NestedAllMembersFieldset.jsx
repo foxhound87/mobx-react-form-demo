@@ -16,7 +16,7 @@ export default observer(({ members }) => (
         <FieldControl
           field={members}
           labels={false}
-          options={{
+          controls={{
             onAdd: true,
             onClear: true,
             onReset: true,

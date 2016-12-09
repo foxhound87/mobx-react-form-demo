@@ -20,7 +20,7 @@ export default observer(({ form }) => (
           <FieldControl
             field={form.$('club')}
             labels={false}
-            options={{
+            controls={{
               onClear: true,
               onReset: true,
             }}
@@ -29,16 +29,20 @@ export default observer(({ form }) => (
       </div>
       <hr />
 
-      <ClubFieldset club={form.$('club')} />
+      <ClubFieldset
+        club={form.$('club')}
+      />
 
       <br />
       <br />
 
-      {<NestedAllMembersFieldset members={form.$('members')} />}
+      <NestedAllMembersFieldset
+        members={form.$('members')}
+      />
 
       <FormControls
         form={form}
-        options={{
+        controls={{
           onSubmit: true,
           onReset: true,
           onClear: true,

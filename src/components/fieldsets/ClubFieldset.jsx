@@ -16,7 +16,7 @@ export default observer(({ club }) => (
       <FieldControl
         field={club}
         labels={false}
-        options={{
+        controls={{
           onSubmit: false,
           onClear: true,
           onReset: true,

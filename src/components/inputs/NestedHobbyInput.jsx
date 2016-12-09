@@ -23,7 +23,7 @@ export default observer(({ field }) => (
       <FieldControl
         field={field}
         labels={false}
-        options={{
+        controls={{
           onDel: true,
           onClear: true,
           onReset: true,

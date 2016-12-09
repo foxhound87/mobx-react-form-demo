@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import ReactTooltip from 'react-tooltip';
 
-export default observer(({ form, options = null }) => (
+export default observer(({ form, controls = null }) => (
   <div>
     <ReactTooltip />
 
@@ -11,17 +11,17 @@ export default observer(({ form, options = null }) => (
 
     <div className="ctrl">
 
-      {(!options || options.onSubmit) &&
+      {(!controls || controls.onSubmit) &&
         <button type="submit" onClick={form.onSubmit}>
           <i className="fa fa-dot-circle-o" /> Submit
         </button>}
 
-      {(!options || options.onClear) &&
+      {(!controls || controls.onClear) &&
         <button type="button" onClick={form.onClear}>
           <i className="fa fa-eraser" /> Clear
         </button>}
 
-      {(!options || options.onReset) &&
+      {(!controls || controls.onReset) &&
         <button type="button" onClick={form.onReset}>
           <i className="fa fa-refresh" /> Reset
         </button>}
