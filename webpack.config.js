@@ -28,7 +28,7 @@ const loaders = [{
   loader: 'url-loader',
 }];
 
-const postcss = $webpack => [
+const postcss = () => [
   postcssImport(),
   postcssUrl('inline'),
 ];
@@ -54,7 +54,7 @@ module.exports = {
       Promise: 'bluebird',
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve('src', 'index.html'),
+      template: path.resolve('.', 'src', 'index.html'),
     }),
   ],
   module: { loaders },

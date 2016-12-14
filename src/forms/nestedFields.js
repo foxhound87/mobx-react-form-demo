@@ -34,4 +34,8 @@ const labels = {
   'members[].hobbies': 'Member Hobbies',
 };
 
-export default { fields, values, labels };
+const rules = {
+  'members[].hobbies[]': 'string|required|min:3',
+}
+
+export default { fields, values, labels, rules };
