@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import ReactTooltip from 'react-tooltip';
 import _ from 'lodash';
 
 const DataTip = observer(({ text, label, icon }) => (
@@ -13,6 +14,7 @@ const DataTip = observer(({ text, label, icon }) => (
 
 export default observer(({ field, labels = true, controls = {} }) => (
   <span>
+    <ReactTooltip />
 
     {(!controls || controls.onAdd) &&
       <button type="button" onClick={field.onAdd}>
