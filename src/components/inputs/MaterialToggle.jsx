@@ -8,6 +8,7 @@ export default observer(({ field }) => (
     <Toggle
       labelPosition="right"
       label={field.label}
+      id={field.id}
       name={field.name}
       defaultToggled={field.value}
       onToggle={field.onToggle}

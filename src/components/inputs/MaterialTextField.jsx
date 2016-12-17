@@ -6,6 +6,7 @@ export default observer(({ field, type = null }) => (
   <div>
     <TextField
       type={type || 'text'}
+      id={field.id}
       name={field.name}
       value={field.value}
       floatingLabelText={field.label}
