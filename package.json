@@ -24,6 +24,7 @@
     "mobx-react-form": "1.16.9",
     "mobx-react-form-devtools": "^1.2.4",
     "moment": "2.17.1",
+    "numeral": "^2.0.3",
     "postcss-import": "9.0.0",
     "postcss-url": "5.1.2",
     "react": "15.4.1",

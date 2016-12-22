@@ -1,6 +1,6 @@
-import MobxReactForm from 'mobx-react-form'; // eslint-disable-line
+// import MobxReactForm from 'mobx-react-form'; // eslint-disable-line
 // import MobxReactForm from '../../master/lib'; // load from build
-// import MobxReactForm from '../../master/src'; // load from source
+import MobxReactForm from '../../master/src'; // load from source
 
 export default class Form extends MobxReactForm {
 

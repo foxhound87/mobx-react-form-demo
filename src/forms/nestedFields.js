@@ -35,7 +35,9 @@ const labels = {
 };
 
 const rules = {
+  'members[].lastname': 'string|required|min:3',
+  'members[].firstname': 'string|required|min:3',
   'members[].hobbies[]': 'string|required|min:3',
-}
+};
 
 export default { fields, values, labels, rules };
