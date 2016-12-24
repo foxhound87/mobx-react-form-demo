@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
+import FieldControl from '../controls/FieldControls';
 import NestedHobbyInput from '../inputs/NestedHobbyInput';
 
 export default observer(({ hobbies }) => (
@@ -9,9 +10,13 @@ export default observer(({ hobbies }) => (
     <div className="clearfix">
       <div className="left">{hobbies.label}</div>
       <div className="right">
-        <button type="button" onClick={hobbies.onAdd}>
-          <i className="fa fa-plus-circle" data-tip="Add Hobby" />
-        </button>
+        <FieldControl
+          field={hobbies}
+          labels={false}
+          controls={{
+            onAdd: true,
+          }}
+        />
       </div>
     </div>
     <hr />

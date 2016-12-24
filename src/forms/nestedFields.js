@@ -35,6 +35,8 @@ const labels = {
 };
 
 const rules = {
+  'club.name': 'string|required|min:3',
+  'club.city': 'string|required|min:3',
   'members[].lastname': 'string|required|min:3',
   'members[].firstname': 'string|required|min:3',
   'members[].hobbies[]': 'string|required|min:3',

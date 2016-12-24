@@ -23,7 +23,7 @@ const plugins = {
 class NestedFieldsForm extends Form {
 
   // onInit($form) {
-    // console.log('ON INIT');
+  //   console.log('ON INIT');
   // }
 }
 
