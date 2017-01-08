@@ -7,7 +7,7 @@ import FormControls from '../controls/FormControls';
 import FieldControl from '../controls/FieldControls';
 
 export default observer(({ form }) => (
-  <div className="container normal">
+  <div className="container material">
     <form>
       <h2>Nested Fields</h2>
 

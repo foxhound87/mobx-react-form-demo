@@ -2,20 +2,15 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 import FieldControl from '../controls/FieldControls';
+import MaterialTextField from '../inputs/MaterialTextField';
 
 export default observer(({ field }) => (
   <div>
 
     <span>
-      <div>
-        <i>{field.error}</i>
-      </div>
-      <input
-        type="text"
-        placeholder="hobby"
-        name={field.name}
-        value={field.value}
-        onChange={field.sync}
+      <MaterialTextField
+        field={field}
+        placeholder="Insert Hobby"
       />
     </span>
 

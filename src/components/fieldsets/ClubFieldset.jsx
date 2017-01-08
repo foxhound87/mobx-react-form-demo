@@ -2,13 +2,14 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 import FieldControl from '../controls/FieldControls';
-import Input from '../inputs/SimpleInput';
+import MaterialTextField from '../inputs/MaterialTextField';
+// import Input from '../inputs/SimpleInput';
 
 export default observer(({ club }) => (
   <fieldset className="center">
 
-    <Input field={club.$('name')} />
-    <Input field={club.$('city')} />
+    <MaterialTextField field={club.$('name')} />
+    <MaterialTextField field={club.$('city')} />
     <br />
     <br />
     <div>

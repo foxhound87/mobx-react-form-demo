@@ -29,9 +29,19 @@ const labels = {
   'club.name': 'Club Name',
   'club.city': 'Club City',
   'members': 'All Members',
-  'members[].firstname': 'Member FirstName',
-  'members[].lastname': 'Member LastName',
+  'members[].firstname': 'Member First Name',
+  'members[].lastname': 'Member Last Name',
   'members[].hobbies': 'Member Hobbies',
+};
+
+const placeholders = {
+  'club': 'Insert Club',
+  'club.name': 'Insert Club Name',
+  'club.city': 'Insert Club City',
+  'members': 'Insert All Members',
+  'members[].firstname': 'Insert FirstName',
+  'members[].lastname': 'Insert LastName',
+  'members[].hobbies[]': 'Insert Hobbies',
 };
 
 const rules = {
@@ -42,4 +52,12 @@ const rules = {
   'members[].hobbies[]': 'string|required|min:3',
 };
 
-export default { fields, values, labels, rules };
+const bindings = {
+  'club.name': 'MaterialTextFieldReimplemented',
+  'club.city': 'MaterialTextFieldReimplemented',
+  'members[].lastname': 'MaterialTextField',
+  'members[].firstname': 'MaterialTextField',
+  'members[].hobbies[]': 'MaterialTextField',
+};
+
+export default { fields, values, labels, placeholders, rules, bindings };

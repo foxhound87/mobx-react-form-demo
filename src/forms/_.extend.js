@@ -4,7 +4,13 @@ import MobxReactForm from 'mobx-react-form'; // eslint-disable-line
 // import MobxReactForm from '../../master/src'; // load from source (MASTER)
 // import MobxReactForm from '../../next/src'; // load from source (NEXT)
 
+import bindings from './_.bindings';
+
 export default class Form extends MobxReactForm {
+
+  bindings() {
+    return bindings;
+  }
 
   onSuccess(form) {
     alert('Form is valid! Send the request here.'); // eslint-disable-line

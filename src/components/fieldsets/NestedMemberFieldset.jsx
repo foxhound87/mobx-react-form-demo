@@ -3,13 +3,14 @@ import { observer } from 'mobx-react';
 
 import NestedHobbyFieldset from '../fieldsets/NestedHobbyFieldset';
 import FieldControl from '../controls/FieldControls';
-import Input from '../inputs/SimpleInput';
+import MaterialTextField from '../inputs/MaterialTextField';
+// import Input from '../inputs/SimpleInput';
 
 export default observer(({ member }) => (
   <fieldset className="center">
 
-    <Input field={member.$('firstname')} />
-    <Input field={member.$('lastname')} />
+    <MaterialTextField field={member.$('firstname')} />
+    <MaterialTextField field={member.$('lastname')} />
 
     <br />
     <span>

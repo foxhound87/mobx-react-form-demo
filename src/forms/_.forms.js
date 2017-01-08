@@ -20,13 +20,7 @@ const plugins = {
   },
 };
 
-class NestedFieldsForm extends Form {
-
-  // onInit($form) {
-  //   console.log('ON INIT');
-  // }
-}
-
+class NestedFieldsForm extends Form {}
 class MarkdownForm extends Form {}
 class RegisterMaterialForm extends Form {}
 class RegisterSimpleForm extends Form {}
