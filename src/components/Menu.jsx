@@ -3,9 +3,9 @@ import { observer } from 'mobx-react';
 import { action } from 'mobx';
 import _ from 'lodash';
 
-import MobxReactFormDevTools from 'mobx-react-form-devtools';
+// import MobxReactFormDevTools from 'mobx-react-form-devtools';
 // import MobxReactFormDevTools from '../../devtools/lib'; // load from build
-// import MobxReactFormDevTools from '../../devtools/src'; // load from source
+import MobxReactFormDevTools from '../../devtools/src'; // load from source
 
 const switchTo = action((e, menu) => {
   e.preventDefault();

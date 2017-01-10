@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-export default observer(({ field, options = [] }) => (
+export default observer(({ field }) => (
   <div>
 
     <div>
@@ -15,7 +15,7 @@ export default observer(({ field, options = [] }) => (
       name={field.name}
       onChange={field.sync}
     >
-      {options.map(val =>
+      {field.options.map(val =>
         <option key={val} value={val}>{val}</option>)}
     </select>
 

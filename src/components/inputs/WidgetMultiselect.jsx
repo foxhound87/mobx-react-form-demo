@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { Multiselect } from 'react-widgets';
 
-export default observer(({ field, options = [] }) => (
+export default observer(({ field }) => (
   <div>
 
     <div>
@@ -14,7 +14,7 @@ export default observer(({ field, options = [] }) => (
       id={field.id}
       value={field.value}
       onChange={field.sync}
-      data={options}
+      data={field.options}
     />
 
   </div>

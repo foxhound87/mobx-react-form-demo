@@ -9,6 +9,7 @@ export default observer(({ form }) => (
   <div className="container normal">
     <form>
       <h2>Form Markdown</h2>
+
       <Textarea field={form.$('content')} />
       <ReactMarkdown source={form.$('content').value} />
       <FormControls form={form} />

@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import Select from 'react-select';
 
-export default observer(({ field, options = [] }) => (
+export default observer(({ field }) => (
   <div>
 
     <div>
@@ -16,7 +16,7 @@ export default observer(({ field, options = [] }) => (
       value={field.value}
       name={field.name}
       onChange={field.sync}
-      options={options}
+      options={field.options}
       resetValue={[]}
     />
 

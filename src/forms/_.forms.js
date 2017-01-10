@@ -1,4 +1,3 @@
-import validatorjs from 'validatorjs';
 import Form from './_.extend';
 
 // forms
@@ -9,17 +8,6 @@ import registerMaterial from './registerMaterial';
 import companySimple from './companySimple';
 import companyWidgets from './companyWidgets';
 
-// plugins extensions
-// import svkExtend from './extension/svk';
-import dvrExtend from './extension/dvr';
-
-const plugins = {
-  dvr: {
-    package: validatorjs,
-    extend: dvrExtend,
-  },
-};
-
 class NestedFieldsForm extends Form {}
 class MarkdownForm extends Form {}
 class RegisterMaterialForm extends Form {}
@@ -29,28 +17,11 @@ class CompanyWidgetsForm extends Form {}
 
 export default {
 
-  nestedFields: new NestedFieldsForm({
-    plugins, ...nestedFields,
-  }, 'Nested Fields'),
-
-  markdown: new MarkdownForm({
-    plugins, ...markdown,
-  }, 'Markdown'),
-
-  registerMaterial: new RegisterMaterialForm({
-    plugins, ...registerMaterial,
-  }, 'Register Material'),
-
-  registerSimple: new RegisterSimpleForm({
-    plugins, ...registerSimple,
-  }, 'Register Simple'),
-
-  companySimple: new CompanySimpleForm({
-    plugins, ...companySimple,
-  }, 'Company Simple'),
-
-  companyWidgets: new CompanyWidgetsForm({
-    plugins, ...companyWidgets,
-  }, 'Company Widgets'),
+  nestedFields: new NestedFieldsForm({ ...nestedFields }, { name: 'Nested Fields' }),
+  markdown: new MarkdownForm({ ...markdown }, { name: 'Markdown' }),
+  registerMaterial: new RegisterMaterialForm({ ...registerMaterial }, { name: 'Register Material' }),
+  registerSimple: new RegisterSimpleForm({ ...registerSimple }, { name: 'Register Simple' }),
+  companySimple: new CompanySimpleForm({ ...companySimple }, { name: 'Company Simple' }),
+  companyWidgets: new CompanyWidgetsForm({ ...companyWidgets }, { name: 'Company Widgets' }),
 
 };

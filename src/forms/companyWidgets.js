@@ -1,3 +1,5 @@
+import { productsOptions } from './data/options';
+
 export default {
   fields: {
     name: {
@@ -22,11 +24,13 @@ export default {
     productsDropdown: {
       label: 'Products - Dropdown (react-widgets)',
       value: 'iMac',
+      options: productsOptions,
     },
     productsMultiselect: {
       label: 'Products - Multiselect (react-widgets)',
       value: ['iMac', 'iPhone'],
       rules: 'required',
+      options: productsOptions,
     },
   },
 };

@@ -7,10 +7,6 @@ import WidgetDropdownList from '../inputs/WidgetDropdownList';
 import WidgetMultiselect from '../inputs/WidgetMultiselect';
 import FormControls from '../controls/FormControls';
 
-const widgetProductsOptions = [
-  'iPhone', 'Watch', 'iMac', 'Mac Pro', 'MacBook Air', 'MacBook Pro',
-];
-
 export default observer(({ form }) => (
   <div className="container normal">
     <form>
@@ -20,21 +16,10 @@ export default observer(({ form }) => (
       <Input field={form.$('name')} />
       <Input field={form.$('revenue')} />
       <Input field={form.$('assets')} />
-
       <WidgetDatePicker field={form.$('founded')} />
-
-      <WidgetDropdownList
-        field={form.$('productsDropdown')}
-        options={widgetProductsOptions}
-      />
-
-      <WidgetMultiselect
-        field={form.$('productsMultiselect')}
-        options={widgetProductsOptions}
-      />
-
+      <WidgetDropdownList field={form.$('productsDropdown')} />
+      <WidgetMultiselect field={form.$('productsMultiselect')} />
       <FormControls form={form} />
-
     </form>
   </div>
 ));
