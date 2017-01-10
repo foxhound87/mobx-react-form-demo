@@ -8,15 +8,9 @@ export default observer(({ field, rows = 20, cols = 100 }) => (
       <i>{field.error}</i>
     </div>
     <textarea
-      rows={rows} cols={cols}
-      id={field.id}
-      name={field.name}
-      value={field.value}
-      placeholder={field.placeholder}
-      disabled={field.disabled}
-      onChange={field.onChange}
-      onFocus={field.onFocus}
-      onBlur={field.onBlur}
+      {...field.bind()}
+      rows={rows}
+      cols={cols}
     />
   </div>
 ));

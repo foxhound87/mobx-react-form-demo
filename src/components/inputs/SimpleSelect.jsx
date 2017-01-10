@@ -9,12 +9,7 @@ export default observer(({ field }) => (
       <i>{field.error}</i>
     </div>
 
-    <select
-      id={field.id}
-      value={field.value}
-      name={field.name}
-      onChange={field.sync}
-    >
+    <select {...field.bind()}>
       {field.options.map(val =>
         <option key={val} value={val}>{val}</option>)}
     </select>

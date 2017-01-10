@@ -4,12 +4,19 @@ import { observer } from 'mobx-react';
 export default observer(({ field }) => (
   <div>
     <br />
-    <input
-      type="checkbox"
-      name={field.name}
-      checked={field.value}
-      onChange={field.sync}
-    /> {field.label}
+    <div className="clearfix">
+      <input
+        {...field.bind({ type: 'checkbox' })}
+        checked={field.value}
+        className="left"
+      />
+      <label
+        htmlFor={field.id}
+        className="left"
+      >
+        {field.label}
+      </label>
+    </div>
     <div>
       <i>{field.error}</i>
     </div>

@@ -135,6 +135,10 @@ button:focus {
   margin-bottom: 2px;
 }
 
+.container.normal form input[type='checkbox'] {
+  margin-top: 15px;
+}
+
 .container.normal form select,
 .menu select {
   margin: 0;

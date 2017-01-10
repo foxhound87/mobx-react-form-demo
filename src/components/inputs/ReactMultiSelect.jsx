@@ -11,13 +11,10 @@ export default observer(({ field }) => (
     </div>
 
     <Select
-      multi
-      id={field.id}
-      value={field.value}
-      name={field.name}
-      onChange={field.sync}
+      {...field.bind()}
       options={field.options}
       resetValue={[]}
+      multi
     />
 
   </div>
