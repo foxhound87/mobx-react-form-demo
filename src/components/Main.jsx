@@ -1,5 +1,4 @@
 import React from 'react';
-import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
@@ -21,7 +20,7 @@ export default observer(() => (
   <div>
     <MobxReactFormDevTools.UI />
     <DevTools position={{ bottom: 0, left: '50px' }} />
-    <Menu data={observable(menu)} />
+    <Menu data={menu} />
     <Switch menu={menu} forms={forms} />
   </div>
 ));
