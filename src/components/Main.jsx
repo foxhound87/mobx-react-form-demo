@@ -2,9 +2,9 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
-// import MobxReactFormDevTools from 'mobx-react-form-devtools';
+import MobxReactFormDevTools from 'mobx-react-form-devtools';
 // import MobxReactFormDevTools from '../../devtools/lib'; // load from build
-import MobxReactFormDevTools from '../../devtools/src'; // load from source
+// import MobxReactFormDevTools from '../../devtools/src'; // load from source
 
 import Menu from './Menu';
 import Switch from './Switch';

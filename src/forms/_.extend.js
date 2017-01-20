@@ -1,9 +1,9 @@
 import validatorjs from 'validatorjs';
 
-// import MobxReactForm from 'mobx-react-form'; // eslint-disable-line
+import MobxReactForm from 'mobx-react-form'; // eslint-disable-line
 // import MobxReactForm from '../../master/lib'; // load from build (MASTER)
 // import MobxReactForm from '../../next/lib'; // load from build (NEXT)
-import MobxReactForm from '../../master/src'; // load from source (MASTER)
+// import MobxReactForm from '../../master/src'; // load from source (MASTER)
 // import MobxReactForm from '../../next/src'; // load from source (NEXT
 
 import bindings from './_.bindings';
