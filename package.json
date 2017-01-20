@@ -11,9 +11,9 @@
     "url": "https://github.com/foxhound87/mobx-react-form.git"
   },
   "scripts": {
-    "dev": "NODE_ENV=development webpack-dev-server --port 8888",
-    "build": "NODE_ENV=production webpack",
-    "start": "NODE_ENV=production node ./server.js"
+    "start": "NODE_ENV=development webpack-dev-server --port 8888",
+    "prod:build": "NODE_ENV=production webpack",
+    "prod:start": "NODE_ENV=production node ./server.js"
   },
   "dependencies": {
     "bluebird": "3.4.7",
