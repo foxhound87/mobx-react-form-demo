@@ -21,6 +21,12 @@ export default class Form extends MobxReactForm {
     };
   }
 
+  options() {
+    return {
+      autoParseNumbers: true,
+    };
+  }
+
   bindings() {
     return bindings;
   }
