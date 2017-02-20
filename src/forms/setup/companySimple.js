@@ -1,4 +1,4 @@
-import { productsOptions, multiProductsOptions } from './data/options';
+import { productsOptions, multiProductsOptions } from '../data/options';
 
 export default {
   fields: {

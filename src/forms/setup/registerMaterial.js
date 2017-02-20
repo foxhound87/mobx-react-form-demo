@@ -2,7 +2,7 @@ import {
   isEmail,
   shouldBeEqualTo,
   // checkUser,
-} from './extension/vjf';
+} from '../extension/vjf';
 
 export default {
   fields: {

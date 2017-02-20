@@ -1,12 +1,12 @@
 import Form from './_.extend';
 
 // forms
-import markdown from './markdown';
-import nestedFields from './nestedFields';
-import registerSimple from './registerSimple';
-import registerMaterial from './registerMaterial';
-import companySimple from './companySimple';
-import companyWidgets from './companyWidgets';
+import markdown from './setup/markdown';
+import nestedFields from './setup/nestedFields';
+import registerSimple from './setup/registerSimple';
+import registerMaterial from './setup/registerMaterial';
+import companySimple from './setup/companySimple';
+import companyWidgets from './setup/companyWidgets';
 
 class NestedFieldsForm extends Form {}
 class MarkdownForm extends Form {}

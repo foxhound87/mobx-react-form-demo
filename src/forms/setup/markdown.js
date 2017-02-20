@@ -1,4 +1,4 @@
-import markdownData from './data/example.md';
+import markdownData from '../data/example.md';
 
 export default {
   fields: {
