@@ -14,18 +14,18 @@ import forms from '../forms/_.forms';
 import menu from '../menu';
 
 // selected menu item
-const selected = _.keys(_.pickBy(menu, _.identity))[0];
+const selected = $menu => _.keys(_.pickBy($menu, _.identity))[0];
 const select = val => MobxReactFormDevTools.select(val);
 
 MobxReactFormDevTools.register(forms);
-MobxReactFormDevTools.select(selected);
+MobxReactFormDevTools.select(selected(menu));
 MobxReactFormDevTools.open(true);
 
 export default observer(() => (
   <div>
     <MobxReactFormDevTools.UI />
     <DevTools position={{ bottom: 0, left: '50px' }} />
-    <Menu menu={menu} select={select} />
+    <Menu menu={menu} select={select} selected={selected(menu)} />
     <Switch menu={menu} forms={forms} />
   </div>
 ));

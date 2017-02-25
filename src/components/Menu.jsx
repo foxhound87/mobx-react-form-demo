@@ -3,8 +3,6 @@ import { observer } from 'mobx-react';
 import { action } from 'mobx';
 import _ from 'lodash';
 
-const selected = menu => _.keys(_.pickBy(menu, _.identity))[0];
-
 const switchTo = (menu, select) => (e) => {
   e.preventDefault();
   select(e.target.value);
@@ -12,7 +10,7 @@ const switchTo = (menu, select) => (e) => {
   action(() => _.set(menu, e.target.value, true))();
 };
 
-export default observer(({ menu, select }) => (
+export default observer(({ menu, select, selected }) => (
   <div className="menu clearfix">
     <a
       href="https://www.npmjs.com/package/mobx-react-form"
@@ -28,7 +26,7 @@ export default observer(({ menu, select }) => (
     </a>
     <span className="left label">SELECT DEMO:</span>
     <span className="left">
-      <select name="menu" onChange={switchTo(menu, select)} defaultValue={selected(menu)}>
+      <select name="menu" onChange={switchTo(menu, select)} defaultValue={selected}>
         <option value="registerMaterial">Register (Material UI)</option>
         <option value="registerSimple">Register (Simple)</option>
         <option value="companyWidgets">Company (React Widgets)</option>
