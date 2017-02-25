@@ -11,7 +11,7 @@ export default {
       value: 'SteveJobs',
       placeholder: 'Insert User Name',
       rules: 'checkUser|required|string|between:5,15',
-      bindings: 'MaterialTextField',
+      bindings: 'MaterialTextFieldReimplemented',
       // validate: [checkUser],
     },
     email: {

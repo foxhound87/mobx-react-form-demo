@@ -9,12 +9,12 @@ import MobxReactFormDevTools from 'mobx-react-form-devtools';
 
 const selected = menu => _.keys(_.pickBy(menu, _.identity))[0];
 
-const switchTo = action(menu => (e) => {
+const switchTo = menu => (e) => {
   e.preventDefault();
-  _.map(menu, ($val, $key) => _.set(menu, $key, false));
-  _.set(menu, e.target.value, true);
+  action(() => _.map(menu, ($val, $key) => _.set(menu, $key, false)))();
+  action(() => _.set(menu, e.target.value, true))();
   MobxReactFormDevTools.select(e.target.value);
-});
+};
 
 export default observer(({ menu }) => (
   <div className="menu clearfix">
