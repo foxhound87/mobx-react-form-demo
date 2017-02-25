@@ -3,20 +3,16 @@ import { observer } from 'mobx-react';
 import { action } from 'mobx';
 import _ from 'lodash';
 
-import MobxReactFormDevTools from 'mobx-react-form-devtools';
-// import MobxReactFormDevTools from '../../devtools/lib'; // load from build
-// import MobxReactFormDevTools from '../../devtools/src'; // load from source
-
 const selected = menu => _.keys(_.pickBy(menu, _.identity))[0];
 
-const switchTo = menu => (e) => {
+const switchTo = (menu, select) => (e) => {
   e.preventDefault();
+  select(e.target.value);
   action(() => _.map(menu, ($val, $key) => _.set(menu, $key, false)))();
   action(() => _.set(menu, e.target.value, true))();
-  MobxReactFormDevTools.select(e.target.value);
 };
 
-export default observer(({ menu }) => (
+export default observer(({ menu, select }) => (
   <div className="menu clearfix">
     <a
       href="https://www.npmjs.com/package/mobx-react-form"
@@ -32,7 +28,7 @@ export default observer(({ menu }) => (
     </a>
     <span className="left label">SELECT DEMO:</span>
     <span className="left">
-      <select name="menu" onChange={switchTo(menu)} defaultValue={selected(menu)}>
+      <select name="menu" onChange={switchTo(menu, select)} defaultValue={selected(menu)}>
         <option value="registerMaterial">Register (Material UI)</option>
         <option value="registerSimple">Register (Simple)</option>
         <option value="companyWidgets">Company (React Widgets)</option>

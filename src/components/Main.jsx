@@ -15,6 +15,7 @@ import menu from '../menu';
 
 // selected menu item
 const selected = _.keys(_.pickBy(menu, _.identity))[0];
+const select = val => MobxReactFormDevTools.select(val);
 
 MobxReactFormDevTools.register(forms);
 MobxReactFormDevTools.select(selected);
@@ -24,7 +25,7 @@ export default observer(() => (
   <div>
     <MobxReactFormDevTools.UI />
     <DevTools position={{ bottom: 0, left: '50px' }} />
-    <Menu menu={menu} />
+    <Menu menu={menu} select={select} />
     <Switch menu={menu} forms={forms} />
   </div>
 ));
