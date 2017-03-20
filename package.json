@@ -13,7 +13,8 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --port 8888",
     "prod:build": "NODE_ENV=production webpack",
-    "prod:start": "NODE_ENV=production node ./server.js"
+    "prod:start": "NODE_ENV=production node ./server.js",
+    "publish": "npm run prod:build && cd build && git init && git commit --allow-empty -m 'update' && git checkout -b gh-pages && git add . && git commit -am 'update' && git push git@github.com:foxhound87/mobx-react-form-demo.git gh-pages --force"
   },
   "dependencies": {
     "bluebird": "3.4.7",

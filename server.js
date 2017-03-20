@@ -2,7 +2,7 @@ const http = require('http');
 const path = require('path');
 const fs = require('fs');
 
-const index = path.resolve(__dirname, 'build', 'index.html');
+const index = path.resolve(__dirname, 'build', 'main.html');
 const bundle = path.resolve(__dirname, 'build', 'main.js');
 
 function send(res, err, contents) {
