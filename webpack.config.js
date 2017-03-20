@@ -61,7 +61,7 @@ const config = {
       Promise: 'bluebird',
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve('.', 'src', 'index.html'),
+      template: path.resolve('.', 'src', 'main.html'),
       inject: 'body',
     }),
   ],
