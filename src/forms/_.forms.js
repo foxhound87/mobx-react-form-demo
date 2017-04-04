@@ -17,15 +17,12 @@ class CompanyWidgetsForm extends Form {}
 
 const submit = {
   onSuccess(fieldset) {
-    alert(`${fieldset.path} is valid! Send the request here.`); // eslint-disable-line
-    // get all fields values...
-    console.log(`${fieldset.path} Values!`, fieldset.values()); // eslint-disable-line
+    // eslint-disable-next-line
+    console.log(`${fieldset.path} Values`, fieldset.values());
   },
   onError(fieldset) {
-    // get all form errors...
-    console.log(`All ${fieldset.path} errors`, fieldset.errors());  // eslint-disable-line
-    // invalidate the form with a custom error message
-    fieldset.invalidate('This is a generic error message!');
+    // eslint-disable-next-line
+    console.log(`${fieldset.path} Errors`, fieldset.errors());
   },
 };
 
@@ -36,12 +33,10 @@ const onSubmit = {
 };
 
 export default {
-
   nestedFields: new NestedFieldsForm({ ...nestedFields, onSubmit }, { name: 'Nested Fields' }),
   markdown: new MarkdownForm({ ...markdown }, { name: 'Markdown' }),
   registerMaterial: new RegisterMaterialForm({ ...registerMaterial }, { name: 'Register Material' }),
   registerSimple: new RegisterSimpleForm({ ...registerSimple }, { name: 'Register Simple' }),
   companySimple: new CompanySimpleForm({ ...companySimple }, { name: 'Company Simple' }),
   companyWidgets: new CompanyWidgetsForm({ ...companyWidgets }, { name: 'Company Widgets' }),
-
 };

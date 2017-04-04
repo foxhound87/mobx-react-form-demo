@@ -14,8 +14,9 @@ export default {
     errorStyle: field.validating ? { background: 'yellow', color: 'black' } : {},
     disabled: $try(props.disabled, field.disabled),
     onChange: $try(props.onChange, field.onChange),
-    onFocus: $try(props.onFocus, field.onFocus),
     onBlur: $try(props.onBlur, field.onBlur),
+    onFocus: $try(props.onFocus, field.onFocus),
+    autoFocus: $try(props.autoFocus, field.autoFocus),
   }),
 
   MaterialTextField: {
@@ -28,8 +29,9 @@ export default {
     disabled: 'disabled',
     error: 'errorText',
     onChange: 'onChange',
-    onFocus: 'onFocus',
     onBlur: 'onBlur',
+    onFocus: 'onFocus',
+    autoFocus: 'autoFocus',
   },
 
 };

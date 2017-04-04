@@ -54,5 +54,13 @@ export default observer(({ field, labels = true, controls = {} }) => (
         {labels && 'Reset'}
       </button>}
 
+    <br />
+
+    {(!controls || controls.onSubmit) &&
+      <div className="ctrl">
+        <button type="button" onClick={field.onSubmit}>
+          <i className="fa fa-dot-circle-o" /> Submit
+        </button>
+      </div>}
   </span>
 ));

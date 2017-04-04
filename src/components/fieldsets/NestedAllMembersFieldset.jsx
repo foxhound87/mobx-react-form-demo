@@ -5,7 +5,7 @@ import NestedMemberFieldset from './NestedMemberFieldset';
 import FieldControl from '../controls/FieldControls';
 
 export default observer(({ members }) => (
-  <div>
+  <fieldset>
 
     <div className="clearfix">
       <div className="left">
@@ -24,10 +24,11 @@ export default observer(({ members }) => (
         />
       </div>
     </div>
+
     <hr />
 
     {members.map(member => member &&
       <NestedMemberFieldset key={member.key} member={member} />)}
 
-  </div>
+  </fieldset>
 ));

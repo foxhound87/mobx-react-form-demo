@@ -4,7 +4,6 @@ import { observer } from 'mobx-react';
 import NestedHobbyFieldset from '../fieldsets/NestedHobbyFieldset';
 import FieldControl from '../controls/FieldControls';
 import MaterialTextField from '../inputs/MaterialTextField';
-import FormControls from '../controls/FormControls';
 
 export default observer(({ member }) => (
   <fieldset className="center">
@@ -13,6 +12,7 @@ export default observer(({ member }) => (
     <MaterialTextField field={member.$('lastname')} />
 
     <br />
+
     <span>
       <FieldControl
         field={member}
@@ -30,11 +30,9 @@ export default observer(({ member }) => (
 
     <NestedHobbyFieldset hobbies={member.$('hobbies')} />
 
-    <FormControls
-      form={member}
-      controls={{
-        onSubmit: true,
-      }}
+    <FieldControl
+      field={member}
+      controls={{ onSubmit: true }}
     />
 
   </fieldset>
