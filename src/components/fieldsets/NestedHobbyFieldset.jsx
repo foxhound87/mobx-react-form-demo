@@ -21,8 +21,11 @@ export default observer(({ hobbies }) => (
     </div>
     <hr />
 
-    {hobbies.map(hobby => hobby &&
-      <NestedHobbyInput field={hobby} key={hobby.key} />)}
+    {hobbies.map(hobby =>
+      <NestedHobbyInput
+        field={hobby}
+        key={hobby.key}
+      />)}
 
   </fieldset>
 ));

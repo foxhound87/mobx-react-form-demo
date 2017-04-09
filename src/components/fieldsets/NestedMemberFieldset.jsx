@@ -28,7 +28,10 @@ export default observer(({ member }) => (
     <br />
     <br />
 
-    <NestedHobbyFieldset hobbies={member.$('hobbies')} />
+    {member.has('hobbies') &&
+      <NestedHobbyFieldset
+        hobbies={member.$('hobbies')}
+      />}
 
     <FieldControl
       field={member}

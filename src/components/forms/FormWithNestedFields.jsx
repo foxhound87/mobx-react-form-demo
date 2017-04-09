@@ -36,9 +36,10 @@ export default observer(({ form }) => (
       <br />
       <br />
 
-      <NestedAllMembersFieldset
-        members={form.$('members')}
-      />
+      {form.has('members') &&
+        <NestedAllMembersFieldset
+          members={form.$('members')}
+        />}
 
       <FormControls
         form={form}

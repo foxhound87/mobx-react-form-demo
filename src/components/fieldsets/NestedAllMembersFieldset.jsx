@@ -27,8 +27,11 @@ export default observer(({ members }) => (
 
     <hr />
 
-    {members.map(member => member &&
-      <NestedMemberFieldset key={member.key} member={member} />)}
+    {members.map(member =>
+      <NestedMemberFieldset
+        key={member.key}
+        member={member}
+      />)}
 
   </fieldset>
 ));

@@ -12,7 +12,7 @@ export default {
       placeholder: 'Insert User Name',
       rules: 'checkUser|required|string|between:5,15',
       bindings: 'MaterialTextFieldReimplemented',
-      // validate: [checkUser],
+      // validators: [checkUser],
     },
     email: {
       label: 'Email',
@@ -26,7 +26,7 @@ export default {
       label: 'Confirm Email',
       value: 's.jobs@apple.com',
       placeholder: 'Confirm your Email address',
-      validate: [isEmail, shouldBeEqualTo('email')],
+      validators: [isEmail, shouldBeEqualTo('email')],
       rules: 'required|string|between:5,20',
       bindings: 'MaterialTextField',
     },
