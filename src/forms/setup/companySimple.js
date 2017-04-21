@@ -20,13 +20,13 @@ export default {
     products: {
       label: 'Products',
       value: 'iMac',
-      options: productsOptions,
+      extra: productsOptions,
     },
     productsMultiselect: {
       label: 'Products - Multiselect (react-select)',
       value: { value: 'watch', label: 'Watch' },
       rules: 'required',
-      options: multiProductsOptions,
+      extra: multiProductsOptions,
     },
   },
 };

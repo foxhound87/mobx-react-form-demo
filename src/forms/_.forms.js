@@ -1,7 +1,9 @@
+// import { observe } from 'mobx';
 import Form from './_.extend';
 
 // forms
 import markdown from './setup/markdown';
+import fileUpload from './setup/fileUpload';
 import nestedFields from './setup/nestedFields';
 import registerSimple from './setup/registerSimple';
 import registerMaterial from './setup/registerMaterial';
@@ -10,7 +12,14 @@ import companyWidgets from './setup/companyWidgets';
 
 class NestedFieldsForm extends Form {}
 class MarkdownForm extends Form {}
-class RegisterMaterialForm extends Form {}
+class FileUploadForm extends Form {}
+class RegisterMaterialForm extends Form {
+  onInit() {
+    // override default bindings for all text inputs
+    this.each(field => field.type === 'text' &&
+      field.set('bindings', 'MaterialTextField'));
+  }
+}
 class RegisterSimpleForm extends Form {}
 class CompanySimpleForm extends Form {}
 class CompanyWidgetsForm extends Form {}
@@ -32,10 +41,22 @@ const onSubmit = {
   'members[]': submit,
 };
 
+const formOnSubmit = {
+  onSuccess(form) {
+    // eslint-disable-next-line
+    console.log('Form Values', form.values());
+  },
+  onError(form) {
+    // eslint-disable-next-line
+    console.log('Form Errors', form.errors());
+  },
+};
+
 export default {
   nestedFields: new NestedFieldsForm({ ...nestedFields, onSubmit }, { name: 'Nested Fields' }),
   markdown: new MarkdownForm({ ...markdown }, { name: 'Markdown' }),
-  registerMaterial: new RegisterMaterialForm({ ...registerMaterial }, { name: 'Register Material' }),
+  fileUpload: new FileUploadForm({ ...fileUpload }, { name: 'Markdown' }),
+  registerMaterial: new RegisterMaterialForm({ ...registerMaterial }, { onSubmit: formOnSubmit, name: 'Register Material' }),
   registerSimple: new RegisterSimpleForm({ ...registerSimple }, { name: 'Register Simple' }),
   companySimple: new CompanySimpleForm({ ...companySimple }, { name: 'Company Simple' }),
   companyWidgets: new CompanyWidgetsForm({ ...companyWidgets }, { name: 'Company Widgets' }),

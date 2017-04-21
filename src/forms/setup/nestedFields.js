@@ -8,6 +8,20 @@ const fields = [
   'members[].hobbies[]',
 ];
 
+const initials = {
+  club: {
+    name: 'Jazz Club (initials)',
+    city: 'New York (initials)',
+  },
+};
+
+const defaults = {
+  club: {
+    name: 'Jazz Club (default)',
+    city: 'New York (default)',
+  },
+};
+
 const values = {
   club: {
     name: 'Jazz Club',
@@ -60,4 +74,23 @@ const bindings = {
   'members[].hobbies[]': 'MaterialTextField',
 };
 
-export default { fields, values, labels, placeholders, rules, bindings };
+const onReset = {
+  club: () => console.log('reset club done'),
+};
+
+const onClear = {
+  club: () => console.log('clear club done'),
+};
+
+export default {
+  fields,
+  values,
+  initials,
+  defaults,
+  labels,
+  placeholders,
+  rules,
+  bindings,
+  onReset,
+  onClear,
+};

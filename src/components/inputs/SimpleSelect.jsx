@@ -10,7 +10,7 @@ export default observer(({ field }) => (
     </div>
 
     <select {...field.bind()}>
-      {field.options.map(val =>
+      {field.extra.map(val =>
         <option key={val} value={val}>{val}</option>)}
     </select>
 

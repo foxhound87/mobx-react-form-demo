@@ -24,13 +24,13 @@ export default {
     productsDropdown: {
       label: 'Products - Dropdown (react-widgets)',
       value: 'iMac',
-      options: productsOptions,
+      extra: productsOptions,
     },
     productsMultiselect: {
       label: 'Products - Multiselect (react-widgets)',
       value: ['iMac', 'iPhone'],
       rules: 'required',
-      options: productsOptions,
+      extra: productsOptions,
     },
   },
 };

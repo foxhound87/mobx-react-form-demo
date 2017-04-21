@@ -11,8 +11,9 @@ export default {
       value: 'SteveJobs',
       placeholder: 'Insert User Name',
       rules: 'checkUser|required|string|between:5,15',
-      bindings: 'MaterialTextFieldReimplemented',
+      // bindings: 'MaterialTextFieldReimplemented',
       // validators: [checkUser],
+      // disabled: true,
     },
     email: {
       label: 'Email',
@@ -20,7 +21,10 @@ export default {
       related: ['emailConfirm'],
       placeholder: 'Insert your Email address',
       rules: 'required|email|string|between:5,20',
-      bindings: 'MaterialTextField',
+      // bindings: 'MaterialTextField',
+      options: {
+        showErrorsOnChange: true,
+      },
     },
     emailConfirm: {
       label: 'Confirm Email',
@@ -28,21 +32,21 @@ export default {
       placeholder: 'Confirm your Email address',
       validators: [isEmail, shouldBeEqualTo('email')],
       rules: 'required|string|between:5,20',
-      bindings: 'MaterialTextField',
+      // bindings: 'MaterialTextField',
     },
     password: {
       label: 'Password',
       value: 'thinkdifferent',
       placeholder: 'Insert your Password',
       rules: 'required|string|between:5,20',
-      bindings: 'MaterialTextField',
+      // bindings: 'MaterialTextField',
     },
     devSkills: {
       label: 'Dev Skills (5-10)',
       value: 5,
       default: 5,
       rules: 'required|integer|between:5,10',
-      bindings: 'MaterialTextField',
+      // bindings: 'MaterialTextField',
     },
     terms: {
       label: 'Accept Terms',

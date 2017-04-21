@@ -12,7 +12,7 @@ export default observer(({ field }) => (
 
     <Select
       {...field.bind()}
-      options={field.options}
+      options={field.extra}
       resetValue={[]}
       multi
     />
