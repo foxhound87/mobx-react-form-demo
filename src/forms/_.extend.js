@@ -32,13 +32,13 @@ export default class Form extends MobxReactForm {
     return bindings;
   }
 
-  // onSuccess(form) {
-  //   // eslint-disable-next-line
-  //   console.log('Form Values', form.values());
-  // }
+  onSuccess(form) {
+    // eslint-disable-next-line
+    console.log('Form Values', form.values());
+  }
 
-  // onError(form) {
-  //   // eslint-disable-next-line
-  //   console.log('Form Errors', form.errors());
-  // }
+  onError(form) {
+    // eslint-disable-next-line
+    console.log('Form Errors', form.errors());
+  }
 }

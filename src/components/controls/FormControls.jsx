@@ -10,10 +10,15 @@ export default observer(({ form, controls = null }) => (
     <br />
 
     <div className="ctrl">
-
       {(!controls || controls.onSubmit) &&
-        <button type="submit" onClick={form.onSubmit}>
-          <i className="fa fa-dot-circle-o" /> Submit
+        <button
+          type="submit"
+          onClick={form.onSubmit}
+          disabled={form.submitting}
+        >
+          {(form.submitting || form.validating)
+            ? <b><i className="fa fa-spinner fa-spin" /></b>
+            : <b><i className="fa fa-dot-circle-o" /> Submit</b>}
         </button>}
 
       {(!controls || controls.onClear) &&

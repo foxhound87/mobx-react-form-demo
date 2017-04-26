@@ -28,7 +28,7 @@ const values = {
     city: 'New York',
   },
   members: [{
-    firstname: 'Clint',
+    firstname: '',
     lastname: 'Eastwood',
     hobbies: ['Soccer', 'Baseball'],
   }, {
