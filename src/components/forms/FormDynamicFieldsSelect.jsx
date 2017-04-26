@@ -37,6 +37,7 @@ export default observer(({ form }) => (
   <div className="container normal">
     <form>
       <h2>Dynamic Fields Select</h2>
+      <h5>Type & press enter to add new fields:</h5>
 
       <Creatable
         multi
