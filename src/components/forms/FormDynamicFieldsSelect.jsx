@@ -33,16 +33,24 @@ const onChange = (fieldFactory, dynamicFields) => (values) => {
   fieldsToDelete.map(field => dynamicFields.del(field));
 };
 
+const options = [
+  { value: 'foo', label: 'foo' },
+  { value: 'bar', label: 'bar' },
+  { value: 'baz', label: 'baz' },
+];
+
+
 export default observer(({ form }) => (
   <div className="container normal">
     <form>
       <h2>Dynamic Fields Select</h2>
-      <h5>Type & press enter to add new fields:</h5>
+      <h5>Select or type new options (then press enter) to add new fields:</h5>
 
       <Creatable
         multi
         allowCreate
         resetValue={[]}
+        options={options}
         openOnFocus={false}
         placeholder="Type to add fields"
         noResultsText="Type to add fields"
