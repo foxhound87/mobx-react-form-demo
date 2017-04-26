@@ -27,8 +27,8 @@ const onChange = (fieldFactory, dynamicFields) => (values) => {
   // remove unwanted items
   const allDynamicFields = dynamicFields.map(field => field.name);
   const fieldsToDelete = _.remove(allDynamicFields, item => !_.includes($values, item));
-  fieldFactory.set('value', values);
   fieldsToDelete.map(field => dynamicFields.del(field));
+  fieldFactory.set('value', values);
 };
 
 const options = [
