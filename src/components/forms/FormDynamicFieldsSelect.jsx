@@ -12,8 +12,6 @@ const onChange = (fieldFactory, dynamicFields) => (values) => {
     .values()
     .value();
 
-  fieldFactory.set('value', $values);
-
   // use "extra" field prop to maintain current values
   const current = fieldFactory.get('extra') || [];
   const diff = _.difference($values, current);
