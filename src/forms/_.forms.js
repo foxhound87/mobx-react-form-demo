@@ -9,10 +9,8 @@ import registerSimple from './setup/registerSimple';
 import registerMaterial from './setup/registerMaterial';
 import companySimple from './setup/companySimple';
 import companyWidgets from './setup/companyWidgets';
+import dynamicFieldsSelect from './setup/dynamicFieldsSelect';
 
-class NestedFieldsForm extends Form {}
-class MarkdownForm extends Form {}
-class FileUploadForm extends Form {}
 class RegisterMaterialForm extends Form {
   onInit() {
     // override default bindings for all text inputs
@@ -21,8 +19,12 @@ class RegisterMaterialForm extends Form {
   }
 }
 class RegisterSimpleForm extends Form {}
+class NestedFieldsForm extends Form {}
+class MarkdownForm extends Form {}
+class FileUploadForm extends Form {}
 class CompanySimpleForm extends Form {}
 class CompanyWidgetsForm extends Form {}
+class FormDynamicFieldsSelect extends Form {}
 
 const submit = {
   onSuccess(fieldset) {
@@ -60,4 +62,5 @@ export default {
   registerSimple: new RegisterSimpleForm({ ...registerSimple }, { name: 'Register Simple' }),
   companySimple: new CompanySimpleForm({ ...companySimple }, { name: 'Company Simple' }),
   companyWidgets: new CompanyWidgetsForm({ ...companyWidgets }, { name: 'Company Widgets' }),
+  dynamicFieldsSelect: new FormDynamicFieldsSelect({ ...dynamicFieldsSelect }, { name: 'Dynamic Fields Select' }),
 };

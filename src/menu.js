@@ -8,4 +8,5 @@ export default observable({
   registerSimple: false,
   companyWidgets: false,
   companySimple: false,
+  dynamicFieldsSelect: false,
 });

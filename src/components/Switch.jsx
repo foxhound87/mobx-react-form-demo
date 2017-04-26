@@ -8,6 +8,7 @@ import FormRegisterMaterial from './forms/FormRegisterMaterial';
 import FormRegisterSimple from './forms/FormRegisterSimple';
 import FormCompanyWidgets from './forms/FormCompanyWidgets';
 import FormCompanySimple from './forms/FormCompanySimple';
+import FormDynamicFieldsSelect from './forms/FormDynamicFieldsSelect';
 
 export default observer(({ menu, forms }) => {
   switch (true) {
@@ -32,6 +33,9 @@ export default observer(({ menu, forms }) => {
 
     case menu.companySimple:
       return (<FormCompanySimple form={forms.companySimple} />);
+
+    case menu.dynamicFieldsSelect:
+      return (<FormDynamicFieldsSelect form={forms.dynamicFieldsSelect} />);
 
     default: return null;
   }

@@ -34,6 +34,7 @@ export default observer(({ menu, select, selected }) => (
         <option value="nestedFields">Nested Fields</option>
         <option value="fileUpload">File Upload</option>
         <option value="markdown">Markdown</option>
+        <option value="dynamicFieldsSelect">Dynamic Fields Select</option>
       </select>
     </span>
   </div>
