@@ -10,17 +10,12 @@ export default observer(({ club }) => (
     <MaterialTextField field={club.$('name')} />
     <MaterialTextField field={club.$('city')} />
 
-    <br />
-    <br />
-
     <div>
       <FieldControl
         field={club}
         labels={false}
         controls={{
           onSubmit: true,
-          onClear: true,
-          onReset: true,
         }}
       />
     </div>

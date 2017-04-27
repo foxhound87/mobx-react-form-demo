@@ -25,9 +25,6 @@ export default observer(({ member }) => (
       />
     </span>
 
-    <br />
-    <br />
-
     {member.has('hobbies') &&
       <NestedHobbyFieldset
         hobbies={member.$('hobbies')}
