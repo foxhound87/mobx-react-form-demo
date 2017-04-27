@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "bluebird": "3.4.7",
-    "classnames": "2.2.5",
     "font-awesome": "4.7.0",
     "lodash": "4.17.4",
     "material-ui": "0.16.7",
@@ -37,6 +36,7 @@
     "react-tap-event-plugin": "2.0.1",
     "react-tooltip": "3.2.3",
     "react-widgets": "3.4.5",
+    "tachyons": "^4.7.1",
     "validatorjs": "3.11.0"
   },
   "devDependencies": {

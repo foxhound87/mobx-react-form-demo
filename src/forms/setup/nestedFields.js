@@ -45,7 +45,7 @@ const labels = {
   'members': 'All Members',
   'members[].firstname': 'Member First Name',
   'members[].lastname': 'Member Last Name',
-  'members[].hobbies': 'Member Hobbies',
+  'members[].hobbies': 'Hobbies',
 };
 
 const placeholders = {

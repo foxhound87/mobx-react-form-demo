@@ -11,6 +11,7 @@ export default (query = {}) => {
   ];
 
   return sleep(1500)
+    .then(() => console.log('async call ...'))
     .then(() => _.find(db, query) || []);
 };
 

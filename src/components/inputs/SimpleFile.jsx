@@ -1,9 +1,12 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { action } from 'mobx';
+import $ from '../../styles';
 
 const getFiles = field => (e) => {
   e.preventDefault();
+  // eslint-disable-next-line
+  alert('see console');
   // eslint-disable-next-line
   console.log(field.name, '>> getFiles', field.files);
 };
@@ -34,16 +37,24 @@ export default observer(({
       {...field.bind({
         onChange: field.onDrop,
       })}
+      className={$.ctrl}
     />
-    <button onClick={getFiles(field)}>Get Files</button>
+    <button
+      onClick={getFiles(field)}
+      className={$.ctrl}
+    >
+      Get Files
+    </button>
     {(field.files && field.files.length) ? <div>
       <h2>Uploading {field.files.length} files...</h2>
       <div>{field.files.map(file =>
         <button
           key={file.name}
           onClick={destroyPreview(file, field)}
+          className={$.ctrl}
         >
           <img
+            className="w-10 h-10"
             src={createPreview(file)}
             alt={file.name}
           />

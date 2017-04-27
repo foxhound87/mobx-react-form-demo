@@ -7,9 +7,15 @@ import NestedHobbyInput from '../inputs/NestedHobbyInput';
 export default observer(({ hobbies }) => (
   <fieldset>
 
-    <div className="clearfix">
-      <div className="left">{hobbies.label}</div>
-      <div className="right">
+    <div className="cf">
+      <h5 className="fl mv0 ml2">
+        {[
+          hobbies.container().$('firstname').value,
+          hobbies.container().$('lastname').value,
+          hobbies.label,
+        ].join(' ')}
+      </h5>
+      <div className="fr">
         <FieldControl
           field={hobbies}
           labels={false}
@@ -19,7 +25,6 @@ export default observer(({ hobbies }) => (
         />
       </div>
     </div>
-    <hr />
 
     {hobbies.map(hobby =>
       <NestedHobbyInput

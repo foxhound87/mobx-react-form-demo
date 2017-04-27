@@ -32,12 +32,24 @@ export default class Form extends MobxReactForm {
     return bindings;
   }
 
+  onInit() {
+    // override default bindings for all text inputs
+    // eslint-disable-next-line
+    (this.name === 'Register Material') &&
+      this.each(field => field.type === 'text' &&
+        field.set('bindings', 'MaterialTextField'));
+  }
+
   onSuccess(form) {
+    // eslint-disable-next-line
+    alert('see console');
     // eslint-disable-next-line
     console.log('Form Values', form.values());
   }
 
   onError(form) {
+    // eslint-disable-next-line
+    alert('see console');
     // eslint-disable-next-line
     console.log('Form Errors', form.errors());
   }

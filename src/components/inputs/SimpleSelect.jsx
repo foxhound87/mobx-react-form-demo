@@ -2,17 +2,16 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 export default observer(({ field }) => (
-  <div>
-
-    <div>
-      <label htmlFor={field.id}>{field.label}</label>
-      <i>{field.error}</i>
-    </div>
-
+  <div className="measure">
+    <label
+      htmlFor={field.id}
+      className="f7 db mb2 mt3 light-silver"
+    >
+      {field.label}
+    </label>
     <select {...field.bind()}>
       {field.extra.map(val =>
         <option key={val} value={val}>{val}</option>)}
     </select>
-
   </div>
 ));

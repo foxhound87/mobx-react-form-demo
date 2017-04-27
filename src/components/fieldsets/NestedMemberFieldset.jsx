@@ -6,7 +6,7 @@ import FieldControl from '../controls/FieldControls';
 import MaterialTextField from '../inputs/MaterialTextField';
 
 export default observer(({ member }) => (
-  <fieldset className="center">
+  <fieldset className="tc">
 
     <MaterialTextField field={member.$('firstname')} />
     <MaterialTextField field={member.$('lastname')} />
@@ -24,6 +24,8 @@ export default observer(({ member }) => (
         }}
       />
     </span>
+
+    <br />
 
     {member.has('hobbies') &&
       <NestedHobbyFieldset

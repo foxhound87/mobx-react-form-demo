@@ -3,22 +3,22 @@ import { observer } from 'mobx-react';
 
 export default observer(({ field }) => (
   <div>
-    <br />
-    <div className="clearfix">
+    <label
+      className="pa0 ma0 mt3 lh-copy f6 pointer"
+      htmlFor={field.id}
+    >
       <input
-        {...field.bind({ type: 'checkbox' })}
         checked={field.value}
-        className="left"
-      />
-      <label
-        htmlFor={field.id}
-        className="left"
-      >
-        {field.label}
-      </label>
-    </div>
-    <div>
-      <i>{field.error}</i>
-    </div>
+        {...field.bind({
+          type: 'checkbox',
+        })}
+      /> {field.label}
+    </label>
+    <small
+      id="name-desc"
+      className="f6 black-60 db mt1 mb3 red"
+    >
+      {field.error}
+    </small>
   </div>
 ));

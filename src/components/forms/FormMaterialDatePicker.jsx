@@ -7,7 +7,7 @@ import FormControls from '../controls/FormControls';
 export default observer(({ form }) => (
   <div className="container normal">
     <form>
-      <h2>Form Material DatePicker</h2>
+      <h2 className="light-red">Form Material DatePicker</h2>
 
       <DatePicker
         hintText={form.$('controlled').label}

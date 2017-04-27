@@ -6,15 +6,14 @@ import DropZone from '../inputs/DropZone';
 import FormControls from '../controls/FormControls';
 
 export default observer(({ form }) => (
-  <div className="container material">
-    <form>
-      <h2>Form File Upload</h2>
+  <form>
+    <h2 className="light-red">Form File Upload</h2>
 
-      <SimpleFile field={form.$('myFileUpload')} multiple />
-      <br /><hr /><br />
-      <DropZone field={form.$('myDropZone')} />
-      <br /><hr /><br />
-      <FormControls form={form} />
-    </form>
-  </div>
+    <SimpleFile field={form.$('myFileUpload')} multiple />
+    <br /><hr />
+    <h2 className="light-red">Dropzone</h2>
+    <DropZone field={form.$('myDropZone')} />
+    <br /><hr /><br />
+    <FormControls form={form} />
+  </form>
 ));

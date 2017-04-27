@@ -6,13 +6,11 @@ import Textarea from '../inputs/SimpleTextarea';
 import FormControls from '../controls/FormControls';
 
 export default observer(({ form }) => (
-  <div className="container normal">
-    <form>
-      <h2>Form Markdown</h2>
+  <form>
+    <h2 className="light-red">Form Markdown</h2>
 
-      <Textarea field={form.$('content')} />
-      <ReactMarkdown source={form.$('content').value} />
-      <FormControls form={form} />
-    </form>
-  </div>
+    <Textarea field={form.$('content')} />
+    <ReactMarkdown source={form.$('content').value} />
+    <FormControls form={form} />
+  </form>
 ));

@@ -15,8 +15,11 @@ export default observer(({ field }) => (
       onFocus={field.onFocus}
       onBlur={field.onBlur}
     />
-    <div>
-      <i>{field.error}</i>
-    </div>
+    <small
+      id="name-desc"
+      className="f7 black-60 db mt1 mb3 red"
+    >
+      {field.error}
+    </small>
   </div>
 ));

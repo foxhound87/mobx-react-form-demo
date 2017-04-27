@@ -1,72 +1,67 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import ReactTooltip from 'react-tooltip';
-import _ from 'lodash';
+import Button from '../Button';
+import $ from '../../styles';
 
-const DataTip = observer(({ text, label, icon }) => (
-  <i
-    className={`fa fa-${icon}`}
-    data-tip={!_.isInteger(_.parseInt(label))
-      ? `${text} ${label}`
-      : text}
-  />
-));
-
-export default observer(({ field, labels = true, controls = {} }) => (
+export default observer(({ field, controls = null }) => (
   <span>
-    <ReactTooltip />
-
-    {(!controls || controls.onAdd) &&
-      <button type="button" onClick={field.onAdd}>
-        <DataTip
-          label={field.label}
-          text={'Add'}
-          icon="plus-circle"
-        /> {labels && 'Add'}
-      </button>}
-
-    {(!controls || controls.onDel) &&
-      <button type="button" onClick={field.onDel}>
-        <DataTip
-          label={field.label}
-          text={'Remove'}
-          icon="times-circle"
-        /> {labels && 'Remove'}
-      </button>}
-
-    {(!controls || controls.onClear) &&
-      <button type="button" onClick={field.onClear}>
-        <DataTip
-          label={field.label}
-          text={'Clear'}
-          icon="eraser"
-        />
-        {labels && 'Clear'}
-      </button>}
-
-    {(!controls || controls.onReset) &&
-      <button type="button" onClick={field.onReset}>
-        <DataTip
-          label={field.label}
-          text={'Reset'}
-          icon="refresh"
-        />
-        {labels && 'Reset'}
-      </button>}
-
-    <br />
 
     {(!controls || controls.onSubmit) &&
-      <div className="ctrl">
-        <button
-          type="submit"
-          onClick={field.onSubmit}
-          disabled={field.submitting}
-        >
-          {(field.submitting || field.validating)
-            ? <b><i className="fa fa-spinner fa-spin" /></b>
-            : <b><i className="fa fa-dot-circle-o" /> Submit</b>}
-        </button>
-      </div>}
+      <Button
+        type="submit"
+        className={$.ctrl}
+        onClick={field.onSubmit}
+        disabled={field.submitting}
+        content={(field.submitting || field.validating)
+          ? <b><i className="fa fa-spinner fa-spin" /></b>
+          : <b><i className="fa fa-dot-circle-o" /> Submit</b>}
+      />}
+
+    {(!controls || controls.onAdd) &&
+      <Button
+        onlyIcon
+        text={'Add'}
+        type="button"
+        icon="plus-circle"
+        label={field.label}
+        onClick={field.onAdd}
+        className={$.fctrl}
+      />}
+
+    {(!controls || controls.onDel) &&
+      <Button
+        onlyIcon
+        text={'Delete'}
+        type="button"
+        icon="times-circle"
+        label={field.label}
+        onClick={field.onDel}
+        className={$.fctrl}
+      />}
+
+
+    {(!controls || controls.onClear) &&
+      <Button
+        onlyIcon
+        text={'Clear'}
+        type="button"
+        icon="eraser"
+        label={field.label}
+        onClick={field.onClear}
+        className={$.fctrl}
+      />}
+
+
+    {(!controls || controls.onReset) &&
+      <Button
+        onlyIcon
+        text={'Reset'}
+        type="button"
+        icon="refresh"
+        label={field.label}
+        onClick={field.onReset}
+        className={$.fctrl}
+      />}
+
   </span>
 ));

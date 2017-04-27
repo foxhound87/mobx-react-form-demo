@@ -7,12 +7,12 @@ import FieldControl from '../controls/FieldControls';
 export default observer(({ members }) => (
   <fieldset>
 
-    <div className="clearfix">
-      <div className="left">
-        <b>{members.label}</b>
-      </div>
+    <div className="cf">
+      <h5 className="fl mv0 ml2">
+        {members.label}
+      </h5>
 
-      <div className="right">
+      <div className="fr">
         <FieldControl
           field={members}
           labels={false}
@@ -24,8 +24,6 @@ export default observer(({ members }) => (
         />
       </div>
     </div>
-
-    <hr />
 
     {members.map(member =>
       <NestedMemberFieldset

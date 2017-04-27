@@ -1,4 +1,3 @@
-// import { observe } from 'mobx';
 import Form from './_.extend';
 
 // forms
@@ -11,13 +10,7 @@ import companySimple from './setup/companySimple';
 import companyWidgets from './setup/companyWidgets';
 import dynamicFieldsSelect from './setup/dynamicFieldsSelect';
 
-class RegisterMaterialForm extends Form {
-  onInit() {
-    // override default bindings for all text inputs
-    this.each(field => field.type === 'text' &&
-      field.set('bindings', 'MaterialTextField'));
-  }
-}
+class RegisterMaterialForm extends Form {}
 class RegisterSimpleForm extends Form {}
 class NestedFieldsForm extends Form {}
 class MarkdownForm extends Form {}
@@ -29,9 +22,13 @@ class FormDynamicFieldsSelect extends Form {}
 const submit = {
   onSuccess(fieldset) {
     // eslint-disable-next-line
+    alert('see console');
+    // eslint-disable-next-line
     console.log(`${fieldset.path} Values`, fieldset.values());
   },
   onError(fieldset) {
+    // eslint-disable-next-line
+    alert('see console');
     // eslint-disable-next-line
     console.log(`${fieldset.path} Errors`, fieldset.errors());
   },
@@ -43,22 +40,11 @@ const onSubmit = {
   'members[]': submit,
 };
 
-const formOnSubmit = {
-  onSuccess(form) {
-    // eslint-disable-next-line
-    console.log('Form Values', form.values());
-  },
-  onError(form) {
-    // eslint-disable-next-line
-    console.log('Form Errors', form.errors());
-  },
-};
-
 export default {
   nestedFields: new NestedFieldsForm({ ...nestedFields, onSubmit }, { name: 'Nested Fields' }),
   markdown: new MarkdownForm({ ...markdown }, { name: 'Markdown' }),
   fileUpload: new FileUploadForm({ ...fileUpload }, { name: 'Markdown' }),
-  registerMaterial: new RegisterMaterialForm({ ...registerMaterial }, { onSubmit: formOnSubmit, name: 'Register Material' }),
+  registerMaterial: new RegisterMaterialForm({ ...registerMaterial }, { name: 'Register Material' }),
   registerSimple: new RegisterSimpleForm({ ...registerSimple }, { name: 'Register Simple' }),
   companySimple: new CompanySimpleForm({ ...companySimple }, { name: 'Company Simple' }),
   companyWidgets: new CompanyWidgetsForm({ ...companyWidgets }, { name: 'Company Widgets' }),

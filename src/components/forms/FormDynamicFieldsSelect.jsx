@@ -39,37 +39,35 @@ const options = [
 
 
 export default observer(({ form }) => (
-  <div className="container normal">
-    <form>
-      <h2>Dynamic Fields Select</h2>
-      <h5>Select or type new options (then press enter) to add new fields:</h5>
+  <form>
+    <h2 className="light-red">Dynamic Fields Select</h2>
+    <h5>Select or type new options (then press enter) to add new fields:</h5>
 
-      <Creatable
-        multi
-        allowCreate
-        resetValue={[]}
-        options={options}
-        openOnFocus={false}
-        placeholder="Type to add fields"
-        noResultsText="Type to add fields"
-        {...form.$('fieldFactory').bind({
-          onChange: onChange(
-            form.$('fieldFactory'),
-            form.$('dynamicFields'),
-          ),
-        })}
-      />
+    <Creatable
+      multi
+      allowCreate
+      resetValue={[]}
+      options={options}
+      openOnFocus={false}
+      placeholder="Type to add fields"
+      noResultsText="Type to add fields"
+      {...form.$('fieldFactory').bind({
+        onChange: onChange(
+          form.$('fieldFactory'),
+          form.$('dynamicFields'),
+        ),
+      })}
+    />
 
-      <br /><br /><h4>{form.$('dynamicFields').label}</h4><hr />
+    <br /><br /><h4>{form.$('dynamicFields').label}</h4><hr />
 
-      {form.$('dynamicFields').map(field =>
-        <MaterialTextField
-          key={field.name}
-          field={field}
-        />,
-      )}
+    {form.$('dynamicFields').map(field =>
+      <MaterialTextField
+        key={field.name}
+        field={field}
+      />,
+    )}
 
-      <FormControls form={form} />
-    </form>
-  </div>
+    <FormControls form={form} />
+  </form>
 ));
