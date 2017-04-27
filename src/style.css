@@ -1,8 +1,8 @@
 @import 'tachyons';
 @import 'font-awesome';
 
-hr {
-  border: 1px solid #e0e0e0;
+* {
+  outline: none;
 }
 
 form fieldset {
