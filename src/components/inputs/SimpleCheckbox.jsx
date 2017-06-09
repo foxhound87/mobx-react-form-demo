@@ -7,16 +7,11 @@ export default observer(({ field }) => (
       className="pa0 ma0 mt3 lh-copy f6 pointer"
       htmlFor={field.id}
     >
-      <input
-        checked={field.value}
-        {...field.bind({
-          type: 'checkbox',
-        })}
-      /> {field.label}
+      <input {...field.bind()} /> {field.label}
     </label>
     <small
       id="name-desc"
-      className="f6 black-60 db mt1 mb3 red"
+      className="f6 db mt1 mb3 red"
     >
       {field.error}
     </small>

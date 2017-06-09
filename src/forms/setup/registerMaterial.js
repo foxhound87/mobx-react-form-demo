@@ -13,9 +13,6 @@ export default {
       rules: 'checkUser|required|string|between:5,15',
       // validators: [checkUser],
       // disabled: true,
-      options: {
-        validateOnChange: true,
-      },
     },
     email: {
       value: 's.jobs@apple.com',
@@ -47,9 +44,6 @@ export default {
       type: 'checkbox',
       label: 'Accept Terms',
       rules: 'boolean|accepted',
-      options: {
-        validateOnChange: true,
-      },
     },
   },
 };

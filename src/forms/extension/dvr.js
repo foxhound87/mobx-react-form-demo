@@ -9,15 +9,19 @@ const asyncRules = {
   },
 };
 
-// const rules = {
-//   telephone: {
-//     function: (value) => value.match(/^\d{3}-\d{3}-\d{4}$/),
-//     message: 'The :attribute phone number is not in the format XXX-XXX-XXXX.',
-//   },
-// };
+const rules = {
+  telephone: {
+    function: value => value.match(/^\d{3}-\d{3}-\d{4}$/),
+    message: 'The :attribute phone number is not in the format XXX-XXX-XXXX.',
+  },
+};
 
-export default $validator => Object.keys(asyncRules)
-  .forEach(key => $validator.registerAsyncRule(key, asyncRules[key]));
+export default ($validator) => {
+  // register async rules
+  Object.keys(asyncRules).forEach(key =>
+    $validator.registerAsyncRule(key, asyncRules[key]));
+  // register sync rules
+  Object.keys(rules).forEach(key =>
+    $validator.register(key, rules[key].function, rules[key].message));
+};
 
-// export default ($validator) => Object.keys(rules)
-//   .forEach((key) => $validator.register(key, rules[key].function, rules[key].message));

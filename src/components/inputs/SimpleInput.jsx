@@ -14,7 +14,7 @@ export default observer(({ field, type = 'text', placeholder = null }) => (
       aria-describedby="name-desc"
       {...field.bind({ type, placeholder })}
     />
-    <small className="f6 black-60 db red">
+    <small className="f6 db red">
       {field.error}
     </small>
   </div>

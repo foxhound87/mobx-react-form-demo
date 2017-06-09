@@ -11,7 +11,6 @@ export default observer(({ form, controls = null }) => (
         type="submit"
         className={$.ctrl}
         onClick={form.onSubmit}
-        disabled={form.submitting}
         content={(form.submitting || form.validating)
           ? <b><i className="fa fa-spinner fa-spin" /></b>
           : <b><i className="fa fa-dot-circle-o" /> Submit</b>}
@@ -33,7 +32,9 @@ export default observer(({ form, controls = null }) => (
         onClick={form.onReset}
       />}
 
-    <p><i>{form.error}</i></p>
+    <div className="f6 db red">
+      {form.error}
+    </div>
 
   </div>
 ));

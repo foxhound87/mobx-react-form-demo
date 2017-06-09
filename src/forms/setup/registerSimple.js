@@ -44,6 +44,7 @@ export default {
     },
     terms: {
       value: true,
+      type: 'checkbox',
       label: 'Accept Terms',
       rules: 'boolean|accepted',
       options: {
