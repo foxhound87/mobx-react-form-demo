@@ -42,11 +42,11 @@ const onSubmit = {
 
 export default {
   nestedFields: new NestedFieldsForm({ ...nestedFields, onSubmit }, { name: 'Nested Fields' }),
-  markdown: new MarkdownForm({ ...markdown }, { name: 'Markdown' }),
-  fileUpload: new FileUploadForm({ ...fileUpload }, { name: 'Markdown' }),
-  registerMaterial: new RegisterMaterialForm({ ...registerMaterial }, { name: 'Register Material' }),
-  registerSimple: new RegisterSimpleForm({ ...registerSimple }, { name: 'Register Simple' }),
-  companySimple: new CompanySimpleForm({ ...companySimple }, { name: 'Company Simple' }),
-  companyWidgets: new CompanyWidgetsForm({ ...companyWidgets }, { name: 'Company Widgets' }),
-  dynamicFieldsSelect: new FormDynamicFieldsSelect({ ...dynamicFieldsSelect }, { name: 'Dynamic Fields Select' }),
+  markdown: new MarkdownForm( markdown, { name: 'Markdown' }),
+  fileUpload: new FileUploadForm( fileUpload, { name: 'Markdown' }),
+  registerMaterial: new RegisterMaterialForm( registerMaterial, { name: 'Register Material' }),
+  registerSimple: new RegisterSimpleForm( registerSimple, { name: 'Register Simple' }),
+  companySimple: new CompanySimpleForm( companySimple, { name: 'Company Simple' }),
+  companyWidgets: new CompanyWidgetsForm( companyWidgets, { name: 'Company Widgets' }),
+  dynamicFieldsSelect: new FormDynamicFieldsSelect( dynamicFieldsSelect, { name: 'Dynamic Fields Select' }),
 };
