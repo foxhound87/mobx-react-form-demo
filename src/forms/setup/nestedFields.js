@@ -1,3 +1,8 @@
+/*
+  Form: Nested Fields
+  Separated Fields Props Definition
+*/
+
 const fields = [
   'club.name',
   'club.city',
@@ -74,15 +79,40 @@ const bindings = {
   'members[].hobbies[]': 'MaterialTextField',
 };
 
-const onReset = {
-  club: () => console.log('reset club done'),
+const $hooks = {
+  onSuccess(fieldset) {
+    // eslint-disable-next-line
+    alert('see console');
+    // eslint-disable-next-line
+    console.log(`${fieldset.path} Values`, fieldset.values());
+  },
+  onError(fieldset) {
+    // eslint-disable-next-line
+    alert('see console');
+    // eslint-disable-next-line
+    console.log(`${fieldset.path} Errors`, fieldset.errors());
+  },
+  // onInit(instance) {
+  //   console.log('-> onInit HOOK', instance.path || 'form');
+  // },
+  onAdd(instance) {
+    console.log('-> onAdd HOOK', instance.path || 'form');
+  },
+  onDel(instance) {
+    console.log('-> onDel HOOK', instance.path || 'form');
+  },
 };
 
-const onClear = {
-  club: () => console.log('clear club done'),
+const hooks = {
+  'club': $hooks,
+  'members': $hooks,
+  'members[]': $hooks,
+  'members[].hobbies': $hooks,
+  'members[].hobbies[]': $hooks,
 };
 
 export default {
+  hooks,
   fields,
   values,
   initials,
@@ -91,6 +121,4 @@ export default {
   placeholders,
   rules,
   bindings,
-  onReset,
-  onClear,
 };

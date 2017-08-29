@@ -1,17 +1,21 @@
 import {
   isEmail,
   shouldBeEqualTo,
-  // checkUser,
+  checkUser,
 } from '../extension/vjf';
 
+/*
+  Form: Register Simple
+  Unified Fields Props Definition
+*/
 export default {
   fields: {
     username: {
       value: 'SteveJobs',
       label: 'Username',
       placeholder: 'Insert User Name',
-      rules: 'checkUser|required|string|between:5,15',
-      // validators: [checkUser],
+      rules: 'required|string|between:5,15',
+      validators: [checkUser],
       options: {
         validateOnChange: true,
       },

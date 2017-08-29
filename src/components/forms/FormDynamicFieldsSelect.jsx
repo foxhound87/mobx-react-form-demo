@@ -1,42 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Creatable } from 'react-select';
-import _ from 'lodash';
 
 import FormControls from '../controls/FormControls';
 import MaterialTextField from '../inputs/MaterialTextField';
-
-const onChange = (fieldFactory, dynamicFields) => (values) => {
-  const $values = _.chain(values)
-    .mapValues('value')
-    .values()
-    .value();
-
-  // use "extra" field prop to maintain current values
-  const current = fieldFactory.get('extra') || [];
-  const diff = _.difference($values, current);
-  fieldFactory.set('extra', $values);
-
-  // add dynamic fields
-  diff.map((item) => {
-    dynamicFields.add('', { key: item });
-    dynamicFields.$(item).set('placeholder', item);
-    return null;
-  });
-
-  // remove unwanted items
-  const allDynamicFields = dynamicFields.map(field => field.name);
-  const fieldsToDelete = _.remove(allDynamicFields, item => !_.includes($values, item));
-  fieldsToDelete.map(field => dynamicFields.del(field));
-  fieldFactory.set('value', values);
-};
-
-const options = [
-  { value: 'foo', label: 'foo' },
-  { value: 'bar', label: 'bar' },
-  { value: 'baz', label: 'baz' },
-];
-
 
 export default observer(({ form }) => (
   <form>
@@ -47,16 +14,11 @@ export default observer(({ form }) => (
       multi
       allowCreate
       resetValue={[]}
-      options={options}
+      options={form.$('fieldFactory').extra}
       openOnFocus={false}
       placeholder="Type to add fields"
       noResultsText="Type to add fields"
-      {...form.$('fieldFactory').bind({
-        onChange: onChange(
-          form.$('fieldFactory'),
-          form.$('dynamicFields'),
-        ),
-      })}
+      {...form.$('fieldFactory').bind()}
     />
 
     <br /><br /><h4>{form.$('dynamicFields').label}</h4><hr />

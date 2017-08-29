@@ -33,10 +33,8 @@ export default observer(({
 }) => (
   <div>
     <input
+      {...field.bind()}
       multiple={multiple}
-      {...field.bind({
-        onChange: field.onDrop,
-      })}
       className={$.ctrl}
     />
     <button

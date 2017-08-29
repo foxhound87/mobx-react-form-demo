@@ -1,12 +1,22 @@
+/*
+  Form: File Upload
+  Unified Fields Props Definition
+*/
 export default {
   fields: {
     myFileUpload: {
       type: 'file',
-      onDrop: field => console.log('onDrop', field.files),
+      hooks: {
+        onDrop: field => console.log('onDrop', field.files),
+        // onSubmit: field => console.log('onSubmit', field.files),
+      },
     },
     myDropZone: {
       type: 'file',
-      onDrop: field => console.log('onDrop', field.files),
+      hooks: {
+        onDrop: field => console.log('onDrop', field.files),
+        // onSubmit: field => console.log('onSubmit', field.files),
+      },
     },
   },
 };

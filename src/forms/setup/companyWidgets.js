@@ -1,5 +1,9 @@
 import { productsOptions } from '../data/options';
 
+/*
+  Form: Company Widget
+  Unified Fields Props Definition
+*/
 export default {
   fields: {
     name: {

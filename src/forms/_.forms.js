@@ -1,4 +1,7 @@
 import Form from './_.extend';
+import hooks from './_.hooks';
+
+import { Field } from '../../master/src'; // load from source (MASTER)
 
 // forms
 import markdown from './setup/markdown';
@@ -10,7 +13,36 @@ import companySimple from './setup/companySimple';
 import companyWidgets from './setup/companyWidgets';
 import dynamicFieldsSelect from './setup/dynamicFieldsSelect';
 
-class RegisterMaterialForm extends Form {}
+
+class CustomField extends Field {
+
+  hooks() {
+    return hooks;
+  }
+
+  // onChange = (e) => {
+  //   this.set(e.target.value);
+  //   console.log('-> onChange HANDLER - changed', this.path || 'form', this.value);
+  //   // IMPORTANT! This Event Handler will be overwrited and will not call its Event Hook!
+  // };
+
+  // handlers() {
+  //   return {
+  //     onChange: field => (e) => {
+  //       field.set(e.target.value);
+  //       console.log('-> onChange HANDLER - changed', field.path || 'form', field.value);
+  //     },
+  //   };
+  // }
+}
+
+class RegisterMaterialForm extends Form {
+
+  makeField(field) {
+    return new CustomField(field);
+  }
+}
+
 class RegisterSimpleForm extends Form {}
 class NestedFieldsForm extends Form {}
 class MarkdownForm extends Form {}
@@ -19,31 +51,15 @@ class CompanySimpleForm extends Form {}
 class CompanyWidgetsForm extends Form {}
 class FormDynamicFieldsSelect extends Form {}
 
-const submit = {
-  onSuccess(fieldset) {
-    // eslint-disable-next-line
-    alert('see console');
-    // eslint-disable-next-line
-    console.log(`${fieldset.path} Values`, fieldset.values());
-  },
-  onError(fieldset) {
-    // eslint-disable-next-line
-    alert('see console');
-    // eslint-disable-next-line
-    console.log(`${fieldset.path} Errors`, fieldset.errors());
-  },
-};
-
-const onSubmit = {
-  'club': submit,
-  'members': submit,
-  'members[]': submit,
+const onSubmitFileUpload = (form) => {
+  console.log('FileUpload > myFileUpload files', form.$('myFileUpload').files);
+  console.log('FileUpload > myDropZone files', form.$('myDropZone').files);
 };
 
 export default {
-  nestedFields: new NestedFieldsForm({ ...nestedFields, onSubmit }, { name: 'Nested Fields' }),
+  nestedFields: new NestedFieldsForm({ ...nestedFields }, { name: 'Nested Fields' }),
   markdown: new MarkdownForm({ ...markdown }, { name: 'Markdown' }),
-  fileUpload: new FileUploadForm({ ...fileUpload }, { name: 'Markdown' }),
+  fileUpload: new FileUploadForm({ ...fileUpload }, { hooks: { onSubmit: onSubmitFileUpload }, name: 'File Upload' }),
   registerMaterial: new RegisterMaterialForm({ ...registerMaterial }, { name: 'Register Material' }),
   registerSimple: new RegisterSimpleForm({ ...registerSimple }, { name: 'Register Simple' }),
   companySimple: new CompanySimpleForm({ ...companySimple }, { name: 'Company Simple' }),
