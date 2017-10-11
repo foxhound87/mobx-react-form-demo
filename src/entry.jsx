@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import moment from 'moment';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import momentLocalizer from 'react-widgets/lib/localizers/moment';
+import momentLocalizer from 'react-widgets-moment';
 import { useStrict } from 'mobx';
 
 import 'react-widgets/lib/less/react-widgets.less';
@@ -20,7 +20,8 @@ import Main from './components/Main';
  */
 useStrict(true);
 
-momentLocalizer(moment);
+moment.locale('en');
+momentLocalizer();
 injectTapEventPlugin();
 
 render(
