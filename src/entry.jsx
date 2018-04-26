@@ -4,7 +4,7 @@ import moment from 'moment';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import momentLocalizer from 'react-widgets-moment';
-import { useStrict } from 'mobx';
+import { configure } from 'mobx';
 
 import 'react-widgets/lib/less/react-widgets.less';
 import 'react-select/dist/react-select.css';
@@ -18,7 +18,7 @@ import Main from './components/Main';
   In strict mode, it is not allowed to
   change any state outside of an action
  */
-useStrict(true);
+configure({ enforceActions: true });
 
 moment.locale('en');
 momentLocalizer();

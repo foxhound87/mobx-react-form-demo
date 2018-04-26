@@ -11,7 +11,7 @@ const switchTo = (menu, select) => (e) => {
 };
 
 export default observer(({ menu, select, selected }) => (
-  <div className="z-9999 bg-near-white fixed top-0 left-0 right-0">
+  <div className="z-9999 bg-near-white fixed top-0 left-0 right-0 helvetica">
     <nav className="dt w-100 center tc tl-ns">
       <span className="dtc v-mid pv2 ph3 w6">
         <span className="bg-light-red b--light-red ba bw1 pv2 br2 white">

@@ -42,7 +42,7 @@ export default {
 
         // add dynamic fields
         diff.map((item) => {
-          dynamicFields.add('', { key: item });
+          dynamicFields.add({ key: item });
           dynamicFields.$(item).set('placeholder', item);
           dynamicFields.$(item).set('bindings', 'MaterialTextField');
           return null;
