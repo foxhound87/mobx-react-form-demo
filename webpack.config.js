@@ -1,8 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const postcssImport = require('postcss-import');
-const postcssUrl = require('postcss-url');
 
 const DEV = process.env.NODE_ENV === 'development';
 
@@ -31,19 +29,13 @@ const loaders = [{
 },
 ];
 
-const postcss = () => [
-  postcssImport(),
-  postcssUrl('inline'),
-];
-
 const config = {
   target: 'web',
   devtool: 'source-map',
   entry: path.resolve('.', 'src', 'entry'),
   resolve: {
-    root: path.resolve('.', 'src'),
-    modulesDirectories: ['node_modules', path.resolve('.', 'node_modules')],
-    extensions: ['', '.js', '.jsx', '.json'],
+    modules: ['node_modules', path.resolve('.', 'node_modules')],
+    extensions: ['.js', '.jsx', '.json'],
     alias: {
       react: path.resolve('.', 'node_modules', 'react'),
     },
@@ -66,7 +58,6 @@ const config = {
     }),
   ],
   module: { loaders },
-  postcss,
 };
 
 
