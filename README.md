@@ -10,10 +10,11 @@ Run:
 
 ```bash
 ❯ npm install
+❯ npm run build
 ❯ npm start
 ```
 
-and go to `http://localhost:8888`.
+and go to `http://localhost:3000`.
 
 ---
 
