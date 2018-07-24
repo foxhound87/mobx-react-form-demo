@@ -40,9 +40,9 @@ class CustomField extends Field {
 
 class RegisterMaterialForm extends Form {
 
-  // makeField(field) {
-  //   return new CustomField(field);
-  // }
+  makeField(field) {
+    return new CustomField(field);
+  }
 }
 
 class RegisterSimpleForm extends Form {}
