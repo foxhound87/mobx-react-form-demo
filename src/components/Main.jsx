@@ -3,9 +3,9 @@ import { observer } from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 import _ from 'lodash';
 
-import MobxReactFormDevTools from 'mobx-react-form-devtools';
-// import MobxReactFormDevTools from '../../devtools/lib'; // load from build
-// import MobxReactFormDevTools from '../../devtools/src'; // load from source
+// import MobxReactFormDevTools from 'mobx-react-form-devtools';
+import MobxReactFormDevTools from '../../modules/devtools/src'; // load from source
+// import MobxReactFormDevTools from '../../modules/devtools/lib'; // load from build
 
 import Nav from './Nav';
 import Switch from './Switch';

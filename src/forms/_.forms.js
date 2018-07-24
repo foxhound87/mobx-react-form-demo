@@ -1,8 +1,9 @@
 import Form from './_.extend';
 import hooks from './_.hooks';
 
-import { Field } from 'mobx-react-form';
-// import { Field } from '../../master/src'; // load from source (MASTER)
+// import { Field } from 'mobx-react-form';
+import { Field } from '../../modules/form/src'; // load from source (MASTER)
+// import { Field } from '../../modules/form/lib'; // load from build (MASTER)
 
 // forms
 import markdown from './setup/markdown';
@@ -39,9 +40,9 @@ class CustomField extends Field {
 
 class RegisterMaterialForm extends Form {
 
-  makeField(field) {
-    return new CustomField(field);
-  }
+  // makeField(field) {
+  //   return new CustomField(field);
+  // }
 }
 
 class RegisterSimpleForm extends Form {}
