@@ -9,8 +9,10 @@
 Run:
 
 ```bash
+❯ git submodule init
+❯ git submodule update
 ❯ npm install
-❯ npm start
+❯ npm run dev
 ```
 
 and go to `http://localhost:8888`.
