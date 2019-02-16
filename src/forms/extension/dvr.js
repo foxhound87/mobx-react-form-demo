@@ -16,12 +16,12 @@ const rules = {
   },
 };
 
-export default ($validator) => {
+export default ({ validator }) => {
   // register async rules
   Object.keys(asyncRules).forEach(key =>
-    $validator.registerAsyncRule(key, asyncRules[key]));
+    validator.registerAsync(key, asyncRules[key]));
   // register sync rules
   Object.keys(rules).forEach(key =>
-    $validator.register(key, rules[key].function, rules[key].message));
+    validator.register(key, rules[key].function, rules[key].message));
 };
 

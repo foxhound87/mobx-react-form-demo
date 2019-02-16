@@ -1,3 +1,5 @@
+import vjf from '../../modules/form/src/validators/VJF';
+import dvr from '../../modules/form/src/validators/DVR';
 import validatorjs from 'validatorjs';
 
 // import MobxReactForm from 'mobx-react-form'; // eslint-disable-line
@@ -21,10 +23,11 @@ export default class Form extends MobxReactForm {
 
   plugins() {
     return {
-      dvr: {
+      vjf: vjf(),
+      dvr: dvr({
         package: validatorjs,
         extend: dvrExtend,
-      },
+      }),
     };
   }
 
