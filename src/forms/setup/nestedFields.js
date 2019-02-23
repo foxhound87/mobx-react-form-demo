@@ -14,10 +14,10 @@ const fields = [
 ];
 
 const initials = {
-  club: {
-    name: 'Jazz Club (initials)',
-    city: 'New York (initials)',
-  },
+  // club: {
+  //   name: 'Jazz Club (initials)',
+  //   city: 'New York (initials)',
+  // },
 };
 
 const defaults = {
