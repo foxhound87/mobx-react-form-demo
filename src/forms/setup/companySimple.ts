@@ -32,7 +32,8 @@ export default {
   hooks: {
     productsMultiselect: {
       onInit(field) {
-        field.set([{ value: 'watch', label: 'Watch' }]);
+        console.log('field', field);
+        field.set({ value: 'watch', label: 'Watch' });
       },
     },
   },

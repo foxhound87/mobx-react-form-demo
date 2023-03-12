@@ -5,7 +5,7 @@ const fs = require('fs');
 const index = path.resolve(__dirname, 'build', 'index.html');
 const bundle = path.resolve(__dirname, 'build', 'main.js');
 
-function send(res, err, contents) {
+function send(res: any, err: any, contents: any) {
   if (!err) res.end(contents);
   else console.dir(err); // eslint-disable-line
 }

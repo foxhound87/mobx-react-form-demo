@@ -5,10 +5,10 @@ import FieldControl from '../controls/FieldControls';
 import NestedHobbyInput from '../inputs/NestedHobbyInput';
 
 export default observer(({ hobbies }) => (
-  <fieldset>
+  <fieldset className='pa3'>
 
     <div className="cf">
-      <h5 className="fl mv0 ml2">
+      <h5 className="fl mv0">
         {[
           hobbies.container().$('firstname').value,
           hobbies.container().$('lastname').value,
@@ -18,7 +18,7 @@ export default observer(({ hobbies }) => (
       <div className="fr">
         <FieldControl
           field={hobbies}
-          labels={false}
+          // labels={false}
           controls={{
             onAdd: true,
           }}

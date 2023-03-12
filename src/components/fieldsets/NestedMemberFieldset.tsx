@@ -6,7 +6,7 @@ import FieldControl from '../controls/FieldControls';
 import MaterialTextField from '../inputs/MaterialTextField';
 
 export default observer(({ member }) => (
-  <fieldset className="tc">
+  <fieldset className="tc pa3">
 
     <MaterialTextField field={member.$('firstname')} />
     <MaterialTextField field={member.$('lastname')} />
@@ -16,7 +16,7 @@ export default observer(({ member }) => (
     <span>
       <FieldControl
         field={member}
-        labels={false}
+        // labels={false}
         controls={{
           onDel: true,
           onClear: true,

@@ -1,6 +1,6 @@
 # [MobX React Form](https://github.com/foxhound87/mobx-react-form) Demo
 
-## Live Demo
+# Live Demo
 
 [https://foxhound87.github.io/mobx-react-form/demo.html](https://foxhound87.github.io/mobx-react-form/demo.html)
 
@@ -9,9 +9,10 @@
 Run:
 
 ```bash
-❯ git submodule init
-❯ git submodule update
-❯ npm install
+❯ npm run submodules:add
+❯ npm run submodules:fetch
+❯ npm run submodules:install
+❯ npm install --legacy-peer-deps
 ❯ npm run dev
 ```
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import Button from '../Button';
 import $ from '../../styles';
+import Button from '../Button';
 
 export default observer(({ field, controls = null }) => (
   <span>

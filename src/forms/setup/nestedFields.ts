@@ -72,8 +72,8 @@ const rules = {
 };
 
 const bindings = {
-  'club.name': 'MaterialTextFieldReimplemented',
-  'club.city': 'MaterialTextFieldReimplemented',
+  'club.name': 'MaterialTextField',
+  'club.city': 'MaterialTextField',
   'members[].lastname': 'MaterialTextField',
   'members[].firstname': 'MaterialTextField',
   'members[].hobbies[]': 'MaterialTextField',

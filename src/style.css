@@ -9,7 +9,7 @@ form fieldset {
   border: 0;
   margin-top: 15px;
   padding: 15px 5px;
-  // margin: 15px 0 0 0;
+  /* margin: 15px 0 0 0; */
   background-color:rgba(0,0,0,0.03);
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -43,4 +43,8 @@ select {
 .select {
   width: 250px;
   border: 0;
+}
+
+.nav-shadow {
+  box-shadow: 0px 0px 0px 1px #ff725c;
 }

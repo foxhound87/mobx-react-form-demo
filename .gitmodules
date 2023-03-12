@@ -1,7 +1,6 @@
-[submodule "modules/form"]
-	path = modules/form
-	url = git@github.com:foxhound87/mobx-react-form.git
-
-[submodule "modules/devtools"]
-	path = modules/devtools
+[submodule "modules/mobx-react-form-devtools"]
+	path = modules/mobx-react-form-devtools
 	url = git@github.com:foxhound87/mobx-react-form-devtools.git
+[submodule "modules/mobx-react-form"]
+	path = modules/mobx-react-form
+	url = git@github.com:foxhound87/mobx-react-form.git

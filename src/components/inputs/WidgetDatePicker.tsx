@@ -14,7 +14,7 @@ export default observer(({ field }) => (
       id={field.id}
       value={field.value}
       onChange={field.sync}
-      time={false}
+      // time={false}
     />
   </div>
 ));

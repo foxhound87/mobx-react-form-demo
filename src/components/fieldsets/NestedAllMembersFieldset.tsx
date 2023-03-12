@@ -5,17 +5,17 @@ import NestedMemberFieldset from './NestedMemberFieldset';
 import FieldControl from '../controls/FieldControls';
 
 export default observer(({ members }) => (
-  <fieldset>
+  <fieldset className="pa3">
 
     <div className="cf">
-      <h5 className="fl mv0 ml2">
+      <h5 className="fl mv0">
         {members.label}
       </h5>
 
       <div className="fr">
         <FieldControl
           field={members}
-          labels={false}
+          // labels={false}
           controls={{
             onAdd: true,
             onClear: true,

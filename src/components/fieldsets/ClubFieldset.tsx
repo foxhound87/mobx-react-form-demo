@@ -5,17 +5,17 @@ import FieldControl from '../controls/FieldControls';
 import MaterialTextField from '../inputs/MaterialTextField';
 
 export default observer(({ club }) => (
-  <fieldset className="tc">
+  <fieldset className="tc pa3">
 
     <div className="cf">
-      <h5 className="fl mv0 ml2">
+      <h5 className="fl mv0">
         {club.label}
       </h5>
 
       <div className="fr">
         <FieldControl
           field={club}
-          labels={false}
+          // labels={false}
           controls={{
             onClear: true,
             onReset: true,
@@ -30,7 +30,7 @@ export default observer(({ club }) => (
     <div>
       <FieldControl
         field={club}
-        labels={false}
+        // labels={false}
         controls={{
           onSubmit: true,
         }}

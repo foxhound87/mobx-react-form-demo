@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { Creatable } from 'react-select';
+import Creatable from 'react-select/creatable';
 
 import FormControls from '../controls/FormControls';
 import MaterialTextField from '../inputs/MaterialTextField';
@@ -11,7 +11,7 @@ export default observer(({ form }) => (
     <h5>Select or type new options (then press enter) to add new fields:</h5>
 
     <Creatable
-      multi
+      isMulti
       allowCreate
       resetValue={[]}
       options={form.$('fieldFactory').extra}

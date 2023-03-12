@@ -4,38 +4,40 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const DEV = process.env.NODE_ENV === 'development';
 
-const loaders = [{
-  test: /\.jsx?$/,
-  exclude: /node_modules/,
-  loader: 'babel-loader',
-}, {
+const rules = [{
+  test: /\.(ts|tsx)$/,
+  use: ["ts-loader"],
+}, /*{
   test: /\.json$/,
-  loader: 'json-loader',
-}, {
-  test: /\.md$/,
-  loader: 'raw-loader',
+  use: [{ loader: "json-loader", }],
 }, {
   test: /\.gif$/,
-  loader: 'url-loader?mimetype=image/png',
+  use: [{ loader: "url-loader?mimetype=image/png", }],
+},*/ {
+  test: /\.md$/,
+  use: [{ loader: "raw-loader", }],
 }, {
   test: /\.less$/,
-  loader: 'style-loader!css-loader!less-loader',
+  use: ["style-loader", "css-loader", "less-loader"],
 }, {
   test: /\.css$/,
-  loader: 'style-loader!css-loader!postcss-loader',
-}, {
+  use: ["style-loader", "css-loader", "postcss-loader"],
+}, /*{
   test: /\.(eot|svg|ttf|woff(2)?)(\?v=\d+\.\d+\.\d+)?/,
-  loader: 'url-loader',
-},
+  use: [{ loader: "url-loader", }],
+},*/
 ];
 
 const config = {
   target: 'web',
   devtool: 'source-map',
   entry: path.resolve('.', 'src', 'entry'),
+  // optimization: {
+  //   minimize: !DEV,
+  // },
   resolve: {
     modules: ['node_modules', path.resolve('.', 'node_modules')],
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.ts', '.tsx', '.json', '.css'],
     alias: {
       react: path.resolve('.', 'node_modules', 'react'),
     },
@@ -49,29 +51,12 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
-    new webpack.ProvidePlugin({
-      Promise: 'bluebird',
-    }),
     new HtmlWebpackPlugin({
       template: path.resolve('.', 'src', 'index.html'),
       inject: 'body',
     }),
   ],
-  module: { loaders },
+  module: { rules },
 };
-
-
-if (!DEV) {
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      comments: false,
-      sourceMap: true,
-      compress: {
-        screw_ie8: true,
-        warnings: false,
-      },
-    }));
-}
-
 
 module.exports = config;

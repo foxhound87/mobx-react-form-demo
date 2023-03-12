@@ -4,8 +4,9 @@ import DevTools from 'mobx-react-devtools';
 import _ from 'lodash';
 
 // import MobxReactFormDevTools from 'mobx-react-form-devtools';
-import MobxReactFormDevTools from '../../modules/devtools/src'; // load from source
-// import MobxReactFormDevTools from '../../modules/devtools/lib'; // load from build
+// import MobxReactFormDevTools from 'mobx-react-form-devtools';
+import MobxReactFormDevTools from '../../modules/mobx-react-form-devtools/src'; // load from source
+// import MobxReactFormDevTools from '../../modules/mobx-react-form-devtools/lib'; // load from build
 
 import Nav from './Nav';
 import Switch from './Switch';
@@ -32,10 +33,9 @@ const Container = observer(({ content }) => (
 
 export default observer(() => (
   <div>
-    <DevTools position={{ bottom: 0, left: '50px' }} />
+    {/* <DevTools position={{ bottom: 0, left: '50px' }} /> */}
     <MobxReactFormDevTools.UI />
     <Nav menu={menu} select={select} selected={selected(menu)} />
     <Container content={<Switch menu={menu} forms={forms} />} />
   </div>
 ));
-

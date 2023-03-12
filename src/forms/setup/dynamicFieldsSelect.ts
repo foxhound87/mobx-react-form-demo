@@ -29,6 +29,7 @@ export default {
     fieldFactory: {
       onChange: fieldFactory => (values) => {
         const dynamicFields = fieldFactory.state.form.$('dynamicFields');
+        console.log('values', values)
 
         const $values = _.chain(values)
           .mapValues('value')
@@ -39,6 +40,10 @@ export default {
         const current = dynamicFields.get('extra') || [];
         const diff = _.difference($values, current);
         dynamicFields.set('extra', $values);
+
+        console.log('$values', $values)
+        console.log('current', current)
+        console.log('diff', diff)
 
         // add dynamic fields
         diff.map((item) => {

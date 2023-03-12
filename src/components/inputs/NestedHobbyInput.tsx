@@ -17,7 +17,7 @@ export default observer(({ field }) => (
     <span>
       <FieldControl
         field={field}
-        labels={false}
+        // labels={false}
         controls={{
           onDel: true,
           onClear: true,

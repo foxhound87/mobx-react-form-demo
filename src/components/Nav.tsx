@@ -14,8 +14,8 @@ export default observer(({ menu, select, selected }) => (
   <div className="z-9999 bg-near-white fixed top-0 left-0 right-0 helvetica">
     <nav className="dt w-100 center tc tl-ns">
       <span className="dtc v-mid pv2 ph3 w6">
-        <span className="bg-light-red b--light-red ba bw1 pv2 br2 white">
-          <b className="mh2 dn di-ns">DEMOS</b>
+        <span className="bg-light-red b--light-red ba bw1 pv2 br2 white nav-shadow">
+          <b className="mh2 dn di-ns">Mobx React Form DEMOS</b>
           <select className="select" name="menu" onChange={switchTo(menu, select)} defaultValue={selected}>
             <option value="registerMaterial">Register (Material UI)</option>
             <option value="registerSimple">Register (Simple)</option>

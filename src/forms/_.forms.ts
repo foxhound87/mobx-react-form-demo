@@ -1,9 +1,10 @@
 import Form from './_.extend';
-import hooks from './_.hooks';
+import fieldsHooks from './_.hooks.fields';
 
 // import { Field } from 'mobx-react-form';
-import { Field } from '../../modules/form/src'; // load from source (MASTER)
-// import { Field } from '../../modules/form/lib'; // load from build (MASTER)
+// import { Field } from 'mobx-react-form/src';
+import { Field } from '../../modules/mobx-react-form/src'; // load from source (MASTER)
+// import { Field } from '../../modules/mobx-react-form/lib'; // load from build (MASTER)
 
 // forms
 import markdown from './setup/markdown';
@@ -19,14 +20,8 @@ import dynamicFieldsSelect from './setup/dynamicFieldsSelect';
 class CustomField extends Field {
 
   hooks() {
-    return hooks;
+    return fieldsHooks;
   }
-
-  // onChange = (e) => {
-  //   this.set(e.target.value);
-  //   console.log('-> onChange HANDLER - changed', this.path || 'form', this.value);
-  //   // IMPORTANT! This Event Handler will be overwrited and will not call its Event Hook!
-  // };
 
   // handlers() {
   //   return {
@@ -36,6 +31,12 @@ class CustomField extends Field {
   //     },
   //   };
   // }
+
+  // onChange = (e) => {
+  //   this.set(e.target.value);
+  //   console.log('-> onChange HANDLER - changed', this.path || 'form', this.value);
+  //   // IMPORTANT! This Event Handler will be overwrited and will not call its Event Hook!
+  // };
 }
 
 class RegisterMaterialForm extends Form {
