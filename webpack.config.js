@@ -45,7 +45,7 @@ const config = {
   output: {
     path: path.resolve('.', 'build'),
     filename: '[name].js',
-    publicPath: '/',
+    // publicPath: '/',
   },
   plugins: [
     new webpack.DefinePlugin({

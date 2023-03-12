@@ -2,7 +2,7 @@
 
 # Live Demo
 
-[https://foxhound87.github.io/mobx-react-form/demo.html](https://foxhound87.github.io/mobx-react-form/demo.html)
+[https://foxhound87.github.io/mobx-react-form](https://foxhound87.github.io/mobx-react-form)
 
 # Quick Start
 
