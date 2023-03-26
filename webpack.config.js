@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 const DEV = process.env.NODE_ENV === 'development';
 
@@ -29,12 +30,21 @@ const rules = [{
 ];
 
 const config = {
+  mode: DEV ? "development" : "production",
   target: 'web',
   devtool: 'source-map',
   entry: path.resolve('.', 'src', 'entry'),
-  // optimization: {
-  //   minimize: !DEV,
-  // },
+  optimization: {
+    minimize: !DEV,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: true,
+          mangle: true
+        }
+      }),
+    ],
+  },
   resolve: {
     modules: ['node_modules', path.resolve('.', 'node_modules')],
     extensions: ['.js', '.ts', '.tsx', '.json', '.css'],
