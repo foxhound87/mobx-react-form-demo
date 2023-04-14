@@ -1,3 +1,4 @@
+import {useRef} from 'react';
 import {
   isEmail,
   shouldBeEqualTo,
@@ -39,6 +40,7 @@ export default {
       label: 'Password',
       placeholder: 'Insert your Password',
       rules: 'required|string|between:5,20',
+      type: 'password',
     },
     devSkills: {
       value: 5,

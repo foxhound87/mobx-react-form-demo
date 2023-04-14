@@ -1,18 +1,14 @@
-import FieldInterface from "mobx-react-form/src/models/FieldInterface";
-import FormInterface from "mobx-react-form/src/models/FormInterface";
-// import FieldInterface from "mobx-react-form/lib/models/FieldInterface";
-// import FormInterface from "mobx-react-form/lib/models/FormInterface";
+import FieldInterface from "mobx-react-form/lib/models/FieldInterface";
+import FormInterface from "mobx-react-form/lib/models/FormInterface";
 // import Form, { Field } from "mobx-react-form";
 import Form, { Field } from "../../modules/mobx-react-form/src";
+import { autorun, intercept, observe } from "mobx";
 
 export default {
 
-  onInit(form: FormInterface) {
-    // override default bindings for all text inputs
-    // (this.name === 'Register Material') &&
-    //   this.each(field => field.type === 'text' &&
-    //     field.set('bindings', 'MaterialTextField'));
-  },
+  // onInit(form: FormInterface) {
+
+  // },
 
   onSuccess(form: FormInterface) {
     alert('### see console');

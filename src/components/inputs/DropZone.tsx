@@ -7,15 +7,11 @@ import $ from '../../styles';
 const openDropZone = field => (e) => {
   e.preventDefault();
   field.state.extra('dropzone').open();
-  // eslint-disable-next-line
-  alert('see console');
-  // eslint-disable-next-line
   console.log(field.name, '>> extra(\'dropzone\') >> open()');
 };
 
 const getFiles = field => (e) => {
   e.preventDefault();
-  // eslint-disable-next-line
   console.log(field.name, '>> getFiles', field.files);
 };
 

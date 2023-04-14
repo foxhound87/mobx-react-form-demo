@@ -12,7 +12,7 @@ export default observer(({ form }) => (
     <Input field={form.$('username')} />
     <Input field={form.$('email')} />
     <Input field={form.$('emailConfirm')} />
-    <Input field={form.$('password')} type="password" />
+    <Input field={form.$('password')} />
     <Input field={form.$('devSkills')} />
     <Checkbox field={form.$('terms')} />
     <FormControls form={form} />

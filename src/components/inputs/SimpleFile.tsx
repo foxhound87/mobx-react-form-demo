@@ -2,13 +2,13 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { action } from 'mobx';
 import $ from '../../styles';
+import _ from 'lodash';
+
+const $btn = 'f6 link dim bn br2 ph3 pv2 mr2 dib white bg-dark-blue';
 
 const getFiles = field => (e) => {
   e.preventDefault();
-  // eslint-disable-next-line
-  alert('see console');
-  // eslint-disable-next-line
-  console.log(field.name, '>> getFiles', field.files);
+  console.log(field.name, '>> getFiles', _.map(field.files));
 };
 
 const createPreview = (file) => {
@@ -33,10 +33,13 @@ export default observer(({
 }) => (
   <div>
     <input
-      {...field.bind()}
+      {...field.bind({ id: 'files-input' })}
       multiple={multiple}
-      className={$.ctrl}
+      className="dn"
     />
+    <label htmlFor="files-input" className={$btn}>
+      Select File...
+    </label>
     <button
       onClick={getFiles(field)}
       className={$.ctrl}

@@ -11,6 +11,7 @@ export default {
     'assets',
     'products',
     'productsMultiselect',
+    'productsStatus',
   ],
   labels: {
     name: 'Company Name',
@@ -28,13 +29,27 @@ export default {
     revenue: '233.715',
     assets: 305.277,
     products: 'iMac',
+    productsMultiselect: { value: 'watch', label: 'Watch' },
+    productsStatus: "Used",
   },
+  types: {
+    productsStatus: 'radio'
+  },
+  // hooks: {
+  //   productsMultiselect: {
+  //     onInit(field) {
+  //       field.set({ value: 'watch', label: 'Watch' });
+  //     },
+  //   },
+  // },
   hooks: {
-    productsMultiselect: {
-      onInit(field) {
-        console.log('field', field);
-        field.set({ value: 'watch', label: 'Watch' });
-      },
-    },
+    name: {
+      onSync: (field) => console.log('field', field)
+    }
   },
+  handlers: {
+    name: {
+      onChange: (field) => (e) => console.log('onSYNC handler field', field, e),
+    }
+  }
 };

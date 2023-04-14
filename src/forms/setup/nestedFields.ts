@@ -14,10 +14,10 @@ const fields = [
 ];
 
 const initials = {
-  // club: {
-  //   name: 'Jazz Club (initials)',
-  //   city: 'New York (initials)',
-  // },
+  club: {
+    name: 'Jazz Club (initials)',
+    city: 'New York (initials)',
+  },
 };
 
 const defaults = {
@@ -80,6 +80,9 @@ const bindings = {
 };
 
 const $hooks = {
+  onChange(instance) {
+    console.log('-> onChange HOOK', instance.path || 'form');
+  },
   onSuccess(fieldset) {
     // eslint-disable-next-line
     alert('see console');
@@ -105,6 +108,8 @@ const $hooks = {
 
 const hooks = {
   'club': $hooks,
+  'club.name': $hooks,
+  'club.city': $hooks,
   'members': $hooks,
   'members[]': $hooks,
   'members[].hobbies': $hooks,
