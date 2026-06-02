@@ -54,7 +54,7 @@ const fields: Record<string, FieldDefinition> = {
   },
   startDate: {
     label: 'Start Date',
-    value: new Date(2024, 0, 15),
+    value: '2024-01-15',
   },
   favoriteFramework: {
     label: 'Favorite Framework',
