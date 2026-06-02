@@ -16,12 +16,12 @@ export default observer(({ form }) => (
           <span className="badge bg-brand-50 text-brand-600 border border-brand-200">MUI</span>
         </div>
       </div>
-      <div className="card-body">
-        <MaterialTextField field={form.$('username')} />
-        <MaterialTextField field={form.$('email')} />
-        <MaterialTextField field={form.$('emailConfirm')} />
-        <MaterialTextField field={form.$('password')} type="password" />
-        <MaterialTextField field={form.$('devSkills')} />
+      <div className="card-body !space-y-5">
+        <MaterialTextField className="!mb-0" field={form.$('username')} />
+        <MaterialTextField className="!mb-0" field={form.$('email')} />
+        <MaterialTextField className="!mb-0" field={form.$('emailConfirm')} />
+        <MaterialTextField className="!mb-0" field={form.$('password')} type="password" />
+        <MaterialTextField className="!mb-0" field={form.$('devSkills')} />
         <div className="divider !my-4" />
         <MaterialSwitch field={form.$('terms')} />
       </div>

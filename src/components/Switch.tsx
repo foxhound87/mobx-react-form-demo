@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { observer } from 'mobx-react';
 
 import Welcome from './Welcome';
+import FormCodeViewer from './FormCodeViewer';
 
 const FormMarkdown = React.lazy(() => import(/* webpackChunkName: "form-markdown" */ './forms/FormMarkdown'));
 const FormFileUpload = React.lazy(() => import(/* webpackChunkName: "form-fileupload" */ './forms/FormFileUpload'));
@@ -23,50 +24,36 @@ const Fallback = () => (
   </div>
 );
 
+const formComponents = {
+  markdown: FormMarkdown,
+  fileUpload: FormFileUpload,
+  nestedFields: FormWithNestedFields,
+  registerMaterial: FormRegisterMaterial,
+  registerSimple: FormRegisterSimple,
+  companyWidgets: FormCompanyWidgets,
+  companySimple: FormCompanySimple,
+  dynamicFieldsSelect: FormDynamicFieldsSelect,
+  sortableList: FormSortableList,
+  materialAdvanced: FormMaterialAdvanced,
+  headlessUI: FormHeadlessUI,
+  antd: FormAntd,
+  aria: FormAria,
+};
+
 export default observer(({ menu, forms, navigateTo }) => {
-  switch (true) {
-    case menu.welcome:
-      return (<Welcome onNavigate={navigateTo ? () => navigateTo('registerMaterial') : undefined} />);
-
-    case menu.markdown:
-      return (<Suspense fallback={<Fallback />}><FormMarkdown form={forms.markdown} /></Suspense>);
-
-    case menu.fileUpload:
-      return (<Suspense fallback={<Fallback />}><FormFileUpload form={forms.fileUpload} /></Suspense>);
-
-    case menu.nestedFields:
-      return (<Suspense fallback={<Fallback />}><FormWithNestedFields form={forms.nestedFields} /></Suspense>);
-
-    case menu.registerMaterial:
-      return (<Suspense fallback={<Fallback />}><FormRegisterMaterial form={forms.registerMaterial} /></Suspense>);
-
-    case menu.registerSimple:
-      return (<Suspense fallback={<Fallback />}><FormRegisterSimple form={forms.registerSimple} /></Suspense>);
-
-    case menu.companyWidgets:
-      return (<Suspense fallback={<Fallback />}><FormCompanyWidgets form={forms.companyWidgets} /></Suspense>);
-
-    case menu.companySimple:
-      return (<Suspense fallback={<Fallback />}><FormCompanySimple form={forms.companySimple} /></Suspense>);
-
-    case menu.dynamicFieldsSelect:
-      return (<Suspense fallback={<Fallback />}><FormDynamicFieldsSelect form={forms.dynamicFieldsSelect} /></Suspense>);
-
-    case menu.sortableList:
-      return (<Suspense fallback={<Fallback />}><FormSortableList form={forms.sortableList} /></Suspense>);
-
-    case menu.materialAdvanced:
-      return (<Suspense fallback={<Fallback />}><FormMaterialAdvanced form={forms.materialAdvanced} /></Suspense>);
-
-    case menu.headlessUI:
-      return (<Suspense fallback={<Fallback />}><FormHeadlessUI form={forms.headlessUI} /></Suspense>);
-
-    case menu.antd:
-      return (<Suspense fallback={<Fallback />}><FormAntd form={forms.antd} /></Suspense>);
-
-    case menu.aria:
-      return (<Suspense fallback={<Fallback />}><FormAria form={forms.aria} /></Suspense>);
-
-    default: return null;
+  if (menu.welcome) {
+    return (<Welcome onNavigate={navigateTo ? () => navigateTo('registerMaterial') : undefined} />);
   }
+
+  const activeKey = Object.keys(menu).find(k => menu[k]);
+  if (!activeKey || !formComponents[activeKey]) return null;
+
+  const Component = formComponents[activeKey];
+  return (
+    <FormCodeViewer formKey={activeKey}>
+      <Suspense fallback={<Fallback />}>
+        <Component form={forms[activeKey]} />
+      </Suspense>
+    </FormCodeViewer>
+  );
 });

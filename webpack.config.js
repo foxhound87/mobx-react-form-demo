@@ -6,15 +6,20 @@ const TerserPlugin = require("terser-webpack-plugin");
 const DEV = process.env.NODE_ENV === 'development';
 
 const rules = [{
-  test: /\.(ts|tsx)$/,
-  use: [{
-    loader: "ts-loader",
-    options: {
-      transpileOnly: true,
-      compilerOptions: {
-        module: "esnext",
+  oneOf: [{
+    resourceQuery: /raw/,
+    type: 'asset/source',
+  }, {
+    test: /\.(ts|tsx)$/,
+    use: [{
+      loader: "ts-loader",
+      options: {
+        transpileOnly: true,
+        compilerOptions: {
+          module: "esnext",
+        },
       },
-    },
+    }],
   }],
 }, /*{
   test: /\.json$/,

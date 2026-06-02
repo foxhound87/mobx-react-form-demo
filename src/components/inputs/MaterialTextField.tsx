@@ -7,8 +7,9 @@ export default observer(({
   type = 'text',
   placeholder = null,
   validatingText = 'validating...',
+  className = 'mb-2',
 }) => (
-  <div className="mb-2">
+  <div className={className}>
     <TextField
       {...field.bind({ type, placeholder, validatingText })}
       variant="standard"
