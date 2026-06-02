@@ -1,7 +1,7 @@
 import Form from './_.extend';
 import fieldsHooks from './_.hooks.fields';
 
-import { Field } from 'mobx-react-form/src'; // load from source (MASTER)
+import { Field } from 'mobx-react-form';
 // import { Field } from 'mobx-react-form/lib'; // load from build (FALLBACK)
 
 // forms

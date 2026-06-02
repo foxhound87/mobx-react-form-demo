@@ -63,7 +63,7 @@ const config = {
       react: path.resolve('.', 'node_modules', 'react'),
       mobx: path.resolve('.', 'node_modules', 'mobx'),
       'mobx-react': path.resolve('.', 'node_modules', 'mobx-react'),
-      'mobx-react-form/src': mrfSrc,
+      '$mobx-react-form': mrfSrc,
     },
   },
   output: {
