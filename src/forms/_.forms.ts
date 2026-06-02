@@ -16,6 +16,10 @@ import companySimple from './setup/companySimple';
 import companyWidgets from './setup/companyWidgets';
 import dynamicFieldsSelect from './setup/dynamicFieldsSelect';
 import sortableList from './setup/sortableList';
+import materialAdvanced from './setup/materialAdvanced';
+import headlessUI from './setup/headlessUI';
+import antd from './setup/antd';
+import aria from './setup/aria';
 
 
 class CustomField extends Field {
@@ -55,6 +59,10 @@ class CompanySimpleForm extends Form {}
 class CompanyWidgetsForm extends Form {}
 class FormDynamicFieldsSelect extends Form {}
 class FormSortableList extends Form {}
+class FormMaterialAdvanced extends Form {}
+class FormHeadlessUI extends Form {}
+class FormAntd extends Form {}
+class FormAria extends Form {}
 
 const onSubmitFileUpload = (form) => {
   console.log('FileUpload > myFileUpload files', form.$('myFileUpload').files);
@@ -71,4 +79,8 @@ export default {
   companyWidgets: new CompanyWidgetsForm({ ...companyWidgets }, { name: 'Company Widgets' }),
   dynamicFieldsSelect: new FormDynamicFieldsSelect({ ...dynamicFieldsSelect }, { name: 'Dynamic Fields Select' }),
   sortableList: new FormSortableList({ ...sortableList }, { name: 'Sortable List' }),
+  materialAdvanced: new FormMaterialAdvanced({ ...materialAdvanced }, { name: 'Material Advanced' }),
+  headlessUI: new FormHeadlessUI({ ...headlessUI }, { name: 'Headless UI' }),
+  antd: new FormAntd({ ...antd }, { name: 'Ant Design' }),
+  aria: new FormAria({ ...aria }, { name: 'React Aria' }),
 };

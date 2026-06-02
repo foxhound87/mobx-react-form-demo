@@ -1,35 +1,110 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { observer } from 'mobx-react';
 import { action } from 'mobx';
 import _ from 'lodash';
+import {
+  FileText,
+  Upload,
+  Layers,
+  UserPlus,
+  Type,
+  Building2,
+  List,
+  GripVertical,
+  Palette,
+  Box,
+  Menu,
+  X,
+  Package,
+  GitBranch,
+  Rabbit,
+  Antenna,
+  Radio,
+} from 'lucide-react';
 
 const switchTo = (menu, select) => (value) => {
   select(value);
   action(() => _.map(menu, ($val, $key) => _.set(menu, $key, false)))();
   action(() => _.set(menu, value, true))();
   const params = new URLSearchParams(window.location.search);
-  params.set("section", value);
-  window.history.pushState({}, "", `${window.location.pathname}?${params.toString()}`);
+  params.set('section', value);
+  window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
 };
 
-const sections = [
-  { value: 'registerMaterial', label: 'Register (MUI)' },
-  { value: 'registerSimple', label: 'Register (Simple)' },
-  { value: 'companyWidgets', label: 'Company (Widgets)' },
-  { value: 'companySimple', label: 'Company (Simple)' },
-  { value: 'nestedFields', label: 'Nested Fields' },
-  { value: 'sortableList', label: 'Sortable List' },
-  { value: 'fileUpload', label: 'File Upload' },
-  { value: 'markdown', label: 'Markdown' },
-  { value: 'dynamicFieldsSelect', label: 'Dynamic Fields' },
+const navGroups = [
+  {
+    label: 'Material UI',
+    items: [
+      { value: 'registerMaterial', label: 'Register', icon: UserPlus },
+      { value: 'materialAdvanced', label: 'Advanced Inputs', icon: Palette },
+    ],
+  },
+  {
+    label: 'Simple',
+    items: [
+      { value: 'registerSimple', label: 'Register', icon: Type },
+      { value: 'companySimple', label: 'Company', icon: Building2 },
+    ],
+  },
+  {
+    label: 'Widgets',
+    items: [
+      { value: 'companyWidgets', label: 'Company', icon: Box },
+    ],
+  },
+  {
+    label: 'Headless UI',
+    items: [
+      { value: 'headlessUI', label: 'Components', icon: Rabbit },
+    ],
+  },
+  {
+    label: 'Ant Design',
+    items: [
+      { value: 'antd', label: 'Components', icon: Antenna },
+    ],
+  },
+  {
+    label: 'React Aria',
+    items: [
+      { value: 'aria', label: 'Components', icon: Radio },
+    ],
+  },
+  {
+    label: 'Advanced',
+    items: [
+      { value: 'nestedFields', label: 'Nested Fields', icon: Layers },
+      { value: 'sortableList', label: 'Sortable List', icon: GripVertical },
+      { value: 'fileUpload', label: 'File Upload', icon: Upload },
+      { value: 'markdown', label: 'Markdown', icon: FileText },
+      { value: 'dynamicFieldsSelect', label: 'Dynamic Fields', icon: List },
+    ],
+  },
 ];
+
+const iconMap = {
+  registerMaterial: UserPlus,
+  materialAdvanced: Palette,
+  registerSimple: Type,
+  companySimple: Building2,
+  companyWidgets: Box,
+  headlessUI: Rabbit,
+  antd: Antenna,
+  aria: Radio,
+  nestedFields: Layers,
+  sortableList: GripVertical,
+  fileUpload: Upload,
+  markdown: FileText,
+  dynamicFieldsSelect: List,
+};
 
 export default observer(({ menu, select, selected }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const drawerRef = useRef(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const section = params.get("section");
+    const section = params.get('section');
     if (section && menu[section] !== undefined) {
       select(section);
       action(() => _.map(menu, ($val, $key) => _.set(menu, $key, false)))();
@@ -37,113 +112,165 @@ export default observer(({ menu, select, selected }) => {
     }
   }, [menu, select]);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handler = (e) => {
+      if (drawerRef.current && !drawerRef.current.contains(e.target)) {
+        setMobileOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [mobileOpen]);
+
   const handleSelect = (value) => {
     switchTo(menu, select)(value);
     setMobileOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 shadow-nav">
-      <div className="px-4 sm:px-6">
-        <div className="flex items-center h-14 gap-2">
-          {/* Logo / Title */}
-          <div className="flex items-center gap-3 min-w-0 flex-shrink-0">
-            <div className="w-7 h-7 rounded-lg bg-brand-500 flex items-center justify-center flex-shrink-0">
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-sm font-semibold text-surface-900 leading-tight">MobX React Form</h1>
-              <p className="text-[10px] text-surface-400 leading-tight">Demo</p>
-            </div>
-          </div>
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 shadow-nav">
+        <div className="px-4 sm:px-6">
+          <div className="flex items-center h-14 gap-2">
+            <button onClick={() => handleSelect('welcome')} className="flex items-center gap-3 min-w-0 flex-shrink-0">
+              <div className="w-7 h-7 rounded-lg bg-brand-500 flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <div className="text-left">
+                <h1 className="text-sm font-semibold text-surface-900 leading-tight">MobX React Form</h1>
+                <p className="text-[10px] text-surface-400 leading-tight">Demo</p>
+              </div>
+            </button>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1 overflow-x-auto ml-2">
-            {sections.map(s => (
-              <button
-                key={s.value}
-                onClick={() => handleSelect(s.value)}
-                className={`nav-link whitespace-nowrap text-xs ${
-                  selected === s.value ? 'nav-link-active' : ''
-                }`}
+            <div className="hidden md:flex items-center gap-1 ml-auto">
+              <a
+                href="https://www.npmjs.com/package/mobx-react-form"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link text-xs"
+                title="NPM"
               >
-                {s.label}
-              </button>
-            ))}
-          </nav>
+                <Package size={14} />
+                <span className="hidden lg:inline">NPM</span>
+              </a>
+              <a
+                href="https://github.com/foxhound87/mobx-react-form"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link text-xs"
+                title="GitHub"
+              >
+                <GitBranch size={14} />
+                <span className="hidden lg:inline">GitHub</span>
+              </a>
+            </div>
 
-          {/* Desktop right links */}
-          <div className="hidden md:flex items-center gap-1 ml-auto">
-            <a
-              href="https://www.npmjs.com/package/mobx-react-form"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-link text-xs"
-              title="NPM"
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden btn-ghost !px-2 !py-2 ml-auto"
+              aria-label="Toggle menu"
             >
-              <i className="fa fa-archive text-sm" />
-              <span className="hidden lg:inline">NPM</span>
-            </a>
-            <a
-              href="https://github.com/foxhound87/mobx-react-form"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-link text-xs"
-              title="GitHub"
-            >
-              <i className="fa fa-github text-sm" />
-              <span className="hidden lg:inline">GitHub</span>
-            </a>
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
+        </div>
+      </header>
 
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden btn-ghost !px-2 !py-2 ml-auto"
-            aria-label="Toggle menu"
+      <aside className="hidden md:flex fixed top-14 left-0 bottom-0 z-30 w-56 flex-col bg-white border-r border-surface-200">
+        <div className="flex-1 overflow-y-auto py-4 px-2">
+          {navGroups.map((group) => (
+            <div key={group.label} className="mb-5">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-surface-400 px-3 mb-1.5">
+                {group.label}
+              </p>
+              <div className="space-y-0.5">
+                {group.items.map((s) => {
+                  const Icon = s.icon;
+                  return (
+                    <button
+                      key={s.value}
+                      onClick={() => handleSelect(s.value)}
+                      className={`w-full flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 ${
+                        selected === s.value
+                          ? 'bg-brand-50 text-brand-600'
+                          : 'text-surface-600 hover:text-surface-900 hover:bg-surface-100'
+                      }`}
+                    >
+                      <Icon size={16} className={selected === s.value ? 'text-brand-500' : 'text-surface-400'} />
+                      {s.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </aside>
+
+      <div
+        className={`fixed inset-0 top-14 z-40 bg-surface-900/30 transition-all duration-300 ease-out md:hidden ${
+          mobileOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setMobileOpen(false)}
+      />
+
+      <div
+        ref={drawerRef}
+        className={`fixed top-14 left-0 bottom-0 z-50 w-72 bg-white border-r border-surface-200 shadow-elevated transition-all duration-300 ease-out md:hidden flex flex-col ${
+          mobileOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <div className="flex-1 overflow-y-auto py-3">
+          {navGroups.map((group) => (
+            <div key={group.label} className="px-3 pt-4 first:pt-0">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-surface-400 px-3 mb-1">
+                {group.label}
+              </p>
+              <div className="space-y-0.5">
+                {group.items.map((s) => {
+                  const Icon = s.icon;
+                  return (
+                    <button
+                      key={s.value}
+                      onClick={() => handleSelect(s.value)}
+                      className={`w-full flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 ${
+                        selected === s.value
+                          ? 'bg-brand-50 text-brand-600'
+                          : 'text-surface-600 hover:text-surface-900 hover:bg-surface-100'
+                      }`}
+                    >
+                      <Icon size={16} className={selected === s.value ? 'text-brand-500' : 'text-surface-400'} />
+                      {s.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="border-t border-surface-200 px-3 py-3 flex items-center gap-2">
+          <a
+            href="https://www.npmjs.com/package/mobx-react-form"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-all duration-150"
           >
-            {mobileOpen ? (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
+            <Package size={16} /> NPM
+          </a>
+          <a
+            href="https://github.com/foxhound87/mobx-react-form"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-all duration-150"
+          >
+            <GitBranch size={16} /> GitHub
+          </a>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden border-t border-surface-200 bg-white max-h-[60vh] overflow-y-auto">
-          <div className="px-3 py-2 space-y-0.5">
-            {sections.map(s => (
-              <button
-                key={s.value}
-                onClick={() => handleSelect(s.value)}
-                className={`w-full text-left nav-link text-sm ${
-                  selected === s.value ? 'nav-link-active' : ''
-                }`}
-              >
-                {s.label}
-              </button>
-            ))}
-            <div className="divider !my-2" />
-            <div className="flex items-center gap-2 px-3 py-2">
-              <a href="https://www.npmjs.com/package/mobx-react-form" target="_blank" rel="noopener noreferrer" className="nav-link text-sm">
-                <i className="fa fa-archive" /> NPM
-              </a>
-              <a href="https://github.com/foxhound87/mobx-react-form" target="_blank" rel="noopener noreferrer" className="nav-link text-sm">
-                <i className="fa fa-github" /> GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-    </header>
+    </>
   );
 });

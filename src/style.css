@@ -132,6 +132,126 @@
   @apply bg-brand-500 text-white !important;
 }
 
+/* Ant Design overrides */
+.ant-select {
+  width: 100% !important;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  @apply rounded-lg border-surface-200 shadow-soft min-h-[40px] !important;
+}
+
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  @apply border-brand-400 ring-1 ring-brand-400 !important;
+}
+
+.ant-select-single .ant-select-selector .ant-select-selection-placeholder {
+  @apply text-surface-400 leading-[38px] !important;
+}
+
+.ant-select-single .ant-select-selector .ant-select-selection-item {
+  @apply text-surface-900 leading-[38px] !important;
+}
+
+.ant-select-arrow {
+  @apply text-surface-400 !important;
+}
+
+.ant-select-dropdown {
+  @apply rounded-lg shadow-elevated border border-surface-100 !important;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  @apply bg-brand-50 text-brand-600 !important;
+}
+
+.ant-select-item-option-active {
+  @apply bg-surface-50 !important;
+}
+
+.ant-picker {
+  @apply rounded-lg border-surface-200 shadow-soft w-full min-h-[40px] !important;
+}
+
+.ant-picker-focused {
+  @apply border-brand-400 ring-1 ring-brand-400 !important;
+}
+
+.ant-picker-input > input {
+  @apply text-sm text-surface-900 !important;
+}
+
+.ant-input-number {
+  @apply rounded-lg border-surface-200 shadow-soft w-full min-h-[40px] !important;
+}
+
+.ant-input-number-focused {
+  @apply border-brand-400 ring-1 ring-brand-400 !important;
+}
+
+.ant-input-number-input {
+  @apply text-sm text-surface-900 !important;
+}
+
+.ant-rate-star:not(.ant-rate-star-full) .ant-rate-star-first,
+.ant-rate-star:not(.ant-rate-star-full) .ant-rate-star-second {
+  @apply text-surface-300 !important;
+}
+
+.ant-rate-star-full .ant-rate-star-first,
+.ant-rate-star-full .ant-rate-star-second {
+  @apply text-yellow-500 !important;
+}
+
+.ant-switch {
+  @apply bg-surface-300 !important;
+}
+
+.ant-switch-checked {
+  @apply bg-brand-500 !important;
+}
+
+.ant-slider-track {
+  @apply bg-brand-400 !important;
+}
+
+.ant-slider-handle {
+  @apply border-brand-500 !important;
+}
+
+.ant-slider-handle:focus {
+  @apply ring-2 ring-brand-300 !important;
+}
+
+.ant-slider:hover .ant-slider-track {
+  @apply bg-brand-500 !important;
+}
+
+.ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
+  @apply border-brand-600 !important;
+}
+
+.ant-input {
+  @apply rounded-lg border-surface-200 shadow-soft min-h-[40px] !important;
+}
+
+.ant-input:focus {
+  @apply border-brand-400 ring-1 ring-brand-400 !important;
+}
+
+.ant-input-status-error.ant-input,
+.ant-select-status-error .ant-select-selector,
+.ant-picker-status-error,
+.ant-input-number-status-error {
+  @apply border-red-300 !important;
+}
+
+.ant-input-status-error.ant-input:focus,
+.ant-select-status-error.ant-select-focused .ant-select-selector,
+.ant-picker-status-error.ant-picker-focused {
+  @apply border-red-500 ring-1 ring-red-500 !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

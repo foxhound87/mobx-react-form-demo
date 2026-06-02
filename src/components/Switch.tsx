@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
+import Welcome from './Welcome';
 import FormMarkdown from './forms/FormMarkdown';
 import FormFileUpload from './forms/FormFileUpload';
 import FormWithNestedFields from './forms/FormWithNestedFields';
@@ -10,9 +11,16 @@ import FormCompanyWidgets from './forms/FormCompanyWidgets';
 import FormCompanySimple from './forms/FormCompanySimple';
 import FormDynamicFieldsSelect from './forms/FormDynamicFieldsSelect';
 import FormSortableList from './forms/FormSortableList';
+import FormMaterialAdvanced from './forms/FormMaterialAdvanced';
+import FormHeadlessUI from './forms/FormHeadlessUI';
+import FormAntd from './forms/FormAntd';
+import FormAria from './forms/FormAria';
 
-export default observer(({ menu, forms }) => {
+export default observer(({ menu, forms, navigateTo }) => {
   switch (true) {
+    case menu.welcome:
+      return (<Welcome onNavigate={navigateTo ? () => navigateTo('registerMaterial') : undefined} />);
+
     case menu.markdown:
       return (<FormMarkdown form={forms.markdown} />);
 
@@ -39,6 +47,18 @@ export default observer(({ menu, forms }) => {
 
     case menu.sortableList:
       return (<FormSortableList form={forms.sortableList} />);
+
+    case menu.materialAdvanced:
+      return (<FormMaterialAdvanced form={forms.materialAdvanced} />);
+
+    case menu.headlessUI:
+      return (<FormHeadlessUI form={forms.headlessUI} />);
+
+    case menu.antd:
+      return (<FormAntd form={forms.antd} />);
+
+    case menu.aria:
+      return (<FormAria form={forms.aria} />);
 
     default: return null;
   }

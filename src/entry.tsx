@@ -7,6 +7,7 @@ import { render } from 'react-dom';
 import { configure } from 'mobx';
 
 import "react-widgets/styles.css";
+import "antd/dist/antd.css";
 import './style.css';
 
 import Main from './components/Main';
