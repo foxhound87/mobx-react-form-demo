@@ -1,14 +1,9 @@
-// import vjf from 'mobx-react-form/src/validators/VJF';
-// import dvr from 'mobx-react-form/src/validators/DVR';
-// import vjf from 'mobx-react-form/lib/validators/VJF';
-// import dvr from 'mobx-react-form/lib/validators/DVR';
-import vjf from '../../modules/mobx-react-form/src/validators/VJF';
-import dvr from '../../modules/mobx-react-form/src/validators/DVR';
+import vjf from 'mobx-react-form/src/validators/VJF';
+import dvr from 'mobx-react-form/src/validators/DVR';
 import validatorjs from 'validatorjs';
 
-// import MobxReactForm from 'mobx-react-form';
-import MobxReactForm from '../../modules/mobx-react-form/src'; // load from source (MASTER)
-// import MobxReactForm from '../../modules/mobx-react-form/lib'; // load from build (MASTER)
+import MobxReactForm from 'mobx-react-form/src'; // load from source (MASTER)
+// import MobxReactForm from 'mobx-react-form/lib'; // load from build (FALLBACK)
 
 import formHooks from './_.hooks.form';
 import bindings from './_.bindings';

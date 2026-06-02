@@ -1,9 +1,16 @@
 const path = require('path');
+const fs = require('fs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const DEV = process.env.NODE_ENV === 'development';
+
+// Resolve mobx-react-form to submodule source first, fallback to npm package src
+const mrfSrc = fs.existsSync(path.resolve('.', 'modules', 'mobx-react-form', 'src'))
+  ? path.resolve('.', 'modules', 'mobx-react-form', 'src')
+  : path.resolve('.', 'node_modules', 'mobx-react-form', 'src');
 
 const rules = [{
   oneOf: [{
@@ -21,13 +28,7 @@ const rules = [{
       },
     }],
   }],
-}, /*{
-  test: /\.json$/,
-  use: [{ loader: "json-loader", }],
 }, {
-  test: /\.gif$/,
-  use: [{ loader: "url-loader?mimetype=image/png", }],
-},*/ {
   test: /\.md$/,
   use: [{ loader: "raw-loader", }],
 }, {
@@ -36,10 +37,7 @@ const rules = [{
 }, {
   test: /\.css$/,
   use: ["style-loader", "css-loader", "postcss-loader"],
-}, /*{
-  test: /\.(eot|svg|ttf|woff(2)?)(\?v=\d+\.\d+\.\d+)?/,
-  use: [{ loader: "url-loader", }],
-},*/
+},
 ];
 
 const config = {
@@ -65,6 +63,7 @@ const config = {
       react: path.resolve('.', 'node_modules', 'react'),
       mobx: path.resolve('.', 'node_modules', 'mobx'),
       'mobx-react': path.resolve('.', 'node_modules', 'mobx-react'),
+      'mobx-react-form/src': mrfSrc,
     },
   },
   output: {
@@ -80,6 +79,11 @@ const config = {
     new HtmlWebpackPlugin({
       template: path.resolve('.', 'src', 'index.html'),
       inject: 'body',
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'google*.html', to: '.', context: path.resolve('.'), noErrorOnMissing: true },
+      ],
     }),
   ],
   module: { rules },

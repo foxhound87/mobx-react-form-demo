@@ -1,7 +1,6 @@
 import FieldInterface from "mobx-react-form/lib/models/FieldInterface";
 import FormInterface from "mobx-react-form/lib/models/FormInterface";
-// import Form, { Field } from "mobx-react-form";
-import Form, { Field } from "../../modules/mobx-react-form/src";
+import Form, { Field } from "mobx-react-form/src";
 
 export default {
   onInit(field: FieldInterface) {
