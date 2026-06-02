@@ -12,7 +12,6 @@ export default observer(({ field }) => {
       <Select
         {...field.bind()}
         options={options}
-        isMulti
         className="text-sm"
         classNamePrefix="react-select"
         styles={{

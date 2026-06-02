@@ -26,7 +26,7 @@ const inputComponents = {
   // UI Libraries
   registerMaterial: ['MaterialTextField', 'MaterialSwitch'],
   materialAdvanced: ['MuiSelect', 'MuiAutocomplete', 'MuiRating', 'MuiSlider'],
-  reactSelect: [],
+  reactSelect: ['ReactSelect'],
   reactMultiSelect: ['ReactMultiSelect'],
   companySimple: ['SimpleInput', 'SimpleRadio'],
   companyWidgets: ['SimpleInput', 'WidgetDatePicker', 'WidgetDropdownList', 'WidgetMultiselect'],
