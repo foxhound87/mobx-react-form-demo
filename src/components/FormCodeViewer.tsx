@@ -1,25 +1,42 @@
 import React from 'react';
-import { loadComponentSource, loadConfigSource } from '../forms/sources';
-
-const langs = {
-  tsx: 'tsx',
-  ts: 'ts',
-};
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { loadComponentSource, loadConfigSource, loadInputSource, getInputComponents } from '../forms/sources';
 
 export default ({ formKey, children }) => {
   const [tab, setTab] = React.useState(null);
   const [code, setCode] = React.useState('');
   const [loading, setLoading] = React.useState(false);
+  const [activeInput, setActiveInput] = React.useState(null);
+
+  const inputs = React.useMemo(() => getInputComponents(formKey), [formKey]);
 
   React.useEffect(() => {
-    if (!tab) return;
+    if (!tab || tab === 'input') return;
     setLoading(true);
+    setActiveInput(null);
     const load = tab === 'component' ? loadComponentSource : loadConfigSource;
     load(formKey).then((src) => {
       setCode(src);
       setLoading(false);
     });
   }, [tab, formKey]);
+
+  const handleInputClick = (name) => {
+    if (activeInput === name) {
+      setActiveInput(null);
+      setTab(null);
+      setCode('');
+      return;
+    }
+    setActiveInput(name);
+    setTab('input');
+    setLoading(true);
+    loadInputSource(name).then((src) => {
+      setCode(src);
+      setLoading(false);
+    });
+  };
 
   return (
     <div>
@@ -46,17 +63,65 @@ export default ({ formKey, children }) => {
         </button>
       </div>
 
+      {/* Input Components Used */}
+      {inputs.length > 0 && (
+        <div className="mb-6">
+          <p className="text-xs font-medium text-surface-400 mb-2 uppercase tracking-wider">
+            Input Components
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {inputs.map((name) => (
+              <button
+                key={name}
+                onClick={() => handleInputClick(name)}
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono font-medium border transition-all duration-150 cursor-pointer ${
+                  activeInput === name
+                    ? 'bg-brand-500 text-white border-brand-500 shadow-sm'
+                    : 'bg-brand-50 text-brand-600 border-brand-200 hover:bg-brand-100 hover:border-brand-300'
+                }`}
+              >
+                <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                {name}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {tab && (
-        <div className="mb-6 rounded-xl border border-surface-200 bg-surface-50 overflow-hidden">
-          <pre className="p-4 overflow-x-auto text-xs leading-relaxed text-surface-700 font-mono">
+        <div className={`mb-6 rounded-xl border overflow-hidden ${tab === 'input' || tab === 'component' ? 'border-surface-700' : 'border-surface-200 bg-surface-50'}`}>
+          <div className={`flex items-center gap-2 px-4 py-2 border-b ${tab === 'input' || tab === 'component' ? 'border-surface-700 bg-surface-800' : 'border-surface-200 bg-surface-100/50'}`}>
+            <span className={`text-xs font-medium ${tab === 'input' || tab === 'component' ? 'text-surface-400' : 'text-surface-500'}`}>
+              {tab === 'input' ? 'Input Component' : tab === 'component' ? 'Form Component' : 'Form Config'}
+            </span>
+            <span className={`text-xs font-mono font-medium ${tab === 'input' || tab === 'component' ? 'text-blue-400' : 'text-brand-600'}`}>
+              {tab === 'input' ? activeInput : formKey}
+            </span>
+          </div>
+          <div className="text-xs leading-relaxed">
             {loading ? (
-              <span className="text-surface-400">Loading...</span>
+              <div className="p-4"><span className="text-surface-400">Loading...</span></div>
             ) : code ? (
-              code
+              <SyntaxHighlighter
+                language={tab === 'config' ? 'typescript' : 'tsx'}
+                style={vscDarkPlus}
+                customStyle={{
+                  margin: 0,
+                  borderRadius: 0,
+                  padding: '1rem',
+                  fontSize: '0.75rem',
+                  lineHeight: '1.5',
+                }}
+                showLineNumbers={false}
+              >
+                {code}
+              </SyntaxHighlighter>
             ) : (
-              <span className="text-surface-400 italic">No source available</span>
+              <div className="p-4"><span className="text-surface-400 italic">No source available</span></div>
             )}
-          </pre>
+          </div>
         </div>
       )}
 

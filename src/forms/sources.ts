@@ -1,6 +1,28 @@
 // @ts-nocheck
 const component = (p) => import(`../components/forms/${p}.tsx?raw`).then(m => m.default);
 const config = (p) => import(`./setup/${p}.ts?raw`).then(m => m.default);
+const input = (p) => import(`../components/inputs/${p}.tsx?raw`).then(m => m.default);
+
+// Input components used by each form
+const inputComponents = {
+  registerMaterial: ['MaterialTextField', 'MaterialSwitch'],
+  materialAdvanced: ['MuiSelect', 'MuiAutocomplete', 'MuiRating', 'MuiSlider'],
+  registerSimple: ['SimpleInput', 'SimpleCheckbox'],
+  companySimple: ['SimpleInput', 'SimpleRadio', 'SimpleSelect', 'ReactMultiSelect'],
+  companyWidgets: ['SimpleInput', 'WidgetDatePicker', 'WidgetDropdownList', 'WidgetMultiselect'],
+  headlessUI: ['HeadlessListbox', 'HeadlessCombobox', 'HeadlessSwitch', 'HeadlessRadioGroup'],
+  antd: ['AntdInput', 'AntdSelect', 'AntdDatePicker', 'AntdRate', 'AntdSlider', 'AntdSwitch', 'AntdInputNumber'],
+  aria: ['AriaTextField', 'AriaSelect', 'AriaComboBox', 'AriaSlider', 'AriaSwitch'],
+  nestedFields: ['MaterialTextField', 'NestedHobbyInput'],
+  sortableList: [],
+  fileUpload: ['SimpleFile', 'DropZone'],
+  markdown: ['SimpleTextarea'],
+  dynamicFieldsSelect: ['MaterialTextField'],
+};
+
+export const getInputComponents = (key) => inputComponents[key] || [];
+
+export const loadInputSource = (name) => input(`${name}`);
 
 export const loadComponentSource = (key) => {
   const map = {
