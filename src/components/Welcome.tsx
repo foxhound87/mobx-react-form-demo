@@ -6,11 +6,14 @@ import {
   Layers,
   GitBranch,
   ExternalLink,
+  Terminal,
 } from 'lucide-react';
+import GithubStars from './GithubStars';
 
 const frameworks = [
-  'Material UI', 'Vanilla HTML', 'React Widgets',
-  'Headless UI', 'Ant Design', 'React Aria',
+  'Material UI', 'Ant Design', 'React Widgets',
+  'React Select', 'React Aria', 'Headless UI',
+  'Vanilla HTML',
 ];
 
 export default observer(({ onNavigate }) => (
@@ -24,7 +27,7 @@ export default observer(({ onNavigate }) => (
               MobX React Form
             </h1>
             <p className="text-lg sm:text-xl text-surface-500 mt-5 leading-relaxed max-w-2xl">
-              Declarative, validated forms for React and MobX. Define fields, rules, and UI once — works across Material UI, Ant Design, Headless UI, React Aria, and plain HTML.
+              Declarative, validated forms for React and MobX. Define fields, rules, and UI once — works across Material UI, Ant Design, React Widgets, React Select, React Aria, and plain HTML.
             </p>
             <div className="flex flex-wrap gap-3 mt-10">
               <button
@@ -43,6 +46,7 @@ export default observer(({ onNavigate }) => (
                 <GitBranch size={16} />
                 GitHub
               </a>
+              <GithubStars />
             </div>
             <div className="flex flex-wrap items-center gap-2 mt-10 pt-8 border-t border-surface-100">
               <span className="text-xs font-medium text-surface-400 uppercase tracking-wider mr-1">
@@ -103,7 +107,7 @@ export default observer(({ onNavigate }) => (
             </div>
             <h3 className="text-lg font-semibold text-surface-900">Any UI Library</h3>
             <p className="text-surface-500 mt-2 leading-relaxed">
-              Bring your own UI. Material UI, Ant Design, Headless UI, React Aria, or plain HTML — same form definition, any render.
+              Bring your own UI. Material UI, Ant Design, React Widgets, React Select, React Aria, or plain HTML — same form definition, any render.
             </p>
           </div>
 
@@ -115,6 +119,50 @@ export default observer(({ onNavigate }) => (
             <p className="text-surface-500 mt-2 leading-relaxed">
               Deeply nested field structures, dynamic field arrays with add/remove, sortable lists, and conditional logic. Handles complex data hierarchies with MobX-powered reactivity.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="pb-20 sm:pb-28">
+      <div className="max-w-[80rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex gap-6 sm:gap-10 mb-10">
+          <div className="w-1 flex-shrink-0 bg-brand-500/30 rounded-full" />
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-surface-900">
+              Get started
+            </h2>
+            <p className="text-surface-500 mt-1.5">
+              Install from npm and start building.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-white rounded-xl border border-surface-200 p-6 sm:p-8">
+            <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center mb-4">
+              <Terminal size={20} className="text-brand-500" />
+            </div>
+            <h3 className="text-lg font-semibold text-surface-900 mb-3">mobx-react-form</h3>
+            <p className="text-surface-500 text-sm mb-4 leading-relaxed">
+              Core library with validation plugin support.
+            </p>
+            <pre className="bg-surface-50 rounded-lg border border-surface-200 p-4 overflow-x-auto text-sm">
+              <code className="text-surface-700">npm i --save mobx-react-form validatorjs</code>
+            </pre>
+          </div>
+
+          <div className="bg-white rounded-xl border border-surface-200 p-6 sm:p-8">
+            <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center mb-4">
+              <Terminal size={20} className="text-brand-500" />
+            </div>
+            <h3 className="text-lg font-semibold text-surface-900 mb-3">mobx-react-form-devtools</h3>
+            <p className="text-surface-500 text-sm mb-4 leading-relaxed">
+              Inspect form state, fields, and validation in real time.
+            </p>
+            <pre className="bg-surface-50 rounded-lg border border-surface-200 p-4 overflow-x-auto text-sm">
+              <code className="text-surface-700">npm i --save mobx-react-form-devtools</code>
+            </pre>
           </div>
         </div>
       </div>

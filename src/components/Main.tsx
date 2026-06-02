@@ -17,7 +17,8 @@ const formKeys = _.keys(forms);
 
 const selectDevtools = (val) => {
   if (!val || !formKeys.includes(val)) {
-    MobxReactFormDevTools.open(false);
+    devtoolsStore.selected.key = null;
+    devtoolsStore.selected.form = null;
     return;
   }
   MobxReactFormDevTools.open(true);
@@ -48,9 +49,16 @@ export default observer(() => {
 
   React.useEffect(() => {
     if (isWelcome) {
-      MobxReactFormDevTools.open(false);
+      devtoolsStore.selected.key = null;
+      devtoolsStore.selected.form = null;
+      try {
+        if (localStorage.getItem('mrf-open') === null) {
+          MobxReactFormDevTools.open(true);
+        }
+      } catch {
+        MobxReactFormDevTools.open(true);
+      }
     } else {
-      MobxReactFormDevTools.open(true);
       MobxReactFormDevTools.select(active);
     }
   }, [active]);

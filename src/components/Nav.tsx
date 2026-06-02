@@ -21,6 +21,7 @@ import {
   Antenna,
   Radio,
 } from 'lucide-react';
+import GithubStars from './GithubStars';
 
 const switchTo = (menu, select) => (value) => {
   select(value);
@@ -106,11 +107,10 @@ export default observer(({ menu, select, selected }) => {
     const params = new URLSearchParams(window.location.search);
     const section = params.get('section');
     if (section && menu[section] !== undefined) {
-      select(section);
       action(() => _.map(menu, ($val, $key) => _.set(menu, $key, false)))();
       action(() => _.set(menu, section, true))();
     }
-  }, [menu, select]);
+  }, [menu]);
 
   useEffect(() => {
     if (!mobileOpen) return;
@@ -166,6 +166,7 @@ export default observer(({ menu, select, selected }) => {
                 <GitBranch size={14} />
                 <span className="hidden lg:inline">GitHub</span>
               </a>
+              <GithubStars />
             </div>
 
             <button

@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { observer } from 'mobx-react';
 
 import Welcome from './Welcome';
-import FormMarkdown from './forms/FormMarkdown';
-import FormFileUpload from './forms/FormFileUpload';
-import FormWithNestedFields from './forms/FormWithNestedFields';
-import FormRegisterMaterial from './forms/FormRegisterMaterial';
-import FormRegisterSimple from './forms/FormRegisterSimple';
-import FormCompanyWidgets from './forms/FormCompanyWidgets';
-import FormCompanySimple from './forms/FormCompanySimple';
-import FormDynamicFieldsSelect from './forms/FormDynamicFieldsSelect';
-import FormSortableList from './forms/FormSortableList';
-import FormMaterialAdvanced from './forms/FormMaterialAdvanced';
-import FormHeadlessUI from './forms/FormHeadlessUI';
-import FormAntd from './forms/FormAntd';
-import FormAria from './forms/FormAria';
+
+const FormMarkdown = React.lazy(() => import(/* webpackChunkName: "form-markdown" */ './forms/FormMarkdown'));
+const FormFileUpload = React.lazy(() => import(/* webpackChunkName: "form-fileupload" */ './forms/FormFileUpload'));
+const FormWithNestedFields = React.lazy(() => import(/* webpackChunkName: "form-nested" */ './forms/FormWithNestedFields'));
+const FormRegisterMaterial = React.lazy(() => import(/* webpackChunkName: "form-register-material" */ './forms/FormRegisterMaterial'));
+const FormRegisterSimple = React.lazy(() => import(/* webpackChunkName: "form-register-simple" */ './forms/FormRegisterSimple'));
+const FormCompanyWidgets = React.lazy(() => import(/* webpackChunkName: "form-company-widgets" */ './forms/FormCompanyWidgets'));
+const FormCompanySimple = React.lazy(() => import(/* webpackChunkName: "form-company-simple" */ './forms/FormCompanySimple'));
+const FormDynamicFieldsSelect = React.lazy(() => import(/* webpackChunkName: "form-dynamic-fields" */ './forms/FormDynamicFieldsSelect'));
+const FormSortableList = React.lazy(() => import(/* webpackChunkName: "form-sortable" */ './forms/FormSortableList'));
+const FormMaterialAdvanced = React.lazy(() => import(/* webpackChunkName: "form-material-advanced" */ './forms/FormMaterialAdvanced'));
+const FormHeadlessUI = React.lazy(() => import(/* webpackChunkName: "form-headless" */ './forms/FormHeadlessUI'));
+const FormAntd = React.lazy(() => import(/* webpackChunkName: "form-antd" */ './forms/FormAntd'));
+const FormAria = React.lazy(() => import(/* webpackChunkName: "form-aria" */ './forms/FormAria'));
+
+const Fallback = () => (
+  <div className="flex items-center justify-center py-20">
+    <div className="w-6 h-6 border-2 border-brand-500 border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 export default observer(({ menu, forms, navigateTo }) => {
   switch (true) {
@@ -22,43 +29,43 @@ export default observer(({ menu, forms, navigateTo }) => {
       return (<Welcome onNavigate={navigateTo ? () => navigateTo('registerMaterial') : undefined} />);
 
     case menu.markdown:
-      return (<FormMarkdown form={forms.markdown} />);
+      return (<Suspense fallback={<Fallback />}><FormMarkdown form={forms.markdown} /></Suspense>);
 
     case menu.fileUpload:
-      return (<FormFileUpload form={forms.fileUpload} />);
+      return (<Suspense fallback={<Fallback />}><FormFileUpload form={forms.fileUpload} /></Suspense>);
 
     case menu.nestedFields:
-      return (<FormWithNestedFields form={forms.nestedFields} />);
+      return (<Suspense fallback={<Fallback />}><FormWithNestedFields form={forms.nestedFields} /></Suspense>);
 
     case menu.registerMaterial:
-      return (<FormRegisterMaterial form={forms.registerMaterial} />);
+      return (<Suspense fallback={<Fallback />}><FormRegisterMaterial form={forms.registerMaterial} /></Suspense>);
 
     case menu.registerSimple:
-      return (<FormRegisterSimple form={forms.registerSimple} />);
+      return (<Suspense fallback={<Fallback />}><FormRegisterSimple form={forms.registerSimple} /></Suspense>);
 
     case menu.companyWidgets:
-      return (<FormCompanyWidgets form={forms.companyWidgets} />);
+      return (<Suspense fallback={<Fallback />}><FormCompanyWidgets form={forms.companyWidgets} /></Suspense>);
 
     case menu.companySimple:
-      return (<FormCompanySimple form={forms.companySimple} />);
+      return (<Suspense fallback={<Fallback />}><FormCompanySimple form={forms.companySimple} /></Suspense>);
 
     case menu.dynamicFieldsSelect:
-      return (<FormDynamicFieldsSelect form={forms.dynamicFieldsSelect} />);
+      return (<Suspense fallback={<Fallback />}><FormDynamicFieldsSelect form={forms.dynamicFieldsSelect} /></Suspense>);
 
     case menu.sortableList:
-      return (<FormSortableList form={forms.sortableList} />);
+      return (<Suspense fallback={<Fallback />}><FormSortableList form={forms.sortableList} /></Suspense>);
 
     case menu.materialAdvanced:
-      return (<FormMaterialAdvanced form={forms.materialAdvanced} />);
+      return (<Suspense fallback={<Fallback />}><FormMaterialAdvanced form={forms.materialAdvanced} /></Suspense>);
 
     case menu.headlessUI:
-      return (<FormHeadlessUI form={forms.headlessUI} />);
+      return (<Suspense fallback={<Fallback />}><FormHeadlessUI form={forms.headlessUI} /></Suspense>);
 
     case menu.antd:
-      return (<FormAntd form={forms.antd} />);
+      return (<Suspense fallback={<Fallback />}><FormAntd form={forms.antd} /></Suspense>);
 
     case menu.aria:
-      return (<FormAria form={forms.aria} />);
+      return (<Suspense fallback={<Fallback />}><FormAria form={forms.aria} /></Suspense>);
 
     default: return null;
   }

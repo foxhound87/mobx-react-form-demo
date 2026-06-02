@@ -7,7 +7,15 @@ const DEV = process.env.NODE_ENV === 'development';
 
 const rules = [{
   test: /\.(ts|tsx)$/,
-  use: ["ts-loader"],
+  use: [{
+    loader: "ts-loader",
+    options: {
+      transpileOnly: true,
+      compilerOptions: {
+        module: "esnext",
+      },
+    },
+  }],
 }, /*{
   test: /\.json$/,
   use: [{ loader: "json-loader", }],
@@ -57,7 +65,8 @@ const config = {
   output: {
     path: path.resolve('.', 'build'),
     filename: '[name].js',
-    // publicPath: '/',
+    chunkFilename: '[name].chunk.js',
+    publicPath: 'auto',
   },
   plugins: [
     new webpack.DefinePlugin({
