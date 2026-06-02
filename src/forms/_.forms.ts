@@ -22,6 +22,10 @@ import interceptors from './setup/interceptors';
 import observers from './setup/observers';
 import composer from './setup/composer';
 
+// react-select based forms
+import reactSelect from './setup/reactSelect';
+import reactMultiSelect from './setup/reactMultiSelect';
+
 // keep existing library-based forms
 import markdown from './setup/markdown';
 import fileUpload from './setup/fileUpload';
@@ -88,6 +92,8 @@ class MarkdownForm extends Form {}
 class FileUploadForm extends Form {}
 class CompanySimpleForm extends Form {}
 class CompanyWidgetsForm extends Form {}
+class ReactSelectForm extends Form {}
+class ReactMultiSelectForm extends Form {}
 class FormDynamicFieldsSelect extends Form {}
 class FormSortableList extends Form {}
 class FormMaterialAdvanced extends Form {}
@@ -114,6 +120,9 @@ export default {
   interceptors: new InterceptorsForm({ ...interceptors }, { name: 'Interceptors' }),
   observers: new ObserversForm({ ...observers }, { name: 'Observers' }),
   composer: new ComposerForm({ ...composer }, { name: 'Composer' }),
+  // React-Select forms
+  reactSelect: new ReactSelectForm({ ...reactSelect }, { name: 'React Select' }),
+  reactMultiSelect: new ReactMultiSelectForm({ ...reactMultiSelect }, { name: 'React Multiselect' }),
   // Existing library-based forms
   registerMaterial: new RegisterMaterialForm({ ...registerMaterial }, { name: 'Register Material' }),
   materialAdvanced: new FormMaterialAdvanced({ ...materialAdvanced }, { name: 'Material Advanced' }),

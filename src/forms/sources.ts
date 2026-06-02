@@ -26,7 +26,9 @@ const inputComponents = {
   // UI Libraries
   registerMaterial: ['MaterialTextField', 'MaterialSwitch'],
   materialAdvanced: ['MuiSelect', 'MuiAutocomplete', 'MuiRating', 'MuiSlider'],
-  companySimple: ['SimpleInput', 'SimpleRadio', 'SimpleSelect', 'ReactMultiSelect'],
+  reactSelect: [],
+  reactMultiSelect: ['ReactMultiSelect'],
+  companySimple: ['SimpleInput', 'SimpleRadio'],
   companyWidgets: ['SimpleInput', 'WidgetDatePicker', 'WidgetDropdownList', 'WidgetMultiselect'],
   headlessUI: ['HeadlessListbox', 'HeadlessCombobox', 'HeadlessSwitch', 'HeadlessRadioGroup'],
   antd: ['AntdInput', 'AntdSelect', 'AntdDatePicker', 'AntdRate', 'AntdSlider', 'AntdSwitch', 'AntdInputNumber'],
@@ -74,6 +76,8 @@ export const loadComponentSource = (key) => {
     // UI Libraries
     registerMaterial: () => component('FormRegisterMaterial'),
     materialAdvanced: () => component('FormMaterialAdvanced'),
+    reactSelect: () => component('FormReactSelect'),
+    reactMultiSelect: () => component('FormReactMultiselect'),
     companySimple: () => component('FormCompanySimple'),
     companyWidgets: () => component('FormCompanyWidgets'),
     headlessUI: () => component('FormHeadlessUI'),
@@ -107,6 +111,8 @@ export const loadConfigSource = (key) => {
     // UI Libraries
     registerMaterial: () => config('registerMaterial'),
     materialAdvanced: () => config('materialAdvanced'),
+    reactSelect: () => config('reactSelect'),
+    reactMultiSelect: () => config('reactMultiSelect'),
     companySimple: () => config('companySimple'),
     companyWidgets: () => config('companyWidgets'),
     headlessUI: () => config('headlessUI'),

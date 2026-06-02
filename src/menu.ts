@@ -18,6 +18,9 @@ export default observable({
   interceptors: false,
   observers: false,
   composer: false,
+  // React-Select
+  reactSelect: false,
+  reactMultiSelect: false,
   // UI Libraries (existing)
   registerMaterial: false,
   materialAdvanced: false,

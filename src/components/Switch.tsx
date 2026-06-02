@@ -24,6 +24,10 @@ const FormInterceptors = React.lazy(() => import(/* webpackChunkName: "form-inte
 const FormObservers = React.lazy(() => import(/* webpackChunkName: "form-observers" */ './forms/FormObservers'));
 const FormComposer = React.lazy(() => import(/* webpackChunkName: "form-composer" */ './forms/FormComposer'));
 
+// React-Select
+const FormReactSelect = React.lazy(() => import(/* webpackChunkName: "form-react-select" */ './forms/FormReactSelect'));
+const FormReactMultiselect = React.lazy(() => import(/* webpackChunkName: "form-react-multiselect" */ './forms/FormReactMultiselect'));
+
 // UI Libraries (existing)
 const FormRegisterMaterial = React.lazy(() => import(/* webpackChunkName: "form-register-material" */ './forms/FormRegisterMaterial'));
 const FormMaterialAdvanced = React.lazy(() => import(/* webpackChunkName: "form-material-advanced" */ './forms/FormMaterialAdvanced'));
@@ -59,6 +63,9 @@ const formComponents = {
   interceptors: FormInterceptors,
   observers: FormObservers,
   composer: FormComposer,
+  // React-Select
+  reactSelect: FormReactSelect,
+  reactMultiSelect: FormReactMultiselect,
   // UI Libraries (existing)
   registerMaterial: FormRegisterMaterial,
   materialAdvanced: FormMaterialAdvanced,

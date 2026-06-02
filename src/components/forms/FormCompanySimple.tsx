@@ -2,23 +2,24 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import Input from '../inputs/SimpleInput';
 import Radio from '../inputs/SimpleRadio';
-import Select from '../inputs/SimpleSelect';
-import MultiSelect from '../inputs/ReactMultiSelect';
 import FormControls from '../controls/FormControls';
 
 export default observer(({ form }) => (
   <form>
     <div className="card">
       <div className="card-header">
-        <h2 className="text-lg font-medium text-surface-900">Company Info</h2>
-        <p className="text-sm text-surface-500 mt-0.5">Simple inputs, selects &amp; radio buttons</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-lg font-medium text-surface-900">Company Info</h2>
+            <p className="text-sm text-surface-500 mt-0.5">Simple inputs &amp; radio buttons</p>
+          </div>
+          <span className="badge bg-surface-100 text-surface-600 border border-surface-200">Vanilla</span>
+        </div>
       </div>
       <div className="card-body">
         <Input field={form.$('name')} />
         <Input field={form.$('revenue')} />
         <Input field={form.$('assets')} />
-        <Select field={form.$('products')} />
-        <MultiSelect field={form.$('productsMultiselect')} />
         <div className="divider !my-4" />
         <div className="mb-2">
           <p className="form-label">Product Status:</p>
