@@ -21,6 +21,14 @@ import headlessUI from './setup/headlessUI';
 import antd from './setup/antd';
 import aria from './setup/aria';
 
+import type {
+  RegisterFields,
+  CompanyFields,
+  MarkdownFields,
+  FileUploadFields,
+  NestedClubFields,
+} from './types';
+
 
 class CustomField extends Field {
 
@@ -44,19 +52,19 @@ class CustomField extends Field {
   // };
 }
 
-class RegisterMaterialForm extends Form {
+class RegisterMaterialForm extends Form<RegisterFields> {
 
   makeField(field) {
     return new CustomField(field);
   }
 }
 
-class RegisterSimpleForm extends Form {}
-class NestedFieldsForm extends Form {}
-class MarkdownForm extends Form {}
-class FileUploadForm extends Form {}
-class CompanySimpleForm extends Form {}
-class CompanyWidgetsForm extends Form {}
+class RegisterSimpleForm extends Form<RegisterFields> {}
+class NestedFieldsForm extends Form<NestedClubFields> {}
+class MarkdownForm extends Form<MarkdownFields> {}
+class FileUploadForm extends Form<FileUploadFields> {}
+class CompanySimpleForm extends Form<CompanyFields> {}
+class CompanyWidgetsForm extends Form<CompanyFields> {}
 class FormDynamicFieldsSelect extends Form {}
 class FormSortableList extends Form {}
 class FormMaterialAdvanced extends Form {}

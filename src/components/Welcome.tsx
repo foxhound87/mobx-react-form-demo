@@ -1,5 +1,5 @@
-import React from 'react';
-import { observer } from 'mobx-react';
+import React from "react";
+import { observer } from "mobx-react";
 import {
   ShieldCheck,
   Zap,
@@ -7,13 +7,19 @@ import {
   GitBranch,
   ExternalLink,
   Terminal,
-} from 'lucide-react';
-import GithubStars from './GithubStars';
+  BookOpen,
+  MessageCircle,
+} from "lucide-react";
+import GithubStars from "./GithubStars";
 
 const frameworks = [
-  'Material UI', 'Ant Design', 'React Widgets',
-  'React Select', 'React Aria', 'Headless UI',
-  'Vanilla HTML',
+  "Material UI",
+  "Ant Design",
+  "React Widgets",
+  "React Select",
+  "React Aria",
+  "Headless UI",
+  "Vanilla HTML",
 ];
 
 export default observer(({ onNavigate }) => (
@@ -27,7 +33,9 @@ export default observer(({ onNavigate }) => (
               MobX React Form
             </h1>
             <p className="text-lg sm:text-xl text-surface-500 mt-5 leading-relaxed max-w-2xl">
-              Declarative, validated forms for React and MobX. Define fields, rules, and UI once — works across Material UI, Ant Design, React Widgets, React Select, React Aria, and plain HTML.
+              Declarative, validated forms for React and MobX. Define fields,
+              rules, and UI once — works across Material UI, Ant Design, React
+              Widgets, React Select, React Aria, and plain HTML.
             </p>
             <div className="flex flex-wrap gap-3 mt-10">
               <button
@@ -45,6 +53,24 @@ export default observer(({ onNavigate }) => (
               >
                 <GitBranch size={16} />
                 GitHub
+              </a>
+              <a
+                href="https://foxhound87.github.io/mobx-react-form/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-surface-200 text-surface-600 px-5 py-2.5 text-sm font-medium hover:bg-surface-50 hover:text-surface-900 transition-colors"
+              >
+                <BookOpen size={16} />
+                Docs
+              </a>
+              <a
+                href="https://discord.com/invite/CVV8w4zat4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-surface-200 text-surface-600 px-5 py-2.5 text-sm font-medium hover:bg-surface-50 hover:text-surface-900 transition-colors"
+              >
+                <MessageCircle size={16} />
+                Discord
               </a>
               <GithubStars />
             </div>
@@ -85,9 +111,13 @@ export default observer(({ onNavigate }) => (
             <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center mb-4">
               <ShieldCheck size={20} className="text-brand-500" />
             </div>
-            <h3 className="text-lg font-semibold text-surface-900">Declarative Validation</h3>
+            <h3 className="text-lg font-semibold text-surface-900">
+              Declarative Validation
+            </h3>
             <p className="text-surface-500 mt-2 leading-relaxed">
-              Define validation rules inline with your field definitions using validatorjs or custom functions. Sync and async, with per-field error messages that update reactively.
+              Define validation rules inline with your field definitions using
+              validatorjs or custom functions. Sync and async, with per-field
+              error messages that update reactively.
             </p>
           </div>
 
@@ -95,9 +125,12 @@ export default observer(({ onNavigate }) => (
             <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center mb-4">
               <Zap size={20} className="text-brand-500" />
             </div>
-            <h3 className="text-lg font-semibold text-surface-900">MobX Reactive</h3>
+            <h3 className="text-lg font-semibold text-surface-900">
+              MobX Reactive
+            </h3>
             <p className="text-surface-500 mt-2 leading-relaxed">
-              Every field state, error, and touch event is observable. Your UI reactively updates with zero extra code.
+              Every field state, error, and touch event is observable. Your UI
+              reactively updates with zero extra code.
             </p>
           </div>
 
@@ -105,9 +138,13 @@ export default observer(({ onNavigate }) => (
             <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center mb-4">
               <Layers size={20} className="text-brand-500" />
             </div>
-            <h3 className="text-lg font-semibold text-surface-900">Any UI Library</h3>
+            <h3 className="text-lg font-semibold text-surface-900">
+              Any UI Library
+            </h3>
             <p className="text-surface-500 mt-2 leading-relaxed">
-              Bring your own UI. Material UI, Ant Design, React Widgets, React Select, React Aria, or plain HTML — same form definition, any render.
+              Bring your own UI. Material UI, Ant Design, React Widgets, React
+              Select, React Aria, or plain HTML — same form definition, any
+              render.
             </p>
           </div>
 
@@ -115,9 +152,13 @@ export default observer(({ onNavigate }) => (
             <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center mb-4">
               <GitBranch size={20} className="text-brand-500" />
             </div>
-            <h3 className="text-lg font-semibold text-surface-900">Dynamic &amp; Nested Fields</h3>
+            <h3 className="text-lg font-semibold text-surface-900">
+              Dynamic &amp; Nested Fields
+            </h3>
             <p className="text-surface-500 mt-2 leading-relaxed">
-              Deeply nested field structures, dynamic field arrays with add/remove, sortable lists, and conditional logic. Handles complex data hierarchies with MobX-powered reactivity.
+              Deeply nested field structures, dynamic field arrays with
+              add/remove, sortable lists, and conditional logic. Handles complex
+              data hierarchies with MobX-powered reactivity.
             </p>
           </div>
         </div>
@@ -143,12 +184,16 @@ export default observer(({ onNavigate }) => (
             <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center mb-4">
               <Terminal size={20} className="text-brand-500" />
             </div>
-            <h3 className="text-lg font-semibold text-surface-900 mb-3">mobx-react-form</h3>
+            <h3 className="text-lg font-semibold text-surface-900 mb-3">
+              mobx-react-form
+            </h3>
             <p className="text-surface-500 text-sm mb-4 leading-relaxed">
-              Core library with validation plugin support.
+              Install the library to define your forms, fields, and validation
             </p>
             <pre className="bg-surface-50 rounded-lg border border-surface-200 p-4 overflow-x-auto text-sm">
-              <code className="text-surface-700">npm i --save mobx-react-form validatorjs</code>
+              <code className="text-surface-700">
+                npm i --save mobx-react-form
+              </code>
             </pre>
           </div>
 
@@ -156,12 +201,16 @@ export default observer(({ onNavigate }) => (
             <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center mb-4">
               <Terminal size={20} className="text-brand-500" />
             </div>
-            <h3 className="text-lg font-semibold text-surface-900 mb-3">mobx-react-form-devtools</h3>
+            <h3 className="text-lg font-semibold text-surface-900 mb-3">
+              mobx-react-form-devtools
+            </h3>
             <p className="text-surface-500 text-sm mb-4 leading-relaxed">
               Inspect form state, fields, and validation in real time.
             </p>
             <pre className="bg-surface-50 rounded-lg border border-surface-200 p-4 overflow-x-auto text-sm">
-              <code className="text-surface-700">npm i --save mobx-react-form-devtools</code>
+              <code className="text-surface-700">
+                npm i --save mobx-react-form-devtools
+              </code>
             </pre>
           </div>
         </div>

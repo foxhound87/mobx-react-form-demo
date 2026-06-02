@@ -15,7 +15,7 @@ import bindings from './_.bindings';
 import dvrExtend from './extension/dvr';
 // import svkExtend from './extension/svk';
 
-export default class Form extends MobxReactForm {
+export default class Form<F extends Record<string, any> = Record<string, any>> extends MobxReactForm<F> {
 
   bindings() {
     return bindings;
