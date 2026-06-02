@@ -4,6 +4,7 @@ import { action } from 'mobx';
 import _ from 'lodash';
 
 import MobxReactFormDevTools from '../../modules/mobx-react-form-devtools/src'; // load from source
+import devtoolsStore from '../../modules/mobx-react-form-devtools/src/store';
 
 import Nav from './Nav';
 import Switch from './Switch';
@@ -37,6 +38,13 @@ MobxReactFormDevTools.register(forms);
 export default observer(() => {
   const active = selected(menu);
   const isWelcome = !active || !formKeys.includes(active);
+  const [isMd, setIsMd] = React.useState(window.innerWidth >= 768);
+
+  React.useEffect(() => {
+    const handler = () => setIsMd(window.innerWidth >= 768);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
 
   React.useEffect(() => {
     if (isWelcome) {
@@ -47,12 +55,16 @@ export default observer(() => {
     }
   }, [active]);
 
+  const dockOffset = isMd && !devtoolsStore.windowIsOpen && devtoolsStore.open
+    ? devtoolsStore.dock.size
+    : 0;
+
   return (
     <div className="min-h-screen bg-surface-50">
       <MobxReactFormDevTools.UI />
       <Nav menu={menu} select={selectDevtools} selected={active} />
 
-      <main className="pt-14 md:pl-56">
+      <main className="pt-14 md:pl-56" style={{ marginRight: dockOffset }}>
         {isWelcome ? (
           <Switch menu={menu} forms={forms} navigateTo={navigateTo} />
         ) : (

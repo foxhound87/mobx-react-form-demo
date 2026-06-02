@@ -79,15 +79,15 @@
   }
 
   .card-header {
-    @apply px-6 py-4 border-b border-surface-100;
+    @apply px-4 sm:px-6 py-4 border-b border-surface-100;
   }
 
   .card-body {
-    @apply px-6 py-5;
+    @apply px-4 sm:px-6 py-5;
   }
 
   .card-footer {
-    @apply px-6 py-4 border-t border-surface-100 bg-surface-50 rounded-b-xl;
+    @apply px-4 sm:px-6 py-4 border-t border-surface-100 bg-surface-50 rounded-b-xl;
   }
 
   .nav-link {
