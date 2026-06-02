@@ -36,3 +36,16 @@ export interface NestedClubFields {
     hobbies: string[];
   }[];
 }
+
+// ---------------------------------------------------------------------------
+// Usage example — PathsOf for nested field path autocomplete
+// ---------------------------------------------------------------------------
+// import { PathsOf } from 'mobx-react-form';
+// import { NestedClubFields, NestedFieldsForm } from './_.forms';
+//
+// function getFieldValue(form: NestedFieldsForm, path: PathsOf<NestedClubFields>) {
+//   return form.$(path).value;
+//   //        ^—— path autocompletes to:
+//   //        "club" | "members" | "club.name" | "club.city"
+//   //        | "members[].firstname" | "members[].lastname" | "members[].hobbies"
+// }
