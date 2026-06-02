@@ -4,3 +4,7 @@
 [submodule "modules/mobx-react-form"]
 	path = modules/mobx-react-form
 	url = git@github.com:foxhound87/mobx-react-form.git
+[submodule "modules/mobx-react-form-docs"]
+	path = modules/mobx-react-form-docs
+	url = git@github.com:foxhound87/mobx-react-form.git
+	branch = docs
