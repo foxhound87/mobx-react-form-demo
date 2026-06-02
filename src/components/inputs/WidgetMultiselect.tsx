@@ -3,10 +3,10 @@ import { observer } from 'mobx-react';
 import { Multiselect } from 'react-widgets';
 
 export default observer(({ field }) => (
-  <div className="measure">
+  <div className="mb-4">
     <label
       htmlFor={field.id}
-      className="f7 db mb2 mt3 light-silver"
+      className="form-label"
     >
       {field.label}
     </label>

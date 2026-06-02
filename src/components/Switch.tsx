@@ -9,10 +9,10 @@ import FormRegisterSimple from './forms/FormRegisterSimple';
 import FormCompanyWidgets from './forms/FormCompanyWidgets';
 import FormCompanySimple from './forms/FormCompanySimple';
 import FormDynamicFieldsSelect from './forms/FormDynamicFieldsSelect';
+import FormSortableList from './forms/FormSortableList';
 
 export default observer(({ menu, forms }) => {
   switch (true) {
-
     case menu.markdown:
       return (<FormMarkdown form={forms.markdown} />);
 
@@ -36,6 +36,9 @@ export default observer(({ menu, forms }) => {
 
     case menu.dynamicFieldsSelect:
       return (<FormDynamicFieldsSelect form={forms.dynamicFieldsSelect} />);
+
+    case menu.sortableList:
+      return (<FormSortableList form={forms.sortableList} />);
 
     default: return null;
   }

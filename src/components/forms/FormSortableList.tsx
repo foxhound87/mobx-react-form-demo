@@ -1,0 +1,223 @@
+import React, { useState } from 'react';
+import { observer } from 'mobx-react';
+import Button from '../Button';
+
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragOverlay,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+
+// -----------------
+// ProductRow
+// -----------------
+const ProductRow = observer(({ field }: { field: any }) => (
+  <div className="flex items-center gap-2">
+    <input
+      {...field.$('name').bind()}
+      className="form-input flex-1 min-w-0"
+      placeholder="Product name"
+    />
+    <input
+      {...field.$('price').bind()}
+      className="form-input w-24"
+      placeholder="Price"
+    />
+    <Button
+      onlyIcon
+      text="Del"
+      type="button"
+      icon="times-circle"
+      label={field.label}
+      onClick={field.onDel}
+      className="btn-ghost !px-2 !py-1.5 text-red-500 hover:text-red-600"
+    />
+  </div>
+));
+
+// -----------------
+// SortableItem
+// -----------------
+const SortableItem = observer(function SortableItem({
+  id,
+  field,
+  onMove,
+}: {
+  id: string;
+  field: any;
+  onMove: (id: string, dir: "up" | "down") => void;
+}) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
+    useSortable({ id });
+
+  const style: React.CSSProperties = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className={`card mb-2 ${isDragging ? 'opacity-50 shadow-elevated' : ''}`}
+    >
+      <div className="card-body !py-3 !px-4 flex items-center gap-3">
+        <button
+          type="button"
+          {...listeners}
+          className="cursor-grab active:cursor-grabbing text-surface-400 hover:text-surface-600 transition-colors touch-none"
+          aria-label="Drag to reorder"
+        >
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </button>
+        <div className="flex-1 min-w-0">
+          <ProductRow field={field} />
+        </div>
+        <div className="flex flex-col gap-0.5 flex-shrink-0">
+          <button
+            type="button"
+            onClick={() => onMove(id, "up")}
+            className="text-surface-400 hover:text-surface-700 transition-colors p-0.5"
+            aria-label="Move up"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => onMove(id, "down")}
+            className="text-surface-400 hover:text-surface-700 transition-colors p-0.5"
+            aria-label="Move down"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+});
+
+// -----------------
+// SortableList
+// -----------------
+export default observer(function SortableList({ form }: { form: any }) {
+  const sensors = useSensors(useSensor(PointerSensor));
+  const productsField = form.$("products");
+  const [activeId, setActiveId] = useState<string | null>(null);
+
+  function handleDragStart(event: any) {
+    setActiveId(event.active.id);
+  }
+
+  function handleDragEnd(event: any) {
+    const { active, over } = event;
+    if (!over || active.id === over.id) {
+      setActiveId(null);
+      return;
+    }
+
+    const nativeArray = productsField.map(f => f);
+    const keys = nativeArray.map(f => f.key);
+    const fromIndex = keys.indexOf(active.id);
+    const toIndex = keys.indexOf(over.id);
+
+    if (fromIndex !== -1 && toIndex !== -1) {
+      productsField.move(fromIndex, toIndex);
+    }
+
+    setActiveId(null);
+  }
+
+  function handleMove(id: string, dir: "up" | "down") {
+    const nativeArray = productsField.map(f => f);
+    const keys = nativeArray.map(f => f.key);
+    const index = keys.indexOf(id);
+    if (index === -1) return;
+
+    const newIndex = dir === "up" ? index - 1 : index + 1;
+    if (newIndex < 0 || newIndex >= keys.length) return;
+
+    productsField.move(index, newIndex);
+  }
+
+  const activeField = activeId ? productsField.map(f => f).find(f => f.key === activeId) : null;
+
+  return (
+    <div className="card">
+      <div className="card-header">
+        <h2 className="text-lg font-medium text-surface-900">Sortable Products</h2>
+        <p className="text-sm text-surface-500 mt-0.5">Drag to reorder products</p>
+      </div>
+      <div className="card-body">
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+        >
+          <SortableContext
+            items={productsField.map(f => f.key)}
+            strategy={verticalListSortingStrategy}
+          >
+            <div className="space-y-2">
+              {productsField.map(field => (
+                <SortableItem
+                  key={field.key}
+                  id={field.key}
+                  field={field}
+                  onMove={handleMove}
+                />
+              ))}
+            </div>
+          </SortableContext>
+
+          <DragOverlay>
+            {activeField ? (
+              <div className="card shadow-elevated">
+                <div className="card-body !py-3 !px-4 flex items-center gap-3">
+                  <svg className="w-5 h-5 text-surface-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                  </svg>
+                  <div className="flex-1">
+                    <ProductRow field={activeField} />
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </DragOverlay>
+        </DndContext>
+
+        <div className="flex items-center gap-3 mt-6 pt-4 border-t border-surface-200">
+          <Button
+            type="button"
+            text="Add Product"
+            icon="plus-circle"
+            onClick={productsField.onAdd}
+            className="btn-primary"
+          />
+          <Button
+            type="button"
+            text="Submit (show values)"
+            icon="check-circle"
+            onClick={productsField.onSubmit}
+            className="btn-ghost"
+          />
+        </div>
+      </div>
+    </div>
+  );
+});

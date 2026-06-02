@@ -1,36 +1,31 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-
 import FieldControl from '../controls/FieldControls';
 import NestedHobbyInput from '../inputs/NestedHobbyInput';
 
 export default observer(({ hobbies }) => (
-  <fieldset className='pa3'>
-
-    <div className="cf">
-      <h5 className="fl mv0">
+  <div className="mb-3 pl-4 border-l-2 border-brand-200">
+    <div className="flex items-center justify-between mb-2">
+      <h4 className="text-sm font-medium text-surface-700">
         {[
           hobbies.container().$('firstname').value,
           hobbies.container().$('lastname').value,
           hobbies.label,
-        ].join(' ')}
-      </h5>
-      <div className="fr">
-        <FieldControl
-          field={hobbies}
-          // labels={false}
-          controls={{
-            onAdd: true,
-          }}
-        />
-      </div>
+        ].filter(Boolean).join(' ')}
+      </h4>
+      <FieldControl
+        field={hobbies}
+        controls={{
+          onAdd: true,
+        }}
+      />
     </div>
 
-    {hobbies.map(hobby =>
+    {hobbies.map(hobby => (
       <NestedHobbyInput
         field={hobby}
         key={hobby.key}
-      />)}
-
-  </fieldset>
+      />
+    ))}
+  </div>
 ));

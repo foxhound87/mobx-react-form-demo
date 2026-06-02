@@ -4,10 +4,9 @@ import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 export default observer(({ field }) => (
-  <div>
-    <br />
+  <div className="mb-4">
     <FormControlLabel
-      label={field.label}
+      label={<span className="text-sm text-surface-700">{field.label}</span>}
       control={
         <Switch
           id={field.id}
@@ -15,14 +14,12 @@ export default observer(({ field }) => (
           onChange={field.onToggle}
           onFocus={field.onFocus}
           onBlur={field.onBlur}
+          size="small"
         />
       }
     />
-    <small
-      id="name-desc"
-      className="f7 black-60 db mt1 mb3 red"
-    >
-      {field.error}
-    </small>
+    {field.error && (
+      <p className="form-error-text mt-1 ml-7">{field.error}</p>
+    )}
   </div>
 ));

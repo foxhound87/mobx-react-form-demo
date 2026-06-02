@@ -1,30 +1,25 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-
 import FieldControl from '../controls/FieldControls';
 import MaterialTextField from '../inputs/MaterialTextField';
 
 export default observer(({ field }) => (
-  <div>
-
-    <span>
+  <div className="flex items-start gap-2 mb-3 p-3 bg-surface-50 rounded-lg border border-surface-100">
+    <div className="flex-1">
       <MaterialTextField
         field={field}
         placeholder="Insert Hobby"
       />
-    </span>
-
-    <span>
+    </div>
+    <div className="flex-shrink-0 pt-1">
       <FieldControl
         field={field}
-        // labels={false}
         controls={{
           onDel: true,
           onClear: true,
           onReset: true,
         }}
       />
-    </span>
-
+    </div>
   </div>
 ));

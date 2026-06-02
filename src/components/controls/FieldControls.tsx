@@ -1,67 +1,62 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import $ from '../../styles';
 import Button from '../Button';
 
 export default observer(({ field, controls = null }) => (
-  <span>
-
+  <span className="inline-flex items-center gap-1">
     {(!controls || controls.onSubmit) &&
       <Button
         type="submit"
-        className={$.ctrl}
+        className="btn-primary !px-3 !py-1.5 !text-xs"
         onClick={field.onSubmit}
         disabled={field.submitting}
         content={(field.submitting || field.validating)
           ? <b><i className="fa fa-spinner fa-spin" /></b>
-          : <b><i className="fa fa-dot-circle-o" /> Submit</b>}
+          : <span className="inline-flex items-center gap-1"><i className="fa fa-dot-circle-o" /> Submit</span>}
       />}
 
     {(!controls || controls.onAdd) &&
       <Button
         onlyIcon
-        text={'Add'}
+        text="Add"
         type="button"
         icon="plus-circle"
         label={field.label}
         onClick={field.onAdd}
-        className={$.fctrl}
+        className="btn-ghost !px-2 !py-1.5 !text-xs"
       />}
 
     {(!controls || controls.onDel) &&
       <Button
         onlyIcon
-        text={'Delete'}
+        text="Delete"
         type="button"
         icon="times-circle"
         label={field.label}
         onClick={field.onDel}
-        className={$.fctrl}
+        className="btn-ghost !px-2 !py-1.5 !text-xs text-red-500 hover:text-red-600"
       />}
-
 
     {(!controls || controls.onClear) &&
       <Button
         onlyIcon
-        text={'Clear'}
+        text="Clear"
         type="button"
         icon="eraser"
         label={field.label}
         onClick={field.onClear}
-        className={$.fctrl}
+        className="btn-ghost !px-2 !py-1.5 !text-xs"
       />}
-
 
     {(!controls || controls.onReset) &&
       <Button
         onlyIcon
-        text={'Reset'}
+        text="Reset"
         type="button"
         icon="refresh"
         label={field.label}
         onClick={field.onReset}
-        className={$.fctrl}
+        className="btn-ghost !px-2 !py-1.5 !text-xs"
       />}
-
   </span>
 ));

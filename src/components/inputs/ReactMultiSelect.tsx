@@ -3,10 +3,10 @@ import { observer } from 'mobx-react';
 import Select from 'react-select';
 
 export default observer(({ field }) => (
-  <div className="measure">
+  <div className="mb-4">
     <label
       htmlFor={field.id}
-      className="f7 db mb2 mt3 light-silver"
+      className="form-label"
     >
       {field.label}
     </label>
@@ -15,6 +15,21 @@ export default observer(({ field }) => (
       options={field.extra}
       resetValue={[]}
       multi
+      className="text-sm"
+      classNamePrefix="react-select"
+      styles={{
+        control: (base) => ({
+          ...base,
+          borderRadius: '0.5rem',
+          borderColor: '#e7e5e4',
+          boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+          minHeight: '40px',
+          '&:hover': { borderColor: '#d6d3d1' },
+        }),
+      }}
     />
+    {field.error && (
+      <p className="form-error-text">{field.error}</p>
+    )}
   </div>
 ));

@@ -1,6 +1,5 @@
-import React, { Component, MouseEventHandler } from 'react';
+import React, { MouseEventHandler } from 'react';
 import { observer } from 'mobx-react';
-// import ReactTooltip from 'react-tooltip';
 import _ from 'lodash';
 import { Tooltip } from '@mui/material';
 
@@ -34,14 +33,14 @@ export default observer(({
       type={type}
       disabled={disabled}
       onClick={onClick}
-      className={className}
+      className={className || 'btn-primary'}
     >
-
-      {content ||
-        <span>
-          <i className={`fa fa-${icon}`} />
-          {!onlyIcon && <b className="dn di-ns"> {checkLabel(text, label)}</b>}
-        </span>}
+      {content || (
+        <span className="inline-flex items-center gap-1.5">
+          {icon && <i className={`fa fa-${icon}`} />}
+          {!onlyIcon && <span>{checkLabel(text, label)}</span>}
+        </span>
+      )}
     </button>
   </Tooltip>
 ));

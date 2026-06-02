@@ -1,41 +1,37 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-
 import NestedHobbyFieldset from '../fieldsets/NestedHobbyFieldset';
 import FieldControl from '../controls/FieldControls';
 import MaterialTextField from '../inputs/MaterialTextField';
 
 export default observer(({ member }) => (
-  <fieldset className="tc pa3">
+  <div className="card mb-4">
+    <div className="card-body">
+      <MaterialTextField field={member.$('firstname')} />
+      <MaterialTextField field={member.$('lastname')} />
 
-    <MaterialTextField field={member.$('firstname')} />
-    <MaterialTextField field={member.$('lastname')} />
+      <div className="flex items-center gap-1 mt-2 mb-3">
+        <FieldControl
+          field={member}
+          controls={{
+            onDel: true,
+            onClear: true,
+            onReset: true,
+          }}
+        />
+      </div>
 
-    <br />
+      {member.has('hobbies') &&
+        <NestedHobbyFieldset
+          hobbies={member.$('hobbies')}
+        />}
 
-    <span>
-      <FieldControl
-        field={member}
-        // labels={false}
-        controls={{
-          onDel: true,
-          onClear: true,
-          onReset: true,
-        }}
-      />
-    </span>
-
-    <br />
-
-    {member.has('hobbies') &&
-      <NestedHobbyFieldset
-        hobbies={member.$('hobbies')}
-      />}
-
-    <FieldControl
-      field={member}
-      controls={{ onSubmit: true }}
-    />
-
-  </fieldset>
+      <div className="mt-3">
+        <FieldControl
+          field={member}
+          controls={{ onSubmit: true }}
+        />
+      </div>
+    </div>
+  </div>
 ));

@@ -15,6 +15,7 @@ import registerMaterial from './setup/registerMaterial';
 import companySimple from './setup/companySimple';
 import companyWidgets from './setup/companyWidgets';
 import dynamicFieldsSelect from './setup/dynamicFieldsSelect';
+import sortableList from './setup/sortableList';
 
 
 class CustomField extends Field {
@@ -53,6 +54,7 @@ class FileUploadForm extends Form {}
 class CompanySimpleForm extends Form {}
 class CompanyWidgetsForm extends Form {}
 class FormDynamicFieldsSelect extends Form {}
+class FormSortableList extends Form {}
 
 const onSubmitFileUpload = (form) => {
   console.log('FileUpload > myFileUpload files', form.$('myFileUpload').files);
@@ -68,4 +70,5 @@ export default {
   companySimple: new CompanySimpleForm({ ...companySimple }, { name: 'Company Simple' }),
   companyWidgets: new CompanyWidgetsForm({ ...companyWidgets }, { name: 'Company Widgets' }),
   dynamicFieldsSelect: new FormDynamicFieldsSelect({ ...dynamicFieldsSelect }, { name: 'Dynamic Fields Select' }),
+  sortableList: new FormSortableList({ ...sortableList }, { name: 'Sortable List' }),
 };

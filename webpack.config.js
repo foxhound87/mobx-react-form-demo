@@ -50,6 +50,8 @@ const config = {
     extensions: ['.js', '.ts', '.tsx', '.json', '.css'],
     alias: {
       react: path.resolve('.', 'node_modules', 'react'),
+      mobx: path.resolve('.', 'node_modules', 'mobx'),
+      'mobx-react': path.resolve('.', 'node_modules', 'mobx-react'),
     },
   },
   output: {

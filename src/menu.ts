@@ -9,4 +9,5 @@ export default observable({
   companyWidgets: false,
   companySimple: false,
   dynamicFieldsSelect: false,
+  sortableList: false,
 });

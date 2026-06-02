@@ -2,18 +2,19 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 export default observer(({ field }) => (
-  <div>
+  <div className="mb-4">
     <label
-      className="pa0 ma0 mt3 lh-copy f6 pointer"
+      className="inline-flex items-center gap-3 cursor-pointer select-none"
       htmlFor={field.id}
     >
-      <input {...field.bind()} /> {field.label}
+      <input
+        className="form-checkbox"
+        {...field.bind()}
+      />
+      <span className="text-sm text-surface-700">{field.label}</span>
     </label>
-    <small
-      id="name-desc"
-      className="f6 db mt1 mb3 red"
-    >
-      {field.error}
-    </small>
+    {field.error && (
+      <p className="form-error-text mt-1 ml-7">{field.error}</p>
+    )}
   </div>
 ));

@@ -8,11 +8,12 @@ export default observer(({
   placeholder = null,
   validatingText = 'validating...',
 }) => (
-  <div className="pv3">
+  <div className="mb-2">
     <TextField
       {...field.bind({ type, placeholder, validatingText })}
       variant="standard"
       fullWidth
-    /><br />
+      size="small"
+    />
   </div>
 ));

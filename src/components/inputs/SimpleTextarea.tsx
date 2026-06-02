@@ -2,18 +2,21 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 export default observer(({ field, rows = 15, cols = 100 }) => (
-  <div className="measure">
+  <div className="mb-4">
     <label
       htmlFor={field.id}
-      className="f7 db mb2 mt3 light-silver"
+      className="form-label"
     >
       {field.label}
     </label>
     <textarea
-      className="db border-box hover-black w-100 measure ba b--black-20 pa2 br2"
+      className={`form-input resize-y min-h-[120px] ${field.error ? 'form-input-error' : ''}`}
       {...field.bind()}
       rows={rows}
       cols={cols}
     />
+    {field.error && (
+      <p className="form-error-text">{field.error}</p>
+    )}
   </div>
 ));
