@@ -2,62 +2,119 @@
 const component = (p) => import(`../components/forms/${p}.tsx?raw`).then(m => m.default);
 const config = (p) => import(`./setup/${p}.ts?raw`).then(m => m.default);
 const input = (p) => import(`../components/inputs/${p}.tsx?raw`).then(m => m.default);
+const validator = (p) => import(`./extension/${p}.ts?raw`).then(m => m.default);
+const raw = (p) => import(`../${p}?raw`).then(m => m.default);
 
 // Input components used by each form
 const inputComponents = {
+  // Basics
+  login: ['SimpleInput', 'SimpleCheckbox'],
+  registerSimple: ['SimpleInput', 'SimpleCheckbox'],
+  // Validation
+  validationDvr: ['SimpleInput'],
+  validationVjf: ['SimpleInput'],
+  validationZod: ['SimpleInput', 'SimpleCheckbox'],
+  validationAsync: ['SimpleInput', 'SimpleTextarea'],
+  // Dynamic Data
+  arrays: ['SimpleInput'],
+  nestedFields: ['MaterialTextField', 'NestedHobbyInput'],
+  dynamicFieldsSelect: ['MaterialTextField'],
+  // Advanced
+  interceptors: ['SimpleInput'],
+  observers: ['SimpleInput'],
+  composer: ['SimpleInput'],
+  // UI Libraries
   registerMaterial: ['MaterialTextField', 'MaterialSwitch'],
   materialAdvanced: ['MuiSelect', 'MuiAutocomplete', 'MuiRating', 'MuiSlider'],
-  registerSimple: ['SimpleInput', 'SimpleCheckbox'],
   companySimple: ['SimpleInput', 'SimpleRadio', 'SimpleSelect', 'ReactMultiSelect'],
   companyWidgets: ['SimpleInput', 'WidgetDatePicker', 'WidgetDropdownList', 'WidgetMultiselect'],
   headlessUI: ['HeadlessListbox', 'HeadlessCombobox', 'HeadlessSwitch', 'HeadlessRadioGroup'],
   antd: ['AntdInput', 'AntdSelect', 'AntdDatePicker', 'AntdRate', 'AntdSlider', 'AntdSwitch', 'AntdInputNumber'],
   aria: ['AriaTextField', 'AriaSelect', 'AriaComboBox', 'AriaSlider', 'AriaSwitch'],
-  nestedFields: ['MaterialTextField', 'NestedHobbyInput'],
-  sortableList: [],
-  fileUpload: ['SimpleFile', 'DropZone'],
   markdown: ['SimpleTextarea'],
-  dynamicFieldsSelect: ['MaterialTextField'],
+  fileUpload: ['SimpleFile', 'DropZone'],
+  sortableList: [],
 };
 
 export const getInputComponents = (key) => inputComponents[key] || [];
 
 export const loadInputSource = (name) => input(`${name}`);
 
+// Forms that have a separate validator/extension source
+export const validatorForms = ['validationDvr', 'validationVjf', 'validationZod', 'validationAsync'];
+
+export const loadValidatorSource = (key) => {
+  const map = {
+    validationDvr: () => validator('dvr'),
+    validationVjf: () => validator('vjf'),
+    validationZod: () => raw('forms/extension/zodSchema'),
+    validationAsync: () => validator('vjf'),
+  };
+  return (map[key] || (() => Promise.resolve('')))();
+};
+
 export const loadComponentSource = (key) => {
   const map = {
+    // Basics
+    login: () => component('FormLogin'),
+    registerSimple: () => component('FormRegisterSimple'),
+    // Validation
+    validationDvr: () => component('FormValidationDvr'),
+    validationVjf: () => component('FormValidationVjf'),
+    validationZod: () => component('FormValidationZod'),
+    validationAsync: () => component('FormValidationAsync'),
+    // Dynamic Data
+    arrays: () => component('FormArrays'),
+    nestedFields: () => component('FormWithNestedFields'),
+    dynamicFieldsSelect: () => component('FormDynamicFieldsSelect'),
+    // Advanced
+    interceptors: () => component('FormInterceptors'),
+    observers: () => component('FormObservers'),
+    composer: () => component('FormComposer'),
+    // UI Libraries
     registerMaterial: () => component('FormRegisterMaterial'),
     materialAdvanced: () => component('FormMaterialAdvanced'),
-    registerSimple: () => component('FormRegisterSimple'),
     companySimple: () => component('FormCompanySimple'),
     companyWidgets: () => component('FormCompanyWidgets'),
     headlessUI: () => component('FormHeadlessUI'),
     antd: () => component('FormAntd'),
     aria: () => component('FormAria'),
-    nestedFields: () => component('FormWithNestedFields'),
-    sortableList: () => component('FormSortableList'),
-    fileUpload: () => component('FormFileUpload'),
     markdown: () => component('FormMarkdown'),
-    dynamicFieldsSelect: () => component('FormDynamicFieldsSelect'),
+    fileUpload: () => component('FormFileUpload'),
+    sortableList: () => component('FormSortableList'),
   };
   return (map[key] || (() => Promise.resolve('')))();
 };
 
 export const loadConfigSource = (key) => {
   const map = {
+    // Basics
+    login: () => config('login'),
+    registerSimple: () => config('registerSimple'),
+    // Validation
+    validationDvr: () => config('validationDvr'),
+    validationVjf: () => config('validationVjf'),
+    validationZod: () => config('validationZod'),
+    validationAsync: () => config('validationAsync'),
+    // Dynamic Data
+    arrays: () => config('arrays'),
+    nestedFields: () => config('nestedFields'),
+    dynamicFieldsSelect: () => config('dynamicFieldsSelect'),
+    // Advanced
+    interceptors: () => config('interceptors'),
+    observers: () => config('observers'),
+    composer: () => config('composer'),
+    // UI Libraries
     registerMaterial: () => config('registerMaterial'),
     materialAdvanced: () => config('materialAdvanced'),
-    registerSimple: () => config('registerSimple'),
     companySimple: () => config('companySimple'),
     companyWidgets: () => config('companyWidgets'),
     headlessUI: () => config('headlessUI'),
     antd: () => config('antd'),
     aria: () => config('aria'),
-    nestedFields: () => config('nestedFields'),
-    sortableList: () => config('sortableList'),
-    fileUpload: () => config('fileUpload'),
     markdown: () => config('markdown'),
-    dynamicFieldsSelect: () => config('dynamicFieldsSelect'),
+    fileUpload: () => config('fileUpload'),
+    sortableList: () => config('sortableList'),
   };
   return (map[key] || (() => Promise.resolve('')))();
 };

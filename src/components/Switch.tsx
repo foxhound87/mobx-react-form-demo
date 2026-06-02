@@ -4,19 +4,37 @@ import { observer } from 'mobx-react';
 import Welcome from './Welcome';
 import FormCodeViewer from './FormCodeViewer';
 
-const FormMarkdown = React.lazy(() => import(/* webpackChunkName: "form-markdown" */ './forms/FormMarkdown'));
-const FormFileUpload = React.lazy(() => import(/* webpackChunkName: "form-fileupload" */ './forms/FormFileUpload'));
-const FormWithNestedFields = React.lazy(() => import(/* webpackChunkName: "form-nested" */ './forms/FormWithNestedFields'));
-const FormRegisterMaterial = React.lazy(() => import(/* webpackChunkName: "form-register-material" */ './forms/FormRegisterMaterial'));
+// Basics
+const FormLogin = React.lazy(() => import(/* webpackChunkName: "form-login" */ './forms/FormLogin'));
 const FormRegisterSimple = React.lazy(() => import(/* webpackChunkName: "form-register-simple" */ './forms/FormRegisterSimple'));
-const FormCompanyWidgets = React.lazy(() => import(/* webpackChunkName: "form-company-widgets" */ './forms/FormCompanyWidgets'));
-const FormCompanySimple = React.lazy(() => import(/* webpackChunkName: "form-company-simple" */ './forms/FormCompanySimple'));
+
+// Validation
+const FormValidationZod = React.lazy(() => import(/* webpackChunkName: "form-validation-zod" */ './forms/FormValidationZod'));
+const FormValidationDvr = React.lazy(() => import(/* webpackChunkName: "form-validation-dvr" */ './forms/FormValidationDvr'));
+const FormValidationVjf = React.lazy(() => import(/* webpackChunkName: "form-validation-vjf" */ './forms/FormValidationVjf'));
+const FormValidationAsync = React.lazy(() => import(/* webpackChunkName: "form-validation-async" */ './forms/FormValidationAsync'));
+
+// Dynamic Data
+const FormArrays = React.lazy(() => import(/* webpackChunkName: "form-arrays" */ './forms/FormArrays'));
+const FormWithNestedFields = React.lazy(() => import(/* webpackChunkName: "form-nested" */ './forms/FormWithNestedFields'));
 const FormDynamicFieldsSelect = React.lazy(() => import(/* webpackChunkName: "form-dynamic-fields" */ './forms/FormDynamicFieldsSelect'));
-const FormSortableList = React.lazy(() => import(/* webpackChunkName: "form-sortable" */ './forms/FormSortableList'));
+
+// Advanced
+const FormInterceptors = React.lazy(() => import(/* webpackChunkName: "form-interceptors" */ './forms/FormInterceptors'));
+const FormObservers = React.lazy(() => import(/* webpackChunkName: "form-observers" */ './forms/FormObservers'));
+const FormComposer = React.lazy(() => import(/* webpackChunkName: "form-composer" */ './forms/FormComposer'));
+
+// UI Libraries (existing)
+const FormRegisterMaterial = React.lazy(() => import(/* webpackChunkName: "form-register-material" */ './forms/FormRegisterMaterial'));
 const FormMaterialAdvanced = React.lazy(() => import(/* webpackChunkName: "form-material-advanced" */ './forms/FormMaterialAdvanced'));
+const FormCompanySimple = React.lazy(() => import(/* webpackChunkName: "form-company-simple" */ './forms/FormCompanySimple'));
+const FormCompanyWidgets = React.lazy(() => import(/* webpackChunkName: "form-company-widgets" */ './forms/FormCompanyWidgets'));
 const FormHeadlessUI = React.lazy(() => import(/* webpackChunkName: "form-headless" */ './forms/FormHeadlessUI'));
 const FormAntd = React.lazy(() => import(/* webpackChunkName: "form-antd" */ './forms/FormAntd'));
 const FormAria = React.lazy(() => import(/* webpackChunkName: "form-aria" */ './forms/FormAria'));
+const FormMarkdown = React.lazy(() => import(/* webpackChunkName: "form-markdown" */ './forms/FormMarkdown'));
+const FormFileUpload = React.lazy(() => import(/* webpackChunkName: "form-fileupload" */ './forms/FormFileUpload'));
+const FormSortableList = React.lazy(() => import(/* webpackChunkName: "form-sortable" */ './forms/FormSortableList'));
 
 const Fallback = () => (
   <div className="flex items-center justify-center py-20">
@@ -25,24 +43,38 @@ const Fallback = () => (
 );
 
 const formComponents = {
-  markdown: FormMarkdown,
-  fileUpload: FormFileUpload,
-  nestedFields: FormWithNestedFields,
-  registerMaterial: FormRegisterMaterial,
+  // Basics
+  login: FormLogin,
   registerSimple: FormRegisterSimple,
-  companyWidgets: FormCompanyWidgets,
-  companySimple: FormCompanySimple,
+  // Validation
+  validationDvr: FormValidationDvr,
+  validationVjf: FormValidationVjf,
+  validationZod: FormValidationZod,
+  validationAsync: FormValidationAsync,
+  // Dynamic Data
+  arrays: FormArrays,
+  nestedFields: FormWithNestedFields,
   dynamicFieldsSelect: FormDynamicFieldsSelect,
-  sortableList: FormSortableList,
+  // Advanced
+  interceptors: FormInterceptors,
+  observers: FormObservers,
+  composer: FormComposer,
+  // UI Libraries (existing)
+  registerMaterial: FormRegisterMaterial,
   materialAdvanced: FormMaterialAdvanced,
+  companySimple: FormCompanySimple,
+  companyWidgets: FormCompanyWidgets,
   headlessUI: FormHeadlessUI,
   antd: FormAntd,
   aria: FormAria,
+  markdown: FormMarkdown,
+  fileUpload: FormFileUpload,
+  sortableList: FormSortableList,
 };
 
 export default observer(({ menu, forms, navigateTo }) => {
   if (menu.welcome) {
-    return (<Welcome onNavigate={navigateTo ? () => navigateTo('registerMaterial') : undefined} />);
+    return (<Welcome onNavigate={navigateTo ? () => navigateTo('registerSimple') : undefined} />);
   }
 
   const activeKey = Object.keys(menu).find(k => menu[k]);

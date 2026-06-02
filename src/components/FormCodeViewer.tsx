@@ -1,7 +1,7 @@
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { loadComponentSource, loadConfigSource, loadInputSource, getInputComponents } from '../forms/sources';
+import { loadComponentSource, loadConfigSource, loadInputSource, loadValidatorSource, getInputComponents, validatorForms } from '../forms/sources';
 
 export default ({ formKey, children }) => {
   const [tab, setTab] = React.useState(null);
@@ -15,7 +15,12 @@ export default ({ formKey, children }) => {
     if (!tab || tab === 'input') return;
     setLoading(true);
     setActiveInput(null);
-    const load = tab === 'component' ? loadComponentSource : loadConfigSource;
+    const loaders = {
+      component: loadComponentSource,
+      config: loadConfigSource,
+      validator: loadValidatorSource,
+    };
+    const load = loaders[tab] || loadConfigSource;
     load(formKey).then((src) => {
       setCode(src);
       setLoading(false);
@@ -61,6 +66,18 @@ export default ({ formKey, children }) => {
         >
           Config
         </button>
+        {validatorForms.includes(formKey) && (
+          <button
+            onClick={() => setTab(tab === 'validator' ? null : 'validator')}
+            className={`text-xs font-medium px-3 py-1.5 rounded-md border transition-colors ${
+              tab === 'validator'
+                ? 'bg-brand-500 text-white border-brand-500'
+                : 'bg-white text-surface-500 border-surface-200 hover:text-surface-700 hover:border-surface-300'
+            }`}
+          >
+            Validator
+          </button>
+        )}
       </div>
 
       {/* Input Components Used */}
@@ -94,7 +111,7 @@ export default ({ formKey, children }) => {
         <div className={`mb-6 rounded-xl border overflow-hidden ${tab === 'input' || tab === 'component' ? 'border-surface-700' : 'border-surface-200 bg-surface-50'}`}>
           <div className={`flex items-center gap-2 px-4 py-2 border-b ${tab === 'input' || tab === 'component' ? 'border-surface-700 bg-surface-800' : 'border-surface-200 bg-surface-100/50'}`}>
             <span className={`text-xs font-medium ${tab === 'input' || tab === 'component' ? 'text-surface-400' : 'text-surface-500'}`}>
-              {tab === 'input' ? 'Input Component' : tab === 'component' ? 'Form Component' : 'Form Config'}
+              {tab === 'input' ? 'Input Component' : tab === 'component' ? 'Form Component' : tab === 'validator' ? 'Validator' : 'Form Config'}
             </span>
             <span className={`text-xs font-mono font-medium ${tab === 'input' || tab === 'component' ? 'text-blue-400' : 'text-brand-600'}`}>
               {tab === 'input' ? activeInput : formKey}
@@ -105,7 +122,7 @@ export default ({ formKey, children }) => {
               <div className="p-4"><span className="text-surface-400">Loading...</span></div>
             ) : code ? (
               <SyntaxHighlighter
-                language={tab === 'config' ? 'typescript' : 'tsx'}
+                language={tab === 'config' || tab === 'validator' ? 'typescript' : 'tsx'}
                 style={vscDarkPlus}
                 customStyle={{
                   margin: 0,

@@ -2,17 +2,31 @@ import { observable } from 'mobx';
 
 export default observable({
   welcome: true,
-  markdown: false,
-  fileUpload: false,
-  nestedFields: false,
-  registerMaterial: false,
+  // Basics
+  login: false,
   registerSimple: false,
-  companyWidgets: false,
-  companySimple: false,
+  // Validation
+  validationDvr: false,
+  validationVjf: false,
+  validationAsync: false,
+  validationZod: false,
+  // Dynamic Data
+  arrays: false,
+  nestedFields: false,
   dynamicFieldsSelect: false,
-  sortableList: false,
+  // Advanced
+  interceptors: false,
+  observers: false,
+  composer: false,
+  // UI Libraries (existing)
+  registerMaterial: false,
   materialAdvanced: false,
+  companySimple: false,
+  companyWidgets: false,
   headlessUI: false,
   antd: false,
   aria: false,
+  markdown: false,
+  fileUpload: false,
+  sortableList: false,
 });

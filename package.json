@@ -72,6 +72,7 @@
     "react-syntax-highlighter": "^16.1.1",
     "react-widgets": "^5.8.4",
     "tailwindcss": "^3.4.19",
-    "validatorjs": "^3.22.1"
+    "validatorjs": "^3.22.1",
+    "zod": "^4.4.3"
   }
 }

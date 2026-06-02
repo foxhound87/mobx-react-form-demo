@@ -3,23 +3,24 @@ import { observer } from 'mobx-react';
 import { action } from 'mobx';
 import _ from 'lodash';
 import {
-  FileText,
-  Upload,
-  Layers,
+  LogIn,
   UserPlus,
-  Type,
-  Building2,
+  ShieldCheck,
+  ListChecks,
+  Clock,
+  Layers,
   List,
-  GripVertical,
-  Palette,
-  Box,
+  Grid3x3,
+  ShieldAlert,
+  Eye,
+  GitBranch,
+  Package,
+  GitBranch as GitBranchIcon,
   Menu,
   X,
-  Package,
-  GitBranch,
-  Rabbit,
-  Antenna,
-  Radio,
+  FileText,
+  Upload,
+  GripVertical,
 } from 'lucide-react';
 import GithubStars from './GithubStars';
 
@@ -34,70 +35,53 @@ const switchTo = (menu, select) => (value) => {
 
 const navGroups = [
   {
-    label: 'Material UI',
+    label: 'Basics',
     items: [
-      { value: 'registerMaterial', label: 'Register', icon: UserPlus },
-      { value: 'materialAdvanced', label: 'Advanced Inputs', icon: Palette },
+      { value: 'login', label: 'Login Form', icon: LogIn },
+      { value: 'registerSimple', label: 'Registration Form', icon: UserPlus },
     ],
   },
   {
-    label: 'Simple',
+    label: 'Validation',
     items: [
-      { value: 'registerSimple', label: 'Register', icon: Type },
-      { value: 'companySimple', label: 'Company', icon: Building2 },
+      { value: 'validationDvr', label: 'DVR', icon: ShieldCheck },
+      { value: 'validationVjf', label: 'VJF', icon: ListChecks },
+      { value: 'validationZod', label: 'ZOD', icon: ShieldCheck },
+      { value: 'validationAsync', label: 'Async', icon: Clock },
     ],
   },
   {
-    label: 'Widgets',
+    label: 'Dynamic Data',
     items: [
-      { value: 'companyWidgets', label: 'Company', icon: Box },
-    ],
-  },
-  {
-    label: 'Headless UI',
-    items: [
-      { value: 'headlessUI', label: 'Components', icon: Rabbit },
-    ],
-  },
-  {
-    label: 'Ant Design',
-    items: [
-      { value: 'antd', label: 'Components', icon: Antenna },
-    ],
-  },
-  {
-    label: 'React Aria',
-    items: [
-      { value: 'aria', label: 'Components', icon: Radio },
+      { value: 'arrays', label: 'Arrays', icon: Layers },
+      { value: 'nestedFields', label: 'Nested', icon: Grid3x3 },
+      { value: 'dynamicFieldsSelect', label: 'Dynamic Fields', icon: List },
     ],
   },
   {
     label: 'Advanced',
     items: [
-      { value: 'nestedFields', label: 'Nested Fields', icon: Layers },
-      { value: 'fileUpload', label: 'File Upload', icon: Upload },
+      { value: 'interceptors', label: 'Interceptors', icon: ShieldAlert },
+      { value: 'observers', label: 'Observers', icon: Eye },
+      { value: 'composer', label: 'Composer', icon: GitBranch },
+    ],
+  },
+  {
+    label: 'UI Libraries',
+    items: [
+      { value: 'registerMaterial', label: 'Material UI', icon: FileText },
+      { value: 'materialAdvanced', label: 'Material Adv.', icon: FileText },
+      { value: 'companySimple', label: 'Simple Company', icon: FileText },
+      { value: 'companyWidgets', label: 'Widgets', icon: FileText },
+      { value: 'headlessUI', label: 'Headless UI', icon: FileText },
+      { value: 'antd', label: 'Ant Design', icon: FileText },
+      { value: 'aria', label: 'React Aria', icon: FileText },
       { value: 'markdown', label: 'Markdown', icon: FileText },
-      { value: 'dynamicFieldsSelect', label: 'Dynamic Fields', icon: List },
-      // { value: 'sortableList', label: 'Sortable List', icon: GripVertical }, // temporarily hidden
+      { value: 'fileUpload', label: 'File Upload', icon: Upload },
+      // { value: 'sortableList', label: 'Sortable List', icon: GripVertical },
     ],
   },
 ];
-
-const iconMap = {
-  registerMaterial: UserPlus,
-  materialAdvanced: Palette,
-  registerSimple: Type,
-  companySimple: Building2,
-  companyWidgets: Box,
-  headlessUI: Rabbit,
-  antd: Antenna,
-  aria: Radio,
-  nestedFields: Layers,
-  sortableList: GripVertical,
-  fileUpload: Upload,
-  markdown: FileText,
-  dynamicFieldsSelect: List,
-};
 
 export default observer(({ menu, select, selected }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -163,7 +147,7 @@ export default observer(({ menu, select, selected }) => {
                 className="nav-link text-xs"
                 title="GitHub"
               >
-                <GitBranch size={14} />
+                <GitBranchIcon size={14} />
                 <span className="hidden lg:inline">GitHub</span>
               </a>
               <GithubStars />
@@ -268,7 +252,7 @@ export default observer(({ menu, select, selected }) => {
             rel="noopener noreferrer"
             className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-all duration-150"
           >
-            <GitBranch size={16} /> GitHub
+            <GitBranchIcon size={16} /> GitHub
           </a>
         </div>
       </div>
