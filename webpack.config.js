@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const DEV = process.env.NODE_ENV === 'development';
 
@@ -80,6 +81,11 @@ const config = {
     new HtmlWebpackPlugin({
       template: path.resolve('.', 'src', 'index.html'),
       inject: 'body',
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'google*.html', to: '.', context: path.resolve('.'), noErrorOnMissing: true },
+      ],
     }),
   ],
   module: { rules },
