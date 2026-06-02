@@ -68,6 +68,7 @@
     "react-dropzone": "^6.2.4",
     "react-markdown": "^8.0.5",
     "react-select": "^5.7.0",
+    "react-syntax-highlighter": "^16.1.1",
     "react-widgets": "^5.8.4",
     "tailwindcss": "^3.4.19",
     "validatorjs": "^3.22.1"
