@@ -1,5 +1,5 @@
-import type { FieldDefinition, PathsOf } from '../../modules/mobx-react-form/src';
-import Form from '../../modules/mobx-react-form/src';
+import type { FieldDefinition, PathsOf } from 'mobx-react-form';
+import Form from 'mobx-react-form/src';
 import type { NestedClubFields } from '../forms/types';
 
 // ===== Test 1: FieldDefinition props autocomplete =====

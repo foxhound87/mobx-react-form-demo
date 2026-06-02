@@ -1,4 +1,4 @@
-import type { FieldDefinition } from '../../../modules/mobx-react-form/src';
+import type { FieldDefinition } from 'mobx-react-form';
 import * as markdownData from '../data/example.md';
 
 /*

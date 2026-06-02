@@ -1,5 +1,5 @@
 import { productsOptions } from '../data/options';
-import type { FieldDefinition } from '../../../modules/mobx-react-form/src';
+import type { FieldDefinition } from 'mobx-react-form';
 
 /*
   Form: Company Widget
