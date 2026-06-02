@@ -78,6 +78,7 @@ const navGroups = [
       { value: 'fileUpload', label: 'File Upload', icon: Upload },
       { value: 'markdown', label: 'Markdown', icon: FileText },
       { value: 'dynamicFieldsSelect', label: 'Dynamic Fields', icon: List },
+      // { value: 'sortableList', label: 'Sortable List', icon: GripVertical }, // temporarily hidden
     ],
   },
 ];
