@@ -23,6 +23,7 @@ import {
   Code,
   Variable,
   GripVertical,
+  ArrowRightCircle,
 } from 'lucide-react';
 import GithubStars from './GithubStars';
 
@@ -69,6 +70,7 @@ const navGroups = [
       { value: 'reactiveComputed', label: 'Reactive Computed', icon: Variable },
       { value: 'crossValidation', label: 'Cross Validation', icon: GitBranch },
       { value: 'nestedComposition', label: 'Nested Composition', icon: Layers },
+      { value: 'wizard', label: 'Wizard', icon: ArrowRightCircle },
       { value: 'bindingsDemo', label: 'Bindings', icon: Code },
       { value: 'markdown', label: 'Markdown', icon: FileText },
       { value: 'fileUpload', label: 'File Upload', icon: Upload },

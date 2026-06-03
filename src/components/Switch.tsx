@@ -31,6 +31,7 @@ const FormBindingsDemo = React.lazy(() => import(/* webpackChunkName: "form-bind
 const FormReactiveComputed = React.lazy(() => import(/* webpackChunkName: "form-reactive-computed" */ './forms/FormReactiveComputed'));
 const FormCrossValidation = React.lazy(() => import(/* webpackChunkName: "form-cross-validation" */ './forms/FormCrossValidation'));
 const FormNestedComposition = React.lazy(() => import(/* webpackChunkName: "form-nested-composition" */ './forms/FormNestedComposition'));
+const FormWizard = React.lazy(() => import(/* webpackChunkName: "form-wizard" */ './forms/FormWizard'));
 
 // React-Select
 const FormReactSelect = React.lazy(() => import(/* webpackChunkName: "form-react-select" */ './forms/FormReactSelect'));
@@ -75,6 +76,7 @@ const formComponents = {
   reactiveComputed: FormReactiveComputed,
   crossValidation: FormCrossValidation,
   nestedComposition: FormNestedComposition,
+  wizard: FormWizard,
   // Advanced - Bindings
   bindingsDemo: FormBindingsDemo,
   // React-Select

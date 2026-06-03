@@ -26,6 +26,7 @@ const inputComponents = {
   reactiveComputed: ['SimpleInput'],
   crossValidation: ['SimpleInput'],
   nestedComposition: ['SimpleInput'],
+  wizard: ['SimpleInput'],
   bindingsDemo: ['SimpleInput'],
   // UI Libraries
   registerMaterial: ['MaterialTextField', 'MaterialSwitch'],
@@ -97,6 +98,7 @@ export const loadComponentSource = (key) => {
     reactiveComputed: () => component('FormReactiveComputed'),
     crossValidation: () => component('FormCrossValidation'),
     nestedComposition: () => component('FormNestedComposition'),
+    wizard: () => component('FormWizard'),
     // Advanced - Bindings
     bindingsDemo: () => component('FormBindingsDemo'),
     // UI Libraries
@@ -138,6 +140,7 @@ export const loadConfigSource = (key) => {
     reactiveComputed: () => config('reactiveComputed'),
     crossValidation: () => config('crossValidation'),
     nestedComposition: () => config('nestedComposition'),
+    wizard: () => config('wizard'),
     // Advanced - Bindings
     bindingsDemo: () => config('bindingsDemo'),
     // UI Libraries

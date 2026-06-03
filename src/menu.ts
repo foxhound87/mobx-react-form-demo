@@ -22,6 +22,8 @@ export default observable({
   reactiveComputed: false,
   crossValidation: false,
   nestedComposition: false,
+  // Multi-step Wizard
+  wizard: false,
   // Advanced - Bindings
   bindingsDemo: false,
   // React-Select

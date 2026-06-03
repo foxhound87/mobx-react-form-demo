@@ -33,6 +33,7 @@ import bindingsDemo from './setup/bindingsDemo';
 import reactiveComputed from './setup/reactiveComputed';
 import { registrationFields, profileFields } from './setup/crossValidation';
 import nestedComposition from './setup/nestedComposition';
+import wizard from './setup/wizard';
 
 // keep existing library-based forms
 import markdown from './setup/markdown';
@@ -127,6 +128,7 @@ class CrossValidationForm extends Form {
   }
 }
 class NestedCompositionForm extends Form {}
+class WizardForm extends Form {}
 class FormSortableList extends Form {}
 class FormMaterialAdvanced extends Form {}
 class FormHeadlessUI extends Form {}
@@ -167,6 +169,7 @@ export default {
     { name: 'Cross Validation' }
   ),
   nestedComposition: new NestedCompositionForm({ ...nestedComposition }, { name: 'Nested Composition' }),
+  wizard: new WizardForm({ ...wizard }, { name: 'Wizard' }),
 
   // Bindings Demo
   bindingsDemo: new FormBindingsDemo({ ...bindingsDemo }, { name: 'Bindings Demo' }),

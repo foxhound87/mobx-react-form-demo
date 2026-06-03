@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
 import Form from '../../forms/_.extend';
-import { Layers, User, MapPin, CheckCircle, XCircle } from 'lucide-react';
+import { Layers, User, MapPin, CheckCircle, XCircle, Send, RotateCcw, Eraser } from 'lucide-react';
 import Input from '../inputs/SimpleInput';
-import FormControls from '../controls/FormControls';
 import { contactFields, addressFields } from '../../forms/setup/nestedComposition';
 
 class ContactForm extends Form {
@@ -129,11 +128,71 @@ export default observer(({ form: parentForm }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             <div>
               <p className="text-xs font-medium text-surface-400 mb-2 uppercase tracking-wider">Contact controls</p>
-              <FormControls form={contactForm} controls={{ onSubmit: true, onReset: true, onClear: true }} />
+              <div className="flex items-center gap-2">
+                <button
+                  type="submit"
+                  onClick={contactForm.onSubmit}
+                  disabled={contactForm.submitting || contactForm.validating}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-brand-500 text-white hover:bg-brand-600 disabled:opacity-50 transition-colors"
+                >
+                  {contactForm.submitting || contactForm.validating ? (
+                    <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <Send size={12} />
+                  )}
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  onClick={contactForm.onClear}
+                  className="inline-flex items-center justify-center w-7 h-7 rounded-lg text-surface-400 hover:text-surface-600 hover:bg-surface-100 transition-all"
+                  title="Clear"
+                >
+                  <Eraser size={13} />
+                </button>
+                <button
+                  type="button"
+                  onClick={contactForm.onReset}
+                  className="inline-flex items-center justify-center w-7 h-7 rounded-lg text-surface-400 hover:text-surface-600 hover:bg-surface-100 transition-all"
+                  title="Reset"
+                >
+                  <RotateCcw size={13} />
+                </button>
+              </div>
             </div>
             <div>
               <p className="text-xs font-medium text-surface-400 mb-2 uppercase tracking-wider">Address controls</p>
-              <FormControls form={addressForm} controls={{ onSubmit: true, onReset: true, onClear: true }} />
+              <div className="flex items-center gap-2">
+                <button
+                  type="submit"
+                  onClick={addressForm.onSubmit}
+                  disabled={addressForm.submitting || addressForm.validating}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-brand-500 text-white hover:bg-brand-600 disabled:opacity-50 transition-colors"
+                >
+                  {addressForm.submitting || addressForm.validating ? (
+                    <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <Send size={12} />
+                  )}
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  onClick={addressForm.onClear}
+                  className="inline-flex items-center justify-center w-7 h-7 rounded-lg text-surface-400 hover:text-surface-600 hover:bg-surface-100 transition-all"
+                  title="Clear"
+                >
+                  <Eraser size={13} />
+                </button>
+                <button
+                  type="button"
+                  onClick={addressForm.onReset}
+                  className="inline-flex items-center justify-center w-7 h-7 rounded-lg text-surface-400 hover:text-surface-600 hover:bg-surface-100 transition-all"
+                  title="Reset"
+                >
+                  <RotateCcw size={13} />
+                </button>
+              </div>
             </div>
           </div>
 
