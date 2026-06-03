@@ -48,8 +48,9 @@ export default {
         // add dynamic fields
         diff.map((item) => {
           dynamicFields.add({ key: item });
-          dynamicFields.$(item).set('placeholder', item);
-          dynamicFields.$(item).set('bindings', 'MaterialTextField');
+          const field = dynamicFields.$(item);
+          field.set('placeholder', item);
+          field.set('label', item);
           return null;
         });
 
