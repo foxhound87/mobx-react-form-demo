@@ -31,25 +31,24 @@ const stepFields = {
 const StepIndicator = observer(({ currentStep, completedSteps, onGoTo }) => (
   <div className="mb-8">
     {/* Mobile: step dots */}
-    <div className="flex items-center justify-center gap-2 sm:hidden">
+    <div className="flex items-center justify-center gap-2 sm:hidden overflow-visible">
       {steps.map((s, i) => {
         const isActive = i === currentStep;
         const isCompleted = completedSteps.has(i);
         return (
-          <button
+          <div
             key={s.key}
             onClick={() => isCompleted && onGoTo(i)}
-            disabled={!isCompleted}
-            className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-200 ${
+            className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold transition-all duration-200 select-none ${
               isActive
-                ? 'bg-brand-500 text-white ring-2 ring-brand-200 ring-offset-2'
+                ? 'bg-brand-500 text-white shadow-sm'
                 : isCompleted
-                ? 'bg-emerald-500 text-white cursor-pointer hover:bg-emerald-600'
+                ? 'bg-emerald-400 text-white'
                 : 'bg-surface-200 text-surface-400'
-            }`}
+            } ${isCompleted ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}`}
           >
-            {isCompleted ? <Check size={14} /> : i + 1}
-          </button>
+            {isCompleted ? <Check size={11} /> : i + 1}
+          </div>
         );
       })}
     </div>
@@ -82,7 +81,7 @@ const StepIndicator = observer(({ currentStep, completedSteps, onGoTo }) => (
               }`}>
                 {isCompleted ? <Check size={12} /> : i + 1}
               </span>
-              <span className="hidden lg:inline">{s.label}</span>
+              <span className="hidden lg:inline whitespace-nowrap">{s.label}</span>
             </button>
             {!isLast && (
               <div className={`w-8 h-px mx-1 ${
