@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { observer } from 'mobx-react';
 
 import Welcome from './Welcome';
+import BrowseDemos from './BrowseDemos';
 import FormCodeViewer from './FormCodeViewer';
 
 // Basics
@@ -97,7 +98,11 @@ const formComponents = {
 
 export default observer(({ menu, forms, navigateTo }) => {
   if (menu.welcome) {
-    return (<Welcome onNavigate={navigateTo ? () => navigateTo('registerSimple') : undefined} />);
+    return (<Welcome onNavigate={navigateTo ? () => navigateTo('browseDemos') : undefined} />);
+  }
+
+  if (menu.browseDemos) {
+    return <BrowseDemos onNavigate={navigateTo} />;
   }
 
   const activeKey = Object.keys(menu).find(k => menu[k]);

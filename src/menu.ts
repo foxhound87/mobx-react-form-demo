@@ -2,6 +2,7 @@ import { observable } from 'mobx';
 
 export default observable({
   welcome: true,
+  browseDemos: false,
   // Basics
   login: false,
   registerSimple: false,
