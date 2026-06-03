@@ -3,8 +3,8 @@ import { observer } from 'mobx-react';
 import { action } from 'mobx';
 import _ from 'lodash';
 
-import MobxReactFormDevTools from '../../modules/mobx-react-form-devtools/src'; // load from source
-import devtoolsStore from '../../modules/mobx-react-form-devtools/src/store';
+import MobxReactFormDevTools from 'mobx-react-form-devtools';
+import devtoolsStore from 'mobx-react-form-devtools/store';
 
 import Nav from './Nav';
 import Switch from './Switch';

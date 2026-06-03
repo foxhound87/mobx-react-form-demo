@@ -12,6 +12,11 @@ const mrfSrc = fs.existsSync(path.resolve('.', 'modules', 'mobx-react-form', 'sr
   ? path.resolve('.', 'modules', 'mobx-react-form', 'src')
   : path.resolve('.', 'node_modules', 'mobx-react-form', 'src');
 
+// Resolve mobx-react-form-devtools to submodule source first, fallback to npm package src
+const mrfDevtoolsSrc = fs.existsSync(path.resolve('.', 'modules', 'mobx-react-form-devtools', 'src'))
+  ? path.resolve('.', 'modules', 'mobx-react-form-devtools', 'src')
+  : path.resolve('.', 'node_modules', 'mobx-react-form-devtools', 'src');
+
 const rules = [{
   oneOf: [{
     resourceQuery: /raw/,
@@ -63,7 +68,8 @@ const config = {
       react: path.resolve('.', 'node_modules', 'react'),
       mobx: path.resolve('.', 'node_modules', 'mobx'),
       'mobx-react': path.resolve('.', 'node_modules', 'mobx-react'),
-      '$mobx-react-form': mrfSrc,
+      'mobx-react-form': mrfSrc,
+      'mobx-react-form-devtools': mrfDevtoolsSrc,
     },
   },
   output: {
