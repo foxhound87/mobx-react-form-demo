@@ -26,6 +26,9 @@ import composer from './setup/composer';
 import reactSelect from './setup/reactSelect';
 import reactMultiSelect from './setup/reactMultiSelect';
 
+// bindings demo
+import bindingsDemo from './setup/bindingsDemo';
+
 // keep existing library-based forms
 import markdown from './setup/markdown';
 import fileUpload from './setup/fileUpload';
@@ -95,6 +98,7 @@ class CompanyWidgetsForm extends Form {}
 class ReactSelectForm extends Form {}
 class ReactMultiSelectForm extends Form {}
 class FormDynamicFieldsSelect extends Form {}
+class FormBindingsDemo extends Form {}
 class FormSortableList extends Form {}
 class FormMaterialAdvanced extends Form {}
 class FormHeadlessUI extends Form {}
@@ -120,6 +124,9 @@ export default {
   interceptors: new InterceptorsForm({ ...interceptors }, { name: 'Interceptors' }),
   observers: new ObserversForm({ ...observers }, { name: 'Observers' }),
   composer: new ComposerForm({ ...composer }, { name: 'Composer' }),
+  // Bindings Demo
+  bindingsDemo: new FormBindingsDemo({ ...bindingsDemo }, { name: 'Bindings Demo' }),
+
   // React-Select forms
   reactSelect: new ReactSelectForm({ ...reactSelect }, { name: 'React Select' }),
   reactMultiSelect: new ReactMultiSelectForm({ ...reactMultiSelect }, { name: 'React Multiselect' }),

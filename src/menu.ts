@@ -18,6 +18,8 @@ export default observable({
   interceptors: false,
   observers: false,
   composer: false,
+  // Advanced - Bindings
+  bindingsDemo: false,
   // React-Select
   reactSelect: false,
   reactMultiSelect: false,

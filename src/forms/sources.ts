@@ -23,6 +23,7 @@ const inputComponents = {
   interceptors: ['SimpleInput'],
   observers: ['SimpleInput'],
   composer: ['SimpleInput'],
+  bindingsDemo: ['SimpleInput'],
   // UI Libraries
   registerMaterial: ['MaterialTextField', 'MaterialSwitch'],
   materialAdvanced: ['MuiSelect', 'MuiAutocomplete', 'MuiRating', 'MuiSlider'],
@@ -44,6 +45,11 @@ export const loadInputSource = (name) => input(`${name}`);
 
 // Forms that have a separate validator/extension source
 export const validatorForms = ['validationDvr', 'validationVjf', 'validationZod', 'validationAsync'];
+
+// Forms that show the bindings source
+export const bindingsForms = ['bindingsDemo'];
+
+export const loadBindingsSource = () => raw('forms/_.bindings');
 
 export const loadValidatorSource = (key) => {
   const map = {
@@ -73,6 +79,8 @@ export const loadComponentSource = (key) => {
     interceptors: () => component('FormInterceptors'),
     observers: () => component('FormObservers'),
     composer: () => component('FormComposer'),
+    // Advanced - Bindings
+    bindingsDemo: () => component('FormBindingsDemo'),
     // UI Libraries
     registerMaterial: () => component('FormRegisterMaterial'),
     materialAdvanced: () => component('FormMaterialAdvanced'),
@@ -108,6 +116,8 @@ export const loadConfigSource = (key) => {
     interceptors: () => config('interceptors'),
     observers: () => config('observers'),
     composer: () => config('composer'),
+    // Advanced - Bindings
+    bindingsDemo: () => config('bindingsDemo'),
     // UI Libraries
     registerMaterial: () => config('registerMaterial'),
     materialAdvanced: () => config('materialAdvanced'),

@@ -20,6 +20,7 @@ import {
   X,
   FileText,
   Upload,
+  Code,
   GripVertical,
 } from 'lucide-react';
 import GithubStars from './GithubStars';
@@ -64,6 +65,7 @@ const navGroups = [
       { value: 'interceptors', label: 'Interceptors', icon: ShieldAlert },
       { value: 'observers', label: 'Observers', icon: Eye },
       { value: 'composer', label: 'Composer', icon: GitBranch },
+      { value: 'bindingsDemo', label: 'Bindings', icon: Code },
       { value: 'markdown', label: 'Markdown', icon: FileText },
       { value: 'fileUpload', label: 'File Upload', icon: Upload },
     ],
