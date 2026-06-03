@@ -15,7 +15,7 @@ import menu from '../menu';
 const selected = $menu => _.keys(_.pickBy($menu, _.identity))[0];
 const formKeys = _.keys(forms);
 
-const selectDevtools = (val) => {
+const selectDevtools = action((val) => {
   if (!val || !formKeys.includes(val)) {
     devtoolsStore.selected.key = null;
     devtoolsStore.selected.form = null;
@@ -23,7 +23,7 @@ const selectDevtools = (val) => {
   }
   MobxReactFormDevTools.open(true);
   MobxReactFormDevTools.select(val);
-};
+});
 
 const navigateTo = (key) => {
   selectDevtools(key);
@@ -49,8 +49,10 @@ export default observer(() => {
 
   React.useEffect(() => {
     if (isWelcome) {
-      devtoolsStore.selected.key = null;
-      devtoolsStore.selected.form = null;
+      action(() => {
+        devtoolsStore.selected.key = null;
+        devtoolsStore.selected.form = null;
+      })();
       try {
         if (localStorage.getItem('mrf-open') === null) {
           MobxReactFormDevTools.open(true);
