@@ -27,6 +27,11 @@ const FormComposer = React.lazy(() => import(/* webpackChunkName: "form-composer
 // Advanced - Bindings
 const FormBindingsDemo = React.lazy(() => import(/* webpackChunkName: "form-bindings-demo" */ './forms/FormBindingsDemo'));
 
+// Advanced MRF features
+const FormReactiveComputed = React.lazy(() => import(/* webpackChunkName: "form-reactive-computed" */ './forms/FormReactiveComputed'));
+const FormCrossValidation = React.lazy(() => import(/* webpackChunkName: "form-cross-validation" */ './forms/FormCrossValidation'));
+const FormNestedComposition = React.lazy(() => import(/* webpackChunkName: "form-nested-composition" */ './forms/FormNestedComposition'));
+
 // React-Select
 const FormReactSelect = React.lazy(() => import(/* webpackChunkName: "form-react-select" */ './forms/FormReactSelect'));
 const FormReactMultiselect = React.lazy(() => import(/* webpackChunkName: "form-react-multiselect" */ './forms/FormReactMultiselect'));
@@ -66,6 +71,10 @@ const formComponents = {
   interceptors: FormInterceptors,
   observers: FormObservers,
   composer: FormComposer,
+  // Advanced MRF features
+  reactiveComputed: FormReactiveComputed,
+  crossValidation: FormCrossValidation,
+  nestedComposition: FormNestedComposition,
   // Advanced - Bindings
   bindingsDemo: FormBindingsDemo,
   // React-Select

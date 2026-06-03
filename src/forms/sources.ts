@@ -23,6 +23,9 @@ const inputComponents = {
   interceptors: ['SimpleInput'],
   observers: ['SimpleInput'],
   composer: ['SimpleInput'],
+  reactiveComputed: ['SimpleInput'],
+  crossValidation: ['SimpleInput'],
+  nestedComposition: ['SimpleInput'],
   bindingsDemo: ['SimpleInput'],
   // UI Libraries
   registerMaterial: ['MaterialTextField', 'MaterialSwitch'],
@@ -48,6 +51,17 @@ export const validatorForms = ['validationDvr', 'validationVjf', 'validationZod'
 
 // Forms that show the bindings source
 export const bindingsForms = ['bindingsDemo'];
+
+// Forms that show the hooks source
+export const hooksForms = ['registerMaterial'];
+
+export const loadHooksSource = (key) => {
+  const map = {
+    registerMaterial: () => raw('forms/_.hooks.fields'),
+    reactiveComputed: () => config('reactiveComputed'),
+  };
+  return (map[key] || (() => Promise.resolve('')))();
+};
 
 export const loadBindingsSource = () => raw('forms/_.bindings');
 
@@ -79,6 +93,10 @@ export const loadComponentSource = (key) => {
     interceptors: () => component('FormInterceptors'),
     observers: () => component('FormObservers'),
     composer: () => component('FormComposer'),
+    // Advanced MRF features
+    reactiveComputed: () => component('FormReactiveComputed'),
+    crossValidation: () => component('FormCrossValidation'),
+    nestedComposition: () => component('FormNestedComposition'),
     // Advanced - Bindings
     bindingsDemo: () => component('FormBindingsDemo'),
     // UI Libraries
@@ -116,6 +134,10 @@ export const loadConfigSource = (key) => {
     interceptors: () => config('interceptors'),
     observers: () => config('observers'),
     composer: () => config('composer'),
+    // Advanced MRF features
+    reactiveComputed: () => config('reactiveComputed'),
+    crossValidation: () => config('crossValidation'),
+    nestedComposition: () => config('nestedComposition'),
     // Advanced - Bindings
     bindingsDemo: () => config('bindingsDemo'),
     // UI Libraries

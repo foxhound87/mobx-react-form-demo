@@ -1,7 +1,7 @@
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { loadComponentSource, loadConfigSource, loadInputSource, loadValidatorSource, loadBindingsSource, getInputComponents, validatorForms, bindingsForms } from '../forms/sources';
+import { loadComponentSource, loadConfigSource, loadInputSource, loadValidatorSource, loadBindingsSource, loadHooksSource, getInputComponents, validatorForms, bindingsForms, hooksForms } from '../forms/sources';
 
 export default ({ formKey, children }) => {
   const [tab, setTab] = React.useState(null);
@@ -20,6 +20,7 @@ export default ({ formKey, children }) => {
       config: loadConfigSource,
       validator: loadValidatorSource,
       bindings: loadBindingsSource,
+      hooks: loadHooksSource,
     };
     const load = loaders[tab] || loadConfigSource;
     load(formKey).then((src) => {
@@ -79,6 +80,18 @@ export default ({ formKey, children }) => {
             Validator
           </button>
         )}
+        {hooksForms.includes(formKey) && (
+          <button
+            onClick={() => setTab(tab === 'hooks' ? null : 'hooks')}
+            className={`text-xs font-medium px-3 py-1.5 rounded-md border transition-colors ${
+              tab === 'hooks'
+                ? 'bg-brand-500 text-white border-brand-500'
+                : 'bg-white text-surface-500 border-surface-200 hover:text-surface-700 hover:border-surface-300'
+            }`}
+          >
+            Hooks
+          </button>
+        )}
         {bindingsForms.includes(formKey) && (
           <button
             onClick={() => setTab(tab === 'bindings' ? null : 'bindings')}
@@ -124,10 +137,10 @@ export default ({ formKey, children }) => {
         <div className={`mb-6 rounded-xl border overflow-hidden ${tab === 'input' || tab === 'component' ? 'border-surface-700' : 'border-surface-200 bg-surface-50'}`}>
           <div className={`flex items-center gap-2 px-4 py-2 border-b ${tab === 'input' || tab === 'component' ? 'border-surface-700 bg-surface-800' : 'border-surface-200 bg-surface-100/50'}`}>
             <span className={`text-xs font-medium ${tab === 'input' || tab === 'component' ? 'text-surface-400' : 'text-surface-500'}`}>
-              {tab === 'input' ? 'Input Component' : tab === 'component' ? 'Form Component' : tab === 'validator' ? 'Validator' : tab === 'bindings' ? 'Bindings' : 'Form Config'}
+              {tab === 'input' ? 'Input Component' : tab === 'component' ? 'Form Component' : tab === 'validator' ? 'Validator' : tab === 'bindings' ? 'Bindings' : tab === 'hooks' ? 'Hooks' : 'Form Config'}
             </span>
             <span className={`text-xs font-mono font-medium ${tab === 'input' || tab === 'component' ? 'text-blue-400' : 'text-brand-600'}`}>
-              {tab === 'input' ? activeInput : tab === 'bindings' ? '_.bindings.ts' : formKey}
+              {tab === 'input' ? activeInput : tab === 'bindings' ? '_.bindings.ts' : tab === 'hooks' ? (formKey === 'registerMaterial' ? '_.hooks.fields.ts' : formKey + '.ts') : formKey}
             </span>
           </div>
           <div className="text-xs leading-relaxed">
@@ -135,7 +148,7 @@ export default ({ formKey, children }) => {
               <div className="p-4"><span className="text-surface-400">Loading...</span></div>
             ) : code ? (
               <SyntaxHighlighter
-                language={tab === 'config' || tab === 'validator' || tab === 'bindings' ? 'typescript' : 'tsx'}
+                language={tab === 'config' || tab === 'validator' || tab === 'bindings' || tab === 'hooks' ? 'typescript' : 'tsx'}
                 style={vscDarkPlus}
                 customStyle={{
                   margin: 0,

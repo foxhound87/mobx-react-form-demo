@@ -18,6 +18,10 @@ export default observable({
   interceptors: false,
   observers: false,
   composer: false,
+  // Advanced MRF features
+  reactiveComputed: false,
+  crossValidation: false,
+  nestedComposition: false,
   // Advanced - Bindings
   bindingsDemo: false,
   // React-Select

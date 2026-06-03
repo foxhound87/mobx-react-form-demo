@@ -29,6 +29,11 @@ import reactMultiSelect from './setup/reactMultiSelect';
 // bindings demo
 import bindingsDemo from './setup/bindingsDemo';
 
+// advanced MRF features
+import reactiveComputed from './setup/reactiveComputed';
+import { registrationFields, profileFields } from './setup/crossValidation';
+import nestedComposition from './setup/nestedComposition';
+
 // keep existing library-based forms
 import markdown from './setup/markdown';
 import fileUpload from './setup/fileUpload';
@@ -99,6 +104,29 @@ class ReactSelectForm extends Form {}
 class ReactMultiSelectForm extends Form {}
 class FormDynamicFieldsSelect extends Form {}
 class FormBindingsDemo extends Form {}
+
+// Advanced MRF feature forms
+class ReactiveComputedForm extends Form {
+  options() {
+    return {
+      ...super.options(),
+      strictSelect: false,
+    };
+  }
+}
+class CrossValidationForm extends Form {
+  plugins() {
+    return {
+      ...super.plugins(),
+    };
+  }
+  bindings() {
+    return {
+      ...super.bindings(),
+    };
+  }
+}
+class NestedCompositionForm extends Form {}
 class FormSortableList extends Form {}
 class FormMaterialAdvanced extends Form {}
 class FormHeadlessUI extends Form {}
@@ -124,6 +152,22 @@ export default {
   interceptors: new InterceptorsForm({ ...interceptors }, { name: 'Interceptors' }),
   observers: new ObserversForm({ ...observers }, { name: 'Observers' }),
   composer: new ComposerForm({ ...composer }, { name: 'Composer' }),
+  // Advanced MRF features
+  reactiveComputed: new ReactiveComputedForm(
+    { ...reactiveComputed },
+    { name: 'Reactive Computed', hooks: reactiveComputed.hooks }
+  ),
+  crossValidation: new CrossValidationForm(
+    {
+      fields: {
+        billing: { fields: registrationFields },
+        shipping: { fields: profileFields },
+      },
+    },
+    { name: 'Cross Validation' }
+  ),
+  nestedComposition: new NestedCompositionForm({ ...nestedComposition }, { name: 'Nested Composition' }),
+
   // Bindings Demo
   bindingsDemo: new FormBindingsDemo({ ...bindingsDemo }, { name: 'Bindings Demo' }),
 

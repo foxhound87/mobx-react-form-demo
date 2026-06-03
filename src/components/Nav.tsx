@@ -21,6 +21,7 @@ import {
   FileText,
   Upload,
   Code,
+  Variable,
   GripVertical,
 } from 'lucide-react';
 import GithubStars from './GithubStars';
@@ -65,6 +66,9 @@ const navGroups = [
       { value: 'interceptors', label: 'Interceptors', icon: ShieldAlert },
       { value: 'observers', label: 'Observers', icon: Eye },
       { value: 'composer', label: 'Composer', icon: GitBranch },
+      { value: 'reactiveComputed', label: 'Reactive Computed', icon: Variable },
+      { value: 'crossValidation', label: 'Cross Validation', icon: GitBranch },
+      { value: 'nestedComposition', label: 'Nested Composition', icon: Layers },
       { value: 'bindingsDemo', label: 'Bindings', icon: Code },
       { value: 'markdown', label: 'Markdown', icon: FileText },
       { value: 'fileUpload', label: 'File Upload', icon: Upload },
