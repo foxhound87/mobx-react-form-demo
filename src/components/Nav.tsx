@@ -165,6 +165,18 @@ export default observer(({ menu, select, selected }) => {
                 <span className="hidden lg:inline">NPM</span>
               </a>
               <a
+                href="https://foxhound87.github.io/mobx-react-form"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link text-xs"
+                title="Docs"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                <span className="hidden lg:inline">Docs</span>
+              </a>
+              <a
                 href="https://github.com/foxhound87/mobx-react-form"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -262,6 +274,16 @@ export default observer(({ menu, select, selected }) => {
         </div>
 
         <div className="border-t border-surface-200 px-3 py-3 flex items-center gap-2">
+          <a
+            href="https://foxhound87.github.io/mobx-react-form"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-all duration-150"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg> Docs
+          </a>
           <a
             href="https://www.npmjs.com/package/mobx-react-form"
             target="_blank"
