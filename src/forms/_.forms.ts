@@ -187,5 +187,5 @@ export default {
   aria: new FormAria({ ...aria }, { name: 'React Aria' }),
   markdown: new MarkdownForm({ ...markdown }, { name: 'Markdown' }),
   fileUpload: new FileUploadForm({ ...fileUpload }, { hooks: { onSubmit: onSubmitFileUpload }, name: 'File Upload' }),
-  sortableList: new FormSortableList({}, { name: 'Sortable List' }),
+  sortableList: new FormSortableList({ ...sortableList }, { name: 'Sortable List' }),
 };

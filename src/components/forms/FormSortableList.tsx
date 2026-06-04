@@ -117,6 +117,9 @@ const SortableItem = observer(function SortableItem({
 export default observer(function SortableList({ form }: { form: any }) {
   const sensors = useSensors(useSensor(PointerSensor));
   const productsField = form.$("products");
+  (window as any).__form = form;
+  const items = productsField.map(f => String(f.key));
+
   const [activeId, setActiveId] = useState<string | null>(null);
 
   function handleDragStart(event: any) {
@@ -125,36 +128,28 @@ export default observer(function SortableList({ form }: { form: any }) {
 
   function handleDragEnd(event: any) {
     const { active, over } = event;
-    if (!over || active.id === over.id) {
-      setActiveId(null);
-      return;
-    }
-
-    const nativeArray = productsField.map(f => f);
-    const keys = nativeArray.map(f => f.key);
-    const fromIndex = keys.indexOf(active.id);
-    const toIndex = keys.indexOf(over.id);
-
-    if (fromIndex !== -1 && toIndex !== -1) {
-      productsField.move(fromIndex, toIndex);
-    }
-
     setActiveId(null);
+    if (!over || active.id === over.id) return;
+
+    const fromIdx = items.indexOf(String(active.id));
+    const toIdx = items.indexOf(String(over.id));
+    if (fromIdx === -1 || toIdx === -1 || fromIdx === toIdx) return;
+
+    productsField.fields.move(fromIdx, toIdx);
   }
 
   function handleMove(id: string, dir: "up" | "down") {
-    const nativeArray = productsField.map(f => f);
-    const keys = nativeArray.map(f => f.key);
-    const index = keys.indexOf(id);
-    if (index === -1) return;
+    const idx = items.indexOf(String(id));
+    if (idx === -1) return;
+    const newIdx = dir === "up" ? idx - 1 : idx + 1;
+    if (newIdx < 0 || newIdx >= items.length) return;
 
-    const newIndex = dir === "up" ? index - 1 : index + 1;
-    if (newIndex < 0 || newIndex >= keys.length) return;
-
-    productsField.move(index, newIndex);
+    productsField.fields.move(idx, newIdx);
   }
 
-  const activeField = activeId ? productsField.map(f => f).find(f => f.key === activeId) : null;
+  const activeField = activeId
+    ? productsField.map(f => f).find(f => String(f.key) === activeId)
+    : null;
 
   return (
     <div className="card">
@@ -170,15 +165,15 @@ export default observer(function SortableList({ form }: { form: any }) {
           onDragEnd={handleDragEnd}
         >
           <SortableContext
-            items={productsField.map(f => f.key)}
+            items={items}
             strategy={verticalListSortingStrategy}
           >
             <div className="space-y-2">
-              {productsField.map(field => (
+              {items.map(key => (
                 <SortableItem
-                  key={field.key}
-                  id={field.key}
-                  field={field}
+                  key={key}
+                  id={key}
+                  field={productsField.map(f => f).find(f => String(f.key) === key)}
                   onMove={handleMove}
                 />
               ))}

@@ -74,6 +74,7 @@ const navGroups = [
       { value: 'bindingsDemo', label: 'Bindings', icon: Code },
       { value: 'markdown', label: 'Markdown', icon: FileText },
       { value: 'fileUpload', label: 'File Upload', icon: Upload },
+      { value: 'sortableList', label: 'Sortable List', icon: GripVertical },
     ],
   },
   {
@@ -88,7 +89,6 @@ const navGroups = [
       { value: 'aria', label: 'React Aria', icon: FileText },
       { value: 'reactSelect', label: 'React-Select', icon: ListChecks },
       { value: 'reactMultiSelect', label: 'React-Multi', icon: ListChecks },
-      // { value: 'sortableList', label: 'Sortable List', icon: GripVertical },
     ],
   },
 ];
