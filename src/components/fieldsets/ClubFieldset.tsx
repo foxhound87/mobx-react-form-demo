@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import FieldControl from '../controls/FieldControls';
-import MaterialTextField from '../inputs/MaterialTextField';
+import SimpleInput from '../inputs/SimpleInput';
 
 export default observer(({ club }) => (
   <div className="card mb-6">
@@ -16,8 +16,8 @@ export default observer(({ club }) => (
       />
     </div>
     <div className="card-body">
-      <MaterialTextField field={club.$('name')} />
-      <MaterialTextField field={club.$('city')} />
+      <SimpleInput field={club.$('name')} />
+      <SimpleInput field={club.$('city')} />
     </div>
     <div className="card-footer flex justify-end">
       <FieldControl

@@ -49,6 +49,7 @@ const FormAria = React.lazy(() => import(/* webpackChunkName: "form-aria" */ './
 const FormMarkdown = React.lazy(() => import(/* webpackChunkName: "form-markdown" */ './forms/FormMarkdown'));
 const FormFileUpload = React.lazy(() => import(/* webpackChunkName: "form-fileupload" */ './forms/FormFileUpload'));
 const FormSortableList = React.lazy(() => import(/* webpackChunkName: "form-sortable" */ './forms/FormSortableList'));
+const FormBubbleErrors = React.lazy(() => import(/* webpackChunkName: "form-bubble-errors" */ './forms/FormBubbleErrors'));
 
 const Fallback = () => (
   <div className="flex items-center justify-center py-20">
@@ -94,6 +95,7 @@ const formComponents = {
   markdown: FormMarkdown,
   fileUpload: FormFileUpload,
   sortableList: FormSortableList,
+  bubbleErrors: FormBubbleErrors,
 };
 
 export default observer(({ menu, forms, navigateTo }) => {

@@ -2,13 +2,13 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import NestedHobbyFieldset from '../fieldsets/NestedHobbyFieldset';
 import FieldControl from '../controls/FieldControls';
-import MaterialTextField from '../inputs/MaterialTextField';
+import SimpleInput from '../inputs/SimpleInput';
 
 export default observer(({ member }) => (
   <div className="card mb-4">
     <div className="card-body">
-      <MaterialTextField field={member.$('firstname')} />
-      <MaterialTextField field={member.$('lastname')} />
+      <SimpleInput field={member.$('firstname')} />
+      <SimpleInput field={member.$('lastname')} />
 
       <div className="flex items-center gap-1 mt-2 mb-3">
         <FieldControl

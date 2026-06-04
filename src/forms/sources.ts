@@ -17,8 +17,9 @@ const inputComponents = {
   validationAsync: ['SimpleInput', 'SimpleTextarea'],
   // Dynamic Data
   arrays: ['SimpleInput'],
-  nestedFields: ['MaterialTextField', 'NestedHobbyInput'],
-  dynamicFieldsSelect: ['MaterialTextField'],
+  nestedFields: ['SimpleInput', 'NestedHobbyInput'],
+  bubbleErrors: ['SimpleInput', 'NestedHobbyInput'],
+  dynamicFieldsSelect: [],
   // Advanced
   interceptors: ['SimpleInput'],
   observers: ['SimpleInput'],
@@ -89,6 +90,7 @@ export const loadComponentSource = (key) => {
     // Dynamic Data
     arrays: () => component('FormArrays'),
     nestedFields: () => component('FormWithNestedFields'),
+    bubbleErrors: () => component('FormBubbleErrors'),
     dynamicFieldsSelect: () => component('FormDynamicFieldsSelect'),
     // Advanced
     interceptors: () => component('FormInterceptors'),
@@ -131,6 +133,7 @@ export const loadConfigSource = (key) => {
     // Dynamic Data
     arrays: () => config('arrays'),
     nestedFields: () => config('nestedFields'),
+    bubbleErrors: () => config('nestedFields'),
     dynamicFieldsSelect: () => config('dynamicFieldsSelect'),
     // Advanced
     interceptors: () => config('interceptors'),

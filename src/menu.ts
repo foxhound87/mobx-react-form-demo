@@ -41,4 +41,5 @@ export default observable({
   markdown: false,
   fileUpload: false,
   sortableList: false,
+  bubbleErrors: false,
 });

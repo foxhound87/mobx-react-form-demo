@@ -96,6 +96,12 @@ const demoGroups = [
         desc: 'Deeply nested field structures with club and members',
       },
       {
+        key: 'bubbleErrors',
+        label: 'Bubble Errors',
+        icon: Grid3x3,
+        desc: 'Nested field errors bubbling up with bubbleUpErrorMessages',
+      },
+      {
         key: 'dynamicFieldsSelect',
         label: 'Dynamic Fields',
         icon: List,

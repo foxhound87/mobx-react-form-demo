@@ -130,6 +130,14 @@ class CrossValidationForm extends Form {
 class NestedCompositionForm extends Form {}
 class WizardForm extends Form {}
 class FormSortableList extends Form {}
+class BubbleErrorsForm extends NestedFieldsForm {
+  options() {
+    return {
+      ...super.options(),
+      bubbleUpErrorMessages: true,
+    };
+  }
+}
 class FormMaterialAdvanced extends Form {}
 class FormHeadlessUI extends Form {}
 class FormAntd extends Form {}
@@ -188,4 +196,5 @@ export default {
   markdown: new MarkdownForm({ ...markdown }, { name: 'Markdown' }),
   fileUpload: new FileUploadForm({ ...fileUpload }, { hooks: { onSubmit: onSubmitFileUpload }, name: 'File Upload' }),
   sortableList: new FormSortableList({ ...sortableList }, { name: 'Sortable List' }),
+  bubbleErrors: new BubbleErrorsForm({ ...nestedFields }, { name: 'Bubble Errors' }),
 };

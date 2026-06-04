@@ -58,6 +58,7 @@ const navGroups = [
     items: [
       { value: 'arrays', label: 'Arrays', icon: Layers },
       { value: 'nestedFields', label: 'Nested', icon: Grid3x3 },
+      { value: 'bubbleErrors', label: 'Bubble Errors', icon: Grid3x3 },
       { value: 'dynamicFieldsSelect', label: 'Dynamic Fields', icon: List },
     ],
   },
