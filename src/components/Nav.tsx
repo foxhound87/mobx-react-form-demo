@@ -137,6 +137,20 @@ export default observer(({ menu, select, selected }) => {
                 <h1 className="text-sm font-semibold text-surface-900 leading-tight">MobX React Form</h1>
                 <p className="text-[10px] text-surface-400 leading-tight">Demo</p>
               </div>
+              {process.env.NODE_ENV === 'development' && (
+                <div className="ml-1 self-center">
+                  <span
+                    className={`inline-flex items-center rounded-full px-1.5 py-0.5 text-[9px] font-mono font-medium leading-tight ${
+                      MRF_SOURCE.includes('modules')
+                        ? 'bg-amber-100 text-amber-700'
+                        : 'bg-blue-100 text-blue-700'
+                    }`}
+                    title={MRF_SOURCE}
+                  >
+                    {MRF_SOURCE.includes('modules') ? 'modules' : 'node_modules'}
+                  </span>
+                </div>
+              )}
             </button>
 
             <div className="hidden md:flex items-center gap-1 ml-auto">

@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
@@ -101,6 +102,9 @@ const config = {
     },
   },
   plugins: [
+    new webpack.DefinePlugin({
+      MRF_SOURCE: JSON.stringify(mrfSrc),
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(".", "src", "index.html"),
       inject: "body",
