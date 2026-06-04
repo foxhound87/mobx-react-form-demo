@@ -135,7 +135,7 @@ export default observer(function SortableList({ form }: { form: any }) {
     const toIdx = items.indexOf(String(over.id));
     if (fromIdx === -1 || toIdx === -1 || fromIdx === toIdx) return;
 
-    productsField.fields.move(fromIdx, toIdx);
+    productsField.move(fromIdx, toIdx);
   }
 
   function handleMove(id: string, dir: "up" | "down") {
@@ -144,7 +144,7 @@ export default observer(function SortableList({ form }: { form: any }) {
     const newIdx = dir === "up" ? idx - 1 : idx + 1;
     if (newIdx < 0 || newIdx >= items.length) return;
 
-    productsField.fields.move(idx, newIdx);
+    productsField.move(idx, newIdx);
   }
 
   const activeField = activeId
