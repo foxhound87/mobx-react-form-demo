@@ -57,7 +57,6 @@
     "@headlessui/react": "^1.7.19",
     "@mui/material": "^5.11.11",
     "antd": "^4.24.16",
-    "font-awesome": "^4.7.0",
     "lodash": "^4.17.21",
     "lucide-react": "^1.17.0",
     "mobx": "6.8.0",

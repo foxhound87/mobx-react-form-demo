@@ -19,6 +19,7 @@ import {
   Upload,
   Package,
   BookOpen,
+  LayoutDashboard,
 } from 'lucide-react';
 
 const demoGroups = [
@@ -249,9 +250,7 @@ export default observer(({ onNavigate }) => (
     <div className="mb-10">
       <div className="flex items-center gap-3 mb-3">
         <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center flex-shrink-0">
-          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-          </svg>
+          <LayoutDashboard size={16} className="text-white" />
         </div>
         <div>
           <h1 className="text-2xl font-bold text-surface-900">Browse Demos</h1>

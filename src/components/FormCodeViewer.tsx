@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Code } from 'lucide-react';
 import { loadComponentSource, loadConfigSource, loadInputSource, loadValidatorSource, loadBindingsSource, loadHooksSource, getInputComponents, validatorForms, bindingsForms, hooksForms } from '../forms/sources';
 
 export default ({ formKey, children }) => {
@@ -130,9 +131,7 @@ export default ({ formKey, children }) => {
                   : 'bg-brand-50 text-brand-600 border-brand-200 hover:bg-brand-100 hover:border-brand-300'
               }`}
             >
-              <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
+              <Code size={12} className="flex-shrink-0" />
               {name}
             </button>
           ))}

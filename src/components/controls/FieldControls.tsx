@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import { LoaderCircle, CircleDot } from 'lucide-react';
 import Button from '../Button';
 
 export default observer(({ field, controls = null }) => (
@@ -11,8 +12,8 @@ export default observer(({ field, controls = null }) => (
         onClick={field.onSubmit}
         disabled={field.submitting}
         content={(field.submitting || field.validating)
-          ? <b><i className="fa fa-spinner fa-spin" /></b>
-          : <span className="inline-flex items-center gap-1"><i className="fa fa-dot-circle-o" /> Submit</span>}
+          ? <b><LoaderCircle size={14} className="animate-spin" /></b>
+          : <span className="inline-flex items-center gap-1"><CircleDot size={14} /> Submit</span>}
       />}
 
     {(!controls || controls.onAdd) &&

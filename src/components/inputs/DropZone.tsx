@@ -2,6 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import Dropzone from 'react-dropzone';
 import { action } from 'mobx';
+import { Upload, Database, X } from 'lucide-react';
 
 const openDropZone = (dropzone) => (e) => {
   e.preventDefault();
@@ -29,12 +30,10 @@ export default observer(({ field }) => {
         // @ts-ignore
         children={({ isDragActive }: { isDragActive: boolean }) => (
           <div className="flex flex-col items-center gap-2">
-            <svg
-              className={`w-10 h-10 ${isDragActive ? 'text-brand-500' : 'text-surface-400'}`}
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-            </svg>
+            <Upload
+              size={40}
+              className={isDragActive ? 'text-brand-500' : 'text-surface-400'}
+            />
             <p className={`text-sm ${isDragActive ? 'text-brand-600' : 'text-surface-500'}`}>
               {isDragActive
                 ? 'Drop files here...'
@@ -68,15 +67,11 @@ export default observer(({ field }) => {
           onClick={openDropZone(dropzoneRef)}
           className="btn-ghost"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7" />
-          </svg>
+          <Database size={16} />
           Open Dropzone
         </button>
         <button onClick={getFiles(field)} className="btn-ghost">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7" />
-          </svg>
+          <Database size={16} />
           Get Files
         </button>
       </div>
@@ -103,9 +98,7 @@ export default observer(({ field }) => {
                   alt={file.name}
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  <X size={24} className="text-white" />
                 </div>
               </button>
             ))}

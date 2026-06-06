@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
+import { GripHorizontal, ChevronUp, ChevronDown } from 'lucide-react';
 import Button from '../Button';
 
 import {
@@ -77,9 +78,7 @@ const SortableItem = observer(function SortableItem({
           className="cursor-grab active:cursor-grabbing text-surface-400 hover:text-surface-600 transition-colors touch-none"
           aria-label="Drag to reorder"
         >
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-          </svg>
+          <GripHorizontal size={20} />
         </button>
         <div className="flex-1 min-w-0">
           <ProductRow field={field} />
@@ -91,9 +90,7 @@ const SortableItem = observer(function SortableItem({
             className="text-surface-400 hover:text-surface-700 transition-colors p-0.5"
             aria-label="Move up"
           >
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-            </svg>
+            <ChevronUp size={14} />
           </button>
           <button
             type="button"
@@ -101,9 +98,7 @@ const SortableItem = observer(function SortableItem({
             className="text-surface-400 hover:text-surface-700 transition-colors p-0.5"
             aria-label="Move down"
           >
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
+            <ChevronDown size={14} />
           </button>
         </div>
       </div>
@@ -184,9 +179,7 @@ export default observer(function SortableList({ form }: { form: any }) {
             {activeField ? (
               <div className="card shadow-elevated">
                 <div className="card-body !py-3 !px-4 flex items-center gap-3">
-                  <svg className="w-5 h-5 text-surface-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-                  </svg>
+                  <GripHorizontal size={20} className="text-surface-400" />
                   <div className="flex-1">
                     <ProductRow field={activeField} />
                   </div>
