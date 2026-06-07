@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { observer } from 'mobx-react';
 import { action } from 'mobx';
 import _ from 'lodash';
+import devtoolsStore from 'mobx-react-form-devtools/store';
 import {
   LogIn,
   UserPlus,
@@ -124,6 +125,10 @@ export default observer(({ menu, select, selected }) => {
     setMobileOpen(false);
   };
 
+  const dockOffset = typeof window !== 'undefined' && window.innerWidth >= 768 && !devtoolsStore.windowIsOpen && devtoolsStore.open
+    ? devtoolsStore.dock.size
+    : 0;
+
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 shadow-nav">
@@ -153,7 +158,7 @@ export default observer(({ menu, select, selected }) => {
               )}
             </button>
 
-            <div className="hidden md:flex items-center gap-1 ml-auto">
+            <div className="hidden md:flex items-center gap-1 ml-auto" style={{ marginRight: dockOffset }}>
               <a
                 href="https://www.npmjs.com/package/mobx-react-form"
                 target="_blank"
