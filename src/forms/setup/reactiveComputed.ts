@@ -1,64 +1,57 @@
-/*
-  Form: Reactive Computed Fields
-  Uses autorun() pattern (same as Observers demo) for reactive computations:
-  - Row-level: products[].total = qty * amount
-  - Grand total: sum of all product totals
-*/
+import type { FieldDefinition } from 'mobx-react-form';
 
-const fields = [
-  'products',
-  'products[].name',
-  'products[].qty',
-  'products[].amount',
-  'products[].total',
-  'orderTotal',
-];
-
-const values = {
-  products: [
-    { name: 'MacBook Pro', qty: 1, amount: 2499, total: 0 },
-    { name: 'AirPods Pro', qty: 2, amount: 249, total: 0 },
-  ],
-};
-
-const labels = {
-  products: 'Products',
-  'products[].name': 'Product Name',
-  'products[].qty': 'Qty',
-  'products[].amount': 'Unit Price (€)',
-  'products[].total': 'Total (€)',
-  orderTotal: 'Order Total (€)',
-};
-
-const placeholders = {
-  'products[].name': 'Enter product name',
-  'products[].qty': '0',
-  'products[].amount': '0.00',
-};
-
-const types = {
-  'products[].qty': 'number',
-  'products[].amount': 'number',
-  'products[].total': 'number',
-  orderTotal: 'number',
+const fields: Record<string, FieldDefinition> = {
+  unitPrice: {
+    value: 100,
+    label: 'Unit Price (€)',
+    type: 'number',
+    rules: 'required|numeric|min_value:0',
+  },
+  quantity: {
+    value: 3,
+    label: 'Quantity',
+    type: 'number',
+    rules: 'required|integer|min_value:1',
+  },
+  discountPercent: {
+    value: 10,
+    label: 'Discount (%)',
+    type: 'number',
+    rules: 'numeric|min_value:0|max_value:100',
+  },
+  subtotal: {
+    computed: ({ form }) => {
+      const price = Number(form.$('unitPrice').value) || 0;
+      const qty = Number(form.$('quantity').value) || 0;
+      return price * qty;
+    },
+    label: 'Subtotal (€)',
+  },
+  discount: {
+    computed: ({ form }) => {
+      const price = Number(form.$('unitPrice').value) || 0;
+      const qty = Number(form.$('quantity').value) || 0;
+      const pct = Number(form.$('discountPercent').value) || 0;
+      return Number(((price * qty) * (pct / 100)).toFixed(2));
+    },
+    label: 'Discount (€)',
+  },
+  total: {
+    computed: ({ form }) => {
+      const price = Number(form.$('unitPrice').value) || 0;
+      const qty = Number(form.$('quantity').value) || 0;
+      const pct = Number(form.$('discountPercent').value) || 0;
+      const subtotal = price * qty;
+      return Number((subtotal - subtotal * (pct / 100)).toFixed(2));
+    },
+    label: 'Total (€)',
+  },
 };
 
 const hooks = {
-  onInit(form) {
-    if (form.$('products').fields.size === 0) {
-      form.$('products').add();
-    }
-  },
   onSubmit(form) {
-    console.log('Order values:', JSON.stringify(form.values(), null, 2));
+    console.log('Invoice values:', JSON.stringify(form.values(), null, 2));
   },
 };
 
-export default {
-  fields,
-  values,
-  labels,
-  placeholders,
-  types,
-  hooks,
-};
+export default { fields, hooks };
