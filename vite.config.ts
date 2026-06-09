@@ -37,8 +37,6 @@ export default defineConfig({
   },
   ssr: {
     noExternal: [
-      'react',
-      'react-dom',
       /^@mui\//,
       /^@emotion\//,
       /^@dnd-kit\//,

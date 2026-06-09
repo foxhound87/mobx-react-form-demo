@@ -5,7 +5,7 @@
   "main": "scripts/dev-server.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run patch-react && vite build",
     "preview": "vite preview",
     "submodules:remove": "rm -rf modules/*",
     "submodules:fetch": "git submodule init && git submodule update --remote",
@@ -22,7 +22,8 @@
     "docs:build": "cd modules/mobx-react-form-docs && npm run docs:build",
     "publish": "cd build && rm -rf .git && git init && git commit --allow-empty -m 'update' && git checkout -b gh-pages && git add . && git commit -am 'update' && git push git@github.com:foxhound87/mobx-react-form-demo.git gh-pages --force",
     "publish-static": "npm run build && node scripts/generate-html.js && cp -r build/client/. build/ && rm -rf build/client build/server build/assets.json",
-    "deploy": "npm run publish-static && cd build && rm -rf .git && git init && git commit --allow-empty -m \"update\" && git checkout -b gh-pages && git add . && git commit -am \"update\" && git push git@github.com:foxhound87/mobx-react-form-demo.git gh-pages --force"
+    "deploy": "npm run publish-static && cd build && rm -rf .git && git init && git commit --allow-empty -m \"update\" && git checkout -b gh-pages && git add . && git commit -am \"update\" && git push git@github.com:foxhound87/mobx-react-form-demo.git gh-pages --force",
+    "patch-react": "node scripts/patch-react-exports.js"
   },
   "author": "Claudio Savino",
   "license": "MIT",
@@ -52,9 +53,9 @@
     "mobx-react-form": "^6.15.0",
     "mobx-react-form-devtools": "1.13.2",
     "postcss": "^8.5.15",
-    "react": "^19.2.7",
+    "react": "^18.3.1",
     "react-aria-components": "^1.18.0",
-    "react-dom": "^19.2.7",
+    "react-dom": "^18.3.1",
     "react-dropzone": "^6.2.4",
     "react-markdown": "^8.0.5",
     "react-select": "^5.7.0",
