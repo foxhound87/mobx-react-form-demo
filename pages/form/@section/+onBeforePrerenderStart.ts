@@ -1,0 +1,36 @@
+const formKeys = [
+  'login',
+  'registerSimple',
+  'validationDvr',
+  'validationVjf',
+  'validationAsync',
+  'validationZod',
+  'arrays',
+  'nestedFields',
+  'dynamicFieldsSelect',
+  'interceptors',
+  'observers',
+  'composer',
+  'bindingsDemo',
+  'reactiveComputed',
+  'crossValidation',
+  'nestedComposition',
+  'wizard',
+  'reactSelect',
+  'reactMultiSelect',
+  'registerMaterial',
+  'materialAdvanced',
+  'companySimple',
+  'companyWidgets',
+  'headlessUI',
+  'antd',
+  'aria',
+  'markdown',
+  'fileUpload',
+  'sortableList',
+  'bubbleErrors',
+];
+
+export default function onBeforePrerenderStart() {
+  return formKeys.map(key => `/form/${key}`);
+}

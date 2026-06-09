@@ -13,7 +13,7 @@ import './style.css';
 import Main from './components/Main';
 
 configure({
-  enforceActions: 'always',
+  enforceActions: 'observed',
 });
 
 // moment.locale('en');

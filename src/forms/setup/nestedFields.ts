@@ -75,11 +75,11 @@ const rules = {
 };
 
 const bindings = {
-  "club.name": "MaterialTextField",
-  "club.city": "MaterialTextField",
-  "members[].lastname": "MaterialTextField",
-  "members[].firstname": "MaterialTextField",
-  "members[].hobbies[]": "MaterialTextField",
+  "club.name": "DefaultInput",
+  "club.city": "DefaultInput",
+  "members[].lastname": "DefaultInput",
+  "members[].firstname": "DefaultInput",
+  "members[].hobbies[]": "DefaultInput",
 };
 
 const $hooks = {

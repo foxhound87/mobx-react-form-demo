@@ -1,5 +1,5 @@
 import type { FieldDefinition } from 'mobx-react-form';
-import * as markdownData from '../data/example.md';
+import markdownData from '../data/example.md?raw';
 
 /*
   Form: Markdown
@@ -8,7 +8,7 @@ import * as markdownData from '../data/example.md';
 const fields: Record<string, FieldDefinition> = {
   content: {
     label: 'Markdown Text',
-    value: markdownData.default,
+    value: markdownData,
   },
 };
 

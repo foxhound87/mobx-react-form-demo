@@ -112,7 +112,7 @@ const SortableItem = observer(function SortableItem({
 export default observer(function SortableList({ form }: { form: any }) {
   const sensors = useSensors(useSensor(PointerSensor));
   const productsField = form.$("products");
-  (window as any).__form = form;
+  if (typeof window !== 'undefined') (window as any).__form = form;
   const items = productsField.map(f => String(f.key));
 
   const [activeId, setActiveId] = useState<string | null>(null);

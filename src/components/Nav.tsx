@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { observer } from 'mobx-react';
 import { action } from 'mobx';
 import _ from 'lodash';
-import devtoolsStore from 'mobx-react-form-devtools/store';
+import { store as devtoolsStore } from 'mobx-react-form-devtools';
 import {
   LogIn,
   UserPlus,
@@ -28,15 +28,6 @@ import {
   BookOpen,
 } from 'lucide-react';
 import GithubStars from './GithubStars';
-
-const switchTo = (menu, select) => (value) => {
-  select(value);
-  action(() => _.map(menu, ($val, $key) => _.set(menu, $key, false)))();
-  action(() => _.set(menu, value, true))();
-  const params = new URLSearchParams(window.location.search);
-  params.set('section', value);
-  window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
-};
 
 const navGroups = [
   {
@@ -96,11 +87,37 @@ const navGroups = [
   },
 ];
 
+function switchTo(menu, select, value) {
+  if (select) select(value);
+  if (menu) {
+    action(() => _.map(menu, ($val, $key) => _.set(menu, $key, false)))();
+    action(() => _.set(menu, value, true))();
+  }
+  const params = new URLSearchParams(window.location.search);
+  params.set('section', value);
+  window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
+}
+
+function getSelectedFromPath(pathname) {
+  if (pathname === '/' || pathname === '') return 'welcome';
+  if (pathname === '/browse-demos') return 'browseDemos';
+  const match = pathname.match(/^\/form\/(.+)/);
+  return match ? match[1] : null;
+}
+
+function getNavHref(value) {
+  if (value === 'welcome') return '/';
+  if (value === 'browseDemos') return '/browse-demos';
+  return '/form/' + value;
+}
+
 export default observer(({ menu, select, selected }) => {
+  const active = selected !== null ? selected : (typeof window !== 'undefined' ? getSelectedFromPath(window.location.pathname) : null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const drawerRef = useRef(null);
 
   useEffect(() => {
+    if (!menu) return;
     const params = new URLSearchParams(window.location.search);
     const section = params.get('section');
     if (section && menu[section] !== undefined) {
@@ -120,12 +137,24 @@ export default observer(({ menu, select, selected }) => {
     return () => document.removeEventListener('mousedown', handler);
   }, [mobileOpen]);
 
-  const handleSelect = (value) => {
-    switchTo(menu, select)(value);
+  function navigateTo(value) {
+    if (menu) {
+      switchTo(menu, select, value);
+    } else {
+      const url = getNavHref(value);
+      window.history.pushState({}, '', url);
+      window.dispatchEvent(new CustomEvent('app-navigate'));
+    }
+  }
+
+  const handleNavClick = (e, value) => {
+    e.preventDefault();
+    navigateTo(value);
     setMobileOpen(false);
   };
 
-  const dockOffset = typeof window !== 'undefined' && window.innerWidth >= 768 && !devtoolsStore.windowIsOpen && devtoolsStore.open
+  const isBrowser = typeof window !== 'undefined';
+  const dockOffset = isBrowser && window.innerWidth >= 768 && !devtoolsStore.windowIsOpen && devtoolsStore.open
     ? devtoolsStore.dock.size
     : 0;
 
@@ -134,7 +163,7 @@ export default observer(({ menu, select, selected }) => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 shadow-nav">
         <div className="px-4 sm:px-6">
           <div className="flex items-center h-14 gap-2">
-            <button onClick={() => handleSelect('welcome')} className="flex items-center gap-3 min-w-0 flex-shrink-0">
+            <a href="/" data-vike="false" onClick={(e) => handleNavClick(e, 'welcome')} className="flex items-center gap-3 min-w-0 flex-shrink-0">
               <div className="w-7 h-7 rounded-lg bg-brand-500 flex items-center justify-center flex-shrink-0">
                 <FileText size={14} className="text-white" />
               </div>
@@ -142,7 +171,7 @@ export default observer(({ menu, select, selected }) => {
                 <h1 className="text-sm font-semibold text-surface-900 leading-tight">MobX React Form</h1>
                 <p className="text-[10px] text-surface-400 leading-tight">Demo</p>
               </div>
-              {process.env.NODE_ENV === 'development' && (
+              {process.env.NODE_ENV === 'development' && typeof MRF_SOURCE !== 'undefined' && (
                 <div className="ml-1 self-center">
                   <span
                     className={`inline-flex items-center rounded-full px-1.5 py-0.5 text-[9px] font-mono font-medium leading-tight ${
@@ -156,7 +185,7 @@ export default observer(({ menu, select, selected }) => {
                   </span>
                 </div>
               )}
-            </button>
+            </a>
 
             <div className="hidden md:flex items-center gap-1 ml-auto" style={{ marginRight: dockOffset }}>
               <a
@@ -214,18 +243,20 @@ export default observer(({ menu, select, selected }) => {
                 {group.items.map((s) => {
                   const Icon = s.icon;
                   return (
-                    <button
+                    <a
                       key={s.value}
-                      onClick={() => handleSelect(s.value)}
+                      href={getNavHref(s.value)}
+                      data-vike="false"
+                      onClick={(e) => handleNavClick(e, s.value)}
                       className={`w-full flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 ${
-                        selected === s.value
+                        active === s.value
                           ? 'bg-brand-50 text-brand-600'
                           : 'text-surface-600 hover:text-surface-900 hover:bg-surface-100'
                       }`}
                     >
-                      <Icon size={16} className={selected === s.value ? 'text-brand-500' : 'text-surface-400'} />
+                      <Icon size={16} className={active === s.value ? 'text-brand-500' : 'text-surface-400'} />
                       {s.label}
-                    </button>
+                    </a>
                   );
                 })}
               </div>
@@ -257,18 +288,20 @@ export default observer(({ menu, select, selected }) => {
                 {group.items.map((s) => {
                   const Icon = s.icon;
                   return (
-                    <button
+                    <a
                       key={s.value}
-                      onClick={() => handleSelect(s.value)}
+                      href={getNavHref(s.value)}
+                      data-vike="false"
+                      onClick={(e) => handleNavClick(e, s.value)}
                       className={`w-full flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 ${
-                        selected === s.value
+                        active === s.value
                           ? 'bg-brand-50 text-brand-600'
                           : 'text-surface-600 hover:text-surface-900 hover:bg-surface-100'
                       }`}
                     >
-                      <Icon size={16} className={selected === s.value ? 'text-brand-500' : 'text-surface-400'} />
+                      <Icon size={16} className={active === s.value ? 'text-brand-500' : 'text-surface-400'} />
                       {s.label}
-                    </button>
+                    </a>
                   );
                 })}
               </div>

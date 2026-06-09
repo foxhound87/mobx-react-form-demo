@@ -5,19 +5,19 @@ const fields: Record<string, FieldDefinition> = {
     value: 100,
     label: 'Unit Price (€)',
     type: 'number',
-    rules: 'required|numeric|min_value:0',
+    rules: 'required|numeric|min:0',
   },
   quantity: {
     value: 3,
     label: 'Quantity',
     type: 'number',
-    rules: 'required|integer|min_value:1',
+    rules: 'required|integer|min:1',
   },
   discountPercent: {
     value: 10,
     label: 'Discount (%)',
     type: 'number',
-    rules: 'numeric|min_value:0|max_value:100',
+    rules: 'numeric|min:0|max:100',
   },
   subtotal: {
     computed: ({ form }) => {

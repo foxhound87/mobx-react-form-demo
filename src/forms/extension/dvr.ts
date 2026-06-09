@@ -16,10 +16,12 @@ const rules = {
   },
 };
 
-export default ({ validator }) => {
+export default ({ validator, form }) => {
+  if (!validator) return;
+
   // register async rules
   Object.keys(asyncRules).forEach(key =>
-    validator.registerAsync(key, asyncRules[key]));
+    validator.registerAsync(key, asyncRules[key], 'The :attribute is invalid.'));
   // register sync rules
   Object.keys(rules).forEach(key =>
     validator.register(key, rules[key].function, rules[key].message));

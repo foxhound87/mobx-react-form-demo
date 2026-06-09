@@ -21,11 +21,14 @@
     // "jsxImportSource": "",                            /* Specify module specifier used to import the JSX factory functions when using 'jsx: react-jsx*'. */
     // "reactNamespace": "",                             /* Specify the object invoked for 'createElement'. This only applies when targeting 'react' JSX emit. */
     // "noLib": true,                                    /* Disable including any library files, including the default lib.d.ts. */
+    "types": ["vite/client"],
     "useDefineForClassFields": true,                     /* Emit ECMAScript-standard-compliant class fields. */
     // "moduleDetection": "auto",                        /* Control what method is used to detect module-format JS files. */
 
     /* Modules */
-    "module": "commonjs",                                /* Specify what module code is generated. */
+    "module": "ESNext",                                  /* Specify what module code is generated. */
+    "moduleResolution": "bundler",                       /* Specify how TypeScript looks up a file from a given module specifier. */
+    "noEmit": true,                                      /* Vite handles transpilation */
     // "rootDir": "./",                                  /* Specify the root folder within your source files. */
     // "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
     "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */

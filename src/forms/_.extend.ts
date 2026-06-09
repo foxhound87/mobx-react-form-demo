@@ -1,6 +1,6 @@
 import vjf from 'mobx-react-form/validators/VJF';
 import dvr from 'mobx-react-form/validators/DVR';
-import validatorjs from 'validatorjs';
+import validatorjs from './validatorjs';
 
 import MobxReactForm from 'mobx-react-form';
 

@@ -3,7 +3,15 @@ const component = (p) => import(`../components/forms/${p}.tsx?raw`).then(m => m.
 const config = (p) => import(`./setup/${p}.ts?raw`).then(m => m.default);
 const input = (p) => import(`../components/inputs/${p}.tsx?raw`).then(m => m.default);
 const validator = (p) => import(`./extension/${p}.ts?raw`).then(m => m.default);
-const raw = (p) => import(`../${p}?raw`).then(m => m.default);
+
+import __bindings from './_.bindings?raw'
+import __hooksFields from './_.hooks.fields?raw'
+import __zodSchema from './extension/zodSchema?raw'
+const rawFiles = {
+  'forms/_.bindings': __bindings,
+  'forms/_.hooks.fields': __hooksFields,
+  'forms/extension/zodSchema': __zodSchema,
+}
 
 // Input components used by each form
 const inputComponents = {
@@ -59,19 +67,19 @@ export const hooksForms = ['registerMaterial'];
 
 export const loadHooksSource = (key) => {
   const map = {
-    registerMaterial: () => raw('forms/_.hooks.fields'),
+    registerMaterial: () => Promise.resolve(rawFiles['forms/_.hooks.fields']),
     reactiveComputed: () => config('reactiveComputed'),
   };
   return (map[key] || (() => Promise.resolve('')))();
 };
 
-export const loadBindingsSource = () => raw('forms/_.bindings');
+export const loadBindingsSource = () => Promise.resolve(rawFiles['forms/_.bindings']);
 
 export const loadValidatorSource = (key) => {
   const map = {
     validationDvr: () => validator('dvr'),
     validationVjf: () => validator('vjf'),
-    validationZod: () => raw('forms/extension/zodSchema'),
+    validationZod: () => Promise.resolve(rawFiles['forms/extension/zodSchema']),
     validationAsync: () => validator('vjf'),
   };
   return (map[key] || (() => Promise.resolve('')))();
