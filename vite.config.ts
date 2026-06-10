@@ -6,6 +6,7 @@ import path from 'path'
 const mrfDevtoolsSrc = path.resolve(__dirname, 'modules', 'mobx-react-form-devtools', 'src')
 
 export default defineConfig({
+  base: process.env.REACT_DEV === '1' ? '/' : '/mobx-react-form-demo/',
   plugins: [
     react(),
     vike({

@@ -1,6 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
+// Assets in assets.json are relative (e.g. "assets/entries/entry.js")
+// but the site is deployed at a subpath, so prefix with /mobx-react-form-demo/
+const BASE_PATH = '/mobx-react-form-demo';
+
 const assets = JSON.parse(fs.readFileSync('build/assets.json', 'utf-8'));
 
 // Collect CSS and JS entry files
@@ -19,8 +23,10 @@ for (const [key, value] of Object.entries(assets)) {
   }
 }
 
-const cssLinks = cssFiles.map(f => `<link rel="stylesheet" href="${f}">`).join('\n    ');
-const jsScripts = jsFiles.map(f => `<script type="module" src="${f}"></script>`).join('\n    ');
+const assetUrl = (p) => `${BASE_PATH}/${p}`;
+
+const cssLinks = cssFiles.map(f => `<link rel="stylesheet" href="${assetUrl(f)}">`).join('\n    ');
+const jsScripts = jsFiles.map(f => `<script type="module" src="${assetUrl(f)}"></script>`).join('\n    ');
 
 const html = `<!doctype html>
 <html lang="en">
