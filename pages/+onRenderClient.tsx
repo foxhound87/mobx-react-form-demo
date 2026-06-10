@@ -166,6 +166,16 @@ const AppShell = observer(() => {
 
   const section = pathname.match(/^\/form\/(.+)/)?.[1] || null;
 
+  // Compute the currently selected nav item from the (base-path-stripped)
+  // pathname so Nav receives a reactive prop. Without this, Nav falls back
+  // to reading `window.location.pathname` directly, which is not observable
+  // and therefore does not trigger a re-render when navigation happens.
+  const selected = (() => {
+    if (pathname === '/' || pathname === '') return 'welcome';
+    if (pathname === '/browse-demos') return 'browseDemos';
+    return section;
+  })();
+
   function renderContent() {
     if (pathname === '/' || pathname === '') {
       return <Welcome onNavigate={() => navigate('/browse-demos')} />;
@@ -204,7 +214,7 @@ const AppShell = observer(() => {
       <div id="app-shell">
         {typeof window !== "undefined" && <MobxReactFormDevTools.UI />}
         <DevToolsAuto section={section} />
-        <Nav menu={null} select={null} selected={null} />
+        <Nav menu={null} select={null} selected={selected} />
         <main className="pt-14 md:pl-56" style={{ marginRight: dockOffset }}>
           <div id="page-content" data-section={section || ''}>
             {renderContent()}
