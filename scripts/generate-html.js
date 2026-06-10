@@ -36,6 +36,8 @@ const html = `<!doctype html>
   </head>
   <body>
     <div id="app"></div>
+    <script id="vike_globalContext" type="application/json">{}</script>
+    <script id="vike_pageContext" type="application/json">{"pageId":"/pages","routeParams":{}}</script>
     ${jsScripts}
   </body>
 </html>`;
