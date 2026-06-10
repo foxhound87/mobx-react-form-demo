@@ -168,7 +168,7 @@ const AppShell = observer(() => {
 
   function renderContent() {
     if (pathname === '/' || pathname === '') {
-      return <Welcome onNavigate={(key) => navigate('/form/' + key)} />;
+      return <Welcome onNavigate={() => navigate('/browse-demos')} />;
     }
 
     if (pathname === '/browse-demos') {
