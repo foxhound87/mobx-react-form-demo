@@ -18,6 +18,12 @@ export default defineConfig({
       { find: 'mobx-react-form-devtools', replacement: mrfDevtoolsSrc },
       { find: /^validatorjs$/, replacement: 'validatorjs/dist/validator.js' },
     ],
+    // Force a single React/ReactDOM instance across the whole client bundle.
+    // Without this, Vite was bundling React twice (one in the main chunk and
+    // another inside the mobx-react-form-devtools/react-dock tree), which
+    // throws "Minified React error #321" at runtime because hooks resolve
+    // against the wrong dispatcher.
+    dedupe: ['react', 'react-dom'],
   },
   optimizeDeps: {
     include: [
