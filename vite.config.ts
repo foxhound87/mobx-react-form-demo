@@ -23,7 +23,15 @@ export default defineConfig({
     // another inside the mobx-react-form-devtools/react-dock tree), which
     // throws "Minified React error #321" at runtime because hooks resolve
     // against the wrong dispatcher.
-    dedupe: ['react', 'react-dom'],
+    // Force a single React/ReactDOM/devtools-store instance across the whole
+    // client bundle. Without this, Vite was bundling React twice (one in the
+    // main chunk and another inside the mobx-react-form-devtools/react-dock
+    // tree), which throws "Minified React error #321" at runtime because
+    // hooks resolve against the wrong dispatcher. Dedupe'ing the devtools
+    // package also prevents the MobX store from being instantiated twice
+    // (once via the main entry, once via the /store subpath), which broke
+    // the layout's reactivity to the devtools dock width.
+    dedupe: ['react', 'react-dom', 'mobx-react-form-devtools'],
   },
   optimizeDeps: {
     include: [
