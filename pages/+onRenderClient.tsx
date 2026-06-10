@@ -185,7 +185,7 @@ const AppShell = observer(() => {
   return (
     <SSRProvider>
       <div id="app-shell">
-        <MobxReactFormDevTools.UI />
+        {typeof window !== "undefined" && <MobxReactFormDevTools.UI />}
         <DevToolsAuto section={section} />
         <Nav menu={null} select={null} selected={null} />
         <main className="pt-14 md:pl-56" style={{ marginRight: dockOffset }}>

@@ -78,7 +78,7 @@ export default observer(() => {
 
   return (
     <div className="min-h-screen bg-surface-50">
-      <MobxReactFormDevTools.UI />
+      {typeof window !== "undefined" && <MobxReactFormDevTools.UI />}
       <Nav menu={menu} select={selectDevtools} selected={active} />
 
       <main className="pt-14 md:pl-56" style={{ marginRight: dockOffset }}>

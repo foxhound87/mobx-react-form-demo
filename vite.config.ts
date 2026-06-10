@@ -49,7 +49,13 @@ export default defineConfig({
       /^react-select/,
       /^dom-helpers/,
       /^react-transition-group/,
+      // Bundle these into the SSR build so they share the same React instance
+      // as the rest of the app during Vike prerender. Leaving them external
+      // caused a second copy of React to be resolved from node_modules,
+      // triggering "Minified React error #321" on prerender.
+      'mobx-react-form',
+      'mobx-react-form-devtools',
     ],
-    external: ['prop-types', 'mobx-react-form', 'mobx-react-form-devtools'],
+    external: ['prop-types'],
   },
 })
