@@ -15,7 +15,8 @@ import forms from '../src/forms/_.forms';
 
 import { SSRProvider } from 'react-aria-components';
 
-import MobxReactFormDevTools, { store as devtoolsStore } from 'mobx-react-form-devtools';
+import MobxReactFormDevTools from 'mobx-react-form-devtools';
+import devtoolsStore from 'mobx-react-form-devtools/store';
 
 configure({ enforceActions: 'always' });
 

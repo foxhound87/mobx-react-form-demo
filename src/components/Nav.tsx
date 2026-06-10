@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { observer } from 'mobx-react';
 import { action } from 'mobx';
 import _ from 'lodash';
-import { store as devtoolsStore } from 'mobx-react-form-devtools';
+import devtoolsStore from 'mobx-react-form-devtools/store';
 import {
   LogIn,
   UserPlus,
