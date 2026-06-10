@@ -116,21 +116,38 @@ const Fallback = () => (
   </div>
 );
 
+// The site is deployed at a subpath (e.g. /mobx-react-form-demo/) on GitHub
+// Pages. The custom router below is base-path aware so the URL it stores in
+// state and matches against (e.g. '/', '/form/login') is relative to the
+// app root, not the origin. `navigate()` re-prepends the base when pushing
+// history state.
+const BASE_PATH = ((import.meta.env.BASE_URL as string | undefined) || '/').replace(/\/+$/, '') || '';
+const stripBase = (path: string): string => {
+  if (BASE_PATH && path.startsWith(BASE_PATH)) {
+    path = path.slice(BASE_PATH.length);
+  }
+  return path.replace(/\/+$/, '') || '/';
+};
+const withBase = (url: string): string => {
+  if (!BASE_PATH) return url;
+  if (url.startsWith(BASE_PATH + '/') || url === BASE_PATH) return url;
+  return url.startsWith('/') ? BASE_PATH + url : BASE_PATH + '/' + url;
+};
+
 function navigate(url) {
-  window.history.pushState({}, '', url);
+  window.history.pushState({}, '', withBase(url));
   window.dispatchEvent(new CustomEvent('app-navigate'));
 }
 
 const AppShell = observer(() => {
   const [pathname, setPathname] = React.useState(
     typeof window !== 'undefined'
-      ? window.location.pathname.replace(/\/+$/, '') || '/'
+      ? stripBase(window.location.pathname)
       : '/'
   );
 
   React.useEffect(() => {
-    const handler = () =>
-      setPathname(window.location.pathname.replace(/\/+$/, '') || '/');
+    const handler = () => setPathname(stripBase(window.location.pathname));
     window.addEventListener('popstate', handler);
     window.addEventListener('app-navigate', handler);
     return () => {

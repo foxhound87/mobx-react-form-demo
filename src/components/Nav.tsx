@@ -29,6 +29,16 @@ import {
 } from 'lucide-react';
 import GithubStars from './GithubStars';
 
+// Base path awareness for GitHub Pages subpath deployment
+// (vite.config.ts sets `base: '/mobx-react-form-demo/'` for production builds).
+const BASE_PATH = ((import.meta.env.BASE_URL as string | undefined) || '/').replace(/\/+$/, '') || '';
+const stripBase = (path: string): string => {
+  if (BASE_PATH && path.startsWith(BASE_PATH)) {
+    path = path.slice(BASE_PATH.length);
+  }
+  return path.replace(/\/+$/, '') || '/';
+};
+
 const navGroups = [
   {
     label: 'Basics',
@@ -98,7 +108,8 @@ function switchTo(menu, select, value) {
   window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
 }
 
-function getSelectedFromPath(pathname) {
+function getSelectedFromPath(rawPathname) {
+  const pathname = stripBase(rawPathname);
   if (pathname === '/' || pathname === '') return 'welcome';
   if (pathname === '/browse-demos') return 'browseDemos';
   const match = pathname.match(/^\/form\/(.+)/);
@@ -106,9 +117,13 @@ function getSelectedFromPath(pathname) {
 }
 
 function getNavHref(value) {
-  if (value === 'welcome') return '/';
-  if (value === 'browseDemos') return '/browse-demos';
-  return '/form/' + value;
+  const path =
+    value === 'welcome'
+      ? '/'
+      : value === 'browseDemos'
+      ? '/browse-demos'
+      : '/form/' + value;
+  return BASE_PATH + path;
 }
 
 export default observer(({ menu, select, selected }) => {
@@ -163,7 +178,7 @@ export default observer(({ menu, select, selected }) => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 shadow-nav">
         <div className="px-4 sm:px-6">
           <div className="flex items-center h-14 gap-2">
-            <a href="/" data-vike="false" onClick={(e) => handleNavClick(e, 'welcome')} className="flex items-center gap-3 min-w-0 flex-shrink-0">
+            <a href={BASE_PATH + '/'} data-vike="false" onClick={(e) => handleNavClick(e, 'welcome')} className="flex items-center gap-3 min-w-0 flex-shrink-0">
               <div className="w-7 h-7 rounded-lg bg-brand-500 flex items-center justify-center flex-shrink-0">
                 <FileText size={14} className="text-white" />
               </div>
