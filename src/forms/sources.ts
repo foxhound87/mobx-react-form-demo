@@ -13,6 +13,41 @@ const rawFiles = {
   'forms/extension/zodSchema': __zodSchema,
 }
 
+// Official documentation URL for each form demo.
+// Sourced from the SUMMARY.md of the mobx-react-form docs submodule.
+// All docs pages are served under the /docs/ segment of the GitBook site:
+//   https://foxhound87.github.io/mobx-react-form/        (root / README)
+//   https://foxhound87.github.io/mobx-react-form/docs/  (docs section)
+// Forms without a dedicated page are omitted.
+const DOCS_BASE = 'https://foxhound87.github.io/mobx-react-form/docs';
+const DOCS_URLS: Record<string, string> = {
+  // Basics
+  login: `${DOCS_BASE}/quick-start.html`,
+  registerSimple: `${DOCS_BASE}/quick-start.html`,
+  // Validation
+  validationDvr: `${DOCS_BASE}/validation/plugins/DVR/setup.html`,
+  validationVjf: `${DOCS_BASE}/validation/plugins/VJF/setup.html`,
+  validationZod: `${DOCS_BASE}/validation/plugins/ZOD/setup.html`,
+  validationAsync: `${DOCS_BASE}/validation/plugins/VJF/async.html`,
+  // Fields
+  nestedFields: `${DOCS_BASE}/fields/README.html#nested-fields-unified-mode`,
+  // Advanced
+  interceptors: `${DOCS_BASE}/advanced/interceptors.html`,
+  observers: `${DOCS_BASE}/advanced/observers.html`,
+  reactiveComputed: `${DOCS_BASE}/extra/computed-props.html`,
+  crossValidation: `${DOCS_BASE}/advanced/cross-validation.html`,
+  nestedComposition: `${DOCS_BASE}/advanced/nested-composition.html`,
+  wizard: `${DOCS_BASE}/advanced/wizard.html`,
+  bindingsDemo: `${DOCS_BASE}/advanced/bindings-demo.html`,
+  composer: `${DOCS_BASE}/extra/composer.html`,
+  markdown: `${DOCS_BASE}/advanced/markdown.html`,
+  fileUpload: `${DOCS_BASE}/advanced/file-upload.html`,
+  sortableList: `${DOCS_BASE}/advanced/sortable.html`,
+  bubbleErrors: `${DOCS_BASE}/fields/README.html#nested-fields-unified-mode`,
+};
+
+export const getDocsUrl = (key: string): string | null => DOCS_URLS[key] || null;
+
 // Input components used by each form
 const inputComponents = {
   // Basics

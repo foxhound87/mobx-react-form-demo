@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Code } from 'lucide-react';
-import { loadComponentSource, loadConfigSource, loadInputSource, loadValidatorSource, loadBindingsSource, loadHooksSource, getInputComponents, validatorForms, bindingsForms, hooksForms } from '../forms/sources';
+import { Code, BookOpen } from 'lucide-react';
+import { loadComponentSource, loadConfigSource, loadInputSource, loadValidatorSource, loadBindingsSource, loadHooksSource, getInputComponents, getDocsUrl, validatorForms, bindingsForms, hooksForms } from '../forms/sources';
 
 export default ({ formKey, children }) => {
   const [tab, setTab] = React.useState(null);
@@ -12,6 +12,7 @@ export default ({ formKey, children }) => {
   const codeRef = useRef(null);
 
   const inputs = React.useMemo(() => getInputComponents(formKey), [formKey]);
+  const docsUrl = React.useMemo(() => getDocsUrl(formKey), [formKey]);
 
   const handleTabClick = (nextTab) => {
     setTab(tab === nextTab ? null : nextTab);
@@ -135,6 +136,19 @@ export default ({ formKey, children }) => {
               {name}
             </button>
           ))}
+
+          {docsUrl && (
+            <a
+              href={docsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 ml-auto px-2.5 py-1 rounded-md text-xs font-medium border border-surface-200 text-surface-500 hover:text-surface-900 hover:border-surface-300 transition-colors"
+              title="Open official documentation"
+            >
+              <BookOpen size={12} />
+              Docs
+            </a>
+          )}
         </div>
       </div>
 
