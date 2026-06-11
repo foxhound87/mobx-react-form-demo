@@ -22,6 +22,8 @@
     "docs:build": "cd modules/mobx-react-form-docs && npm run docs:build",
     "publish": "cd build && rm -rf .git && git init && git commit --allow-empty -m 'update' && git checkout -b gh-pages && git add . && git commit -am 'update' && git push git@github.com:foxhound87/mobx-react-form-demo.git gh-pages --force",
     "publish-static": "npm run build && npx vike prerender && node scripts/generate-html.js && cp -r build/client/. build/ && rm -rf build/client build/server build/assets.json",
+    "seo:robots": "node scripts/generate-robots.js",
+    "seo:sitemap": "node scripts/generate-sitemap.js",
     "deploy": "npm run publish-static && cd build && rm -rf .git && git init && git commit --allow-empty -m \"update\" && git checkout -b gh-pages && git add . && git commit -am \"update\" && git push git@github.com:foxhound87/mobx-react-form-demo.git gh-pages --force",
     "patch-react": "node scripts/patch-react-exports.js"
   },

@@ -50,3 +50,9 @@ const html = `<!doctype html>
 
 fs.writeFileSync('build/index.html', html);
 console.log('Generated build/index.html with', cssFiles.length, 'CSS and', jsFiles.length, 'JS entries');
+
+// Also generate robots.txt and sitemap.xml at the build root so they
+// end up at the site root when the build dir is published to GitHub
+// Pages. These are small and idempotent, so we re-run them every time.
+require('./generate-robots.js');
+require('./generate-sitemap.js');

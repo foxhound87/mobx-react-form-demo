@@ -32,6 +32,7 @@ import FormBubbleErrors from '../../../src/components/forms/FormBubbleErrors';
 
 import forms from '../../../src/forms/_.forms';
 import FormCodeViewer from '../../../src/components/FormCodeViewer';
+import { SEO_META, getSeoForRoute } from '../../../src/forms/seo';
 
 const formComponents = {
   login: FormLogin,
@@ -79,8 +80,33 @@ export default function Page({ routeParams }) {
     );
   }
 
+  // Pull a unique title, lead, and category from the SEO registry so every
+  // demo page has a distinct H1 + intro paragraph. This is what makes
+  // Google perceive each demo as standalone content rather than a near
+  // duplicate of the others.
+  const seo = SEO_META[section] || getSeoForRoute(section);
+  const h1 = seo.h1 || seo.title;
+  const lead = seo.lead || seo.description;
+  const category = seo.category;
+
   return (
     <div className="max-w-form mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <header className="mb-6 sm:mb-8">
+        {category && (
+          <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-brand-600 bg-brand-50 px-2 py-0.5 rounded-full mb-3">
+            {category}
+          </span>
+        )}
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-surface-900 leading-tight">
+          {h1}
+        </h1>
+        {lead && (
+          <p className="mt-3 text-sm sm:text-base text-surface-500 leading-relaxed max-w-2xl">
+            {lead}
+          </p>
+        )}
+      </header>
+
       <FormCodeViewer formKey={section}>
         <Component form={form} />
       </FormCodeViewer>
