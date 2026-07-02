@@ -4,7 +4,7 @@
   "description": "mobx-react-form-demo",
   "main": "scripts/dev-server.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "REACT_DEV=1 vite",
     "build": "npm run patch-react && vite build",
     "preview": "vite preview",
     "submodules:remove": "rm -rf modules/*",
