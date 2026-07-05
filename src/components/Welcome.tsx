@@ -9,6 +9,7 @@ import {
   Terminal,
   BookOpen,
   MessageCircle,
+  Brain,
 } from "lucide-react";
 import GithubStars from "./GithubStars";
 
@@ -71,6 +72,15 @@ export default observer(({ onNavigate }) => (
               >
                 <MessageCircle size={16} />
                 Discord
+              </a>
+              <a
+                href="https://github.com/foxhound87/skills"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-surface-200 text-surface-600 px-5 py-2.5 text-sm font-medium hover:bg-surface-50 hover:text-surface-900 transition-colors"
+              >
+                <Brain size={16} />
+                Skills
               </a>
               <GithubStars />
             </div>

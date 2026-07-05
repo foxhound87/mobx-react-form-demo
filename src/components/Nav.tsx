@@ -26,6 +26,7 @@ import {
   GripVertical,
   ArrowRightCircle,
   BookOpen,
+  Zap,
 } from 'lucide-react';
 import GithubStars from './GithubStars';
 
@@ -204,6 +205,16 @@ export default observer(({ menu, select, selected }) => {
 
             <div className="hidden md:flex items-center gap-1 ml-auto" style={{ marginRight: dockOffset }}>
               <a
+                href="https://github.com/foxhound87/skills"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link text-xs"
+                title="AI Agent Skills"
+              >
+                <Zap size={14} />
+                <span className="hidden lg:inline">Skills</span>
+              </a>
+              <a
                 href="https://www.npmjs.com/package/mobx-react-form"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -324,31 +335,43 @@ export default observer(({ menu, select, selected }) => {
           ))}
         </div>
 
-        <div className="border-t border-surface-200 px-3 py-3 flex items-center gap-2">
-          <a
-            href="https://foxhound87.github.io/mobx-react-form"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-all duration-150"
-          >
-            <BookOpen size={16} /> Docs
-          </a>
-          <a
-            href="https://www.npmjs.com/package/mobx-react-form"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-all duration-150"
-          >
-            <Package size={16} /> NPM
-          </a>
-          <a
-            href="https://github.com/foxhound87/mobx-react-form"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-all duration-150"
-          >
-            <GitBranchIcon size={16} /> GitHub
-          </a>
+        <div className="border-t border-surface-200 px-3 py-3 flex flex-col gap-1">
+          <div className="flex items-center gap-2">
+            <a
+              href="https://foxhound87.github.io/mobx-react-form"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-all duration-150"
+            >
+              <BookOpen size={16} /> Docs
+            </a>
+            <a
+              href="https://www.npmjs.com/package/mobx-react-form"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-all duration-150"
+            >
+              <Package size={16} /> NPM
+            </a>
+          </div>
+          <div className="flex items-center gap-2">
+            <a
+              href="https://github.com/foxhound87/skills"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-all duration-150"
+            >
+              <Zap size={16} /> Skills
+            </a>
+            <a
+              href="https://github.com/foxhound87/mobx-react-form"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-all duration-150"
+            >
+              <GitBranchIcon size={16} /> GitHub
+            </a>
+          </div>
         </div>
       </div>
     </>
