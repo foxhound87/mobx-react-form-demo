@@ -10,6 +10,7 @@ import {
   BookOpen,
   MessageCircle,
   Brain,
+  Package,
 } from "lucide-react";
 import GithubStars from "./GithubStars";
 
@@ -81,6 +82,20 @@ export default observer(({ onNavigate }) => (
               >
                 <Brain size={16} />
                 Skills
+              </a>
+              <a
+                href="https://www.npmjs.com/package/mobx-react-form"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-surface-200 text-surface-600 px-5 py-2.5 text-sm font-medium hover:bg-surface-50 hover:text-surface-900 transition-colors"
+              >
+                <Package size={16} />
+                NPM
+                <img
+                  src="https://img.shields.io/npm/v/mobx-react-form?label=npm&logo=npm&style=flat-square&color=CB3837"
+                  alt="npm version"
+                  className="h-4"
+                />
               </a>
               <GithubStars />
             </div>

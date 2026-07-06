@@ -1,0 +1,50 @@
+diff --git a/node_modules/react-json-tree/lib/JSONArrow.js b/node_modules/react-json-tree/lib/JSONArrow.js
+index 5168792..c9eda09 100644
+--- a/node_modules/react-json-tree/lib/JSONArrow.js
++++ b/node_modules/react-json-tree/lib/JSONArrow.js
+@@ -18,7 +18,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
+ 
+ var JSONArrow = function JSONArrow(_ref) {
+   var styling = _ref.styling,
+-      arrowStyle = _ref.arrowStyle,
++      arrowStyle = _ref.arrowStyle || 'single',
+       expanded = _ref.expanded,
+       nodeType = _ref.nodeType,
+       onClick = _ref.onClick;
+@@ -46,8 +46,4 @@ JSONArrow.propTypes = {
+   onClick: _propTypes2['default'].func.isRequired
+ };
+ 
+-JSONArrow.defaultProps = {
+-  arrowStyle: 'single'
+-};
+-
+ exports['default'] = JSONArrow;
+\ No newline at end of file
+diff --git a/node_modules/react-json-tree/lib/JSONValueNode.js b/node_modules/react-json-tree/lib/JSONValueNode.js
+index 3e9dd6c..dde7d9f 100644
+--- a/node_modules/react-json-tree/lib/JSONValueNode.js
++++ b/node_modules/react-json-tree/lib/JSONValueNode.js
+@@ -23,7 +23,9 @@ var JSONValueNode = function JSONValueNode(_ref) {
+       keyPath = _ref.keyPath,
+       valueRenderer = _ref.valueRenderer,
+       value = _ref.value,
+-      valueGetter = _ref.valueGetter;
++      valueGetter = _ref.valueGetter || function (value) {
++    return value;
++  };
+   return _react2['default'].createElement(
+     'li',
+     styling('value', nodeType, keyPath),
+@@ -50,10 +52,4 @@ JSONValueNode.propTypes = {
+   valueGetter: _propTypes2['default'].func
+ };
+ 
+-JSONValueNode.defaultProps = {
+-  valueGetter: function valueGetter(value) {
+-    return value;
+-  }
+-};
+-
+ exports['default'] = JSONValueNode;
+\ No newline at end of file

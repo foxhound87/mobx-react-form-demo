@@ -223,6 +223,11 @@ export default observer(({ menu, select, selected }) => {
               >
                 <Package size={14} />
                 <span className="hidden lg:inline">NPM</span>
+                <img
+                  src="https://img.shields.io/npm/v/mobx-react-form?label=npm&logo=npm&style=flat-square&color=CB3837"
+                  alt="npm version"
+                  className="hidden lg:inline-block h-4 ml-1"
+                />
               </a>
               <a
                 href="https://foxhound87.github.io/mobx-react-form"
@@ -352,6 +357,11 @@ export default observer(({ menu, select, selected }) => {
               className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-all duration-150"
             >
               <Package size={16} /> NPM
+              <img
+                src="https://img.shields.io/npm/v/mobx-react-form?label=npm&logo=npm&style=flat-square&color=CB3837"
+                alt="npm version"
+                className="h-4"
+              />
             </a>
           </div>
           <div className="flex items-center gap-2">
