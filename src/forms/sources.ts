@@ -14,36 +14,35 @@ const rawFiles = {
 }
 
 // Official documentation URL for each form demo.
-// Sourced from the SUMMARY.md of the mobx-react-form docs submodule.
-// All docs pages are served under the /docs/ segment of the GitBook site:
-//   https://foxhound87.github.io/mobx-react-form/        (root / README)
-//   https://foxhound87.github.io/mobx-react-form/docs/  (docs section)
+// Sourced from the VitePress sidebar config of the mobx-react-form docs site.
+// Docs use VitePress with cleanUrls enabled — no /docs/ prefix, no .html extensions.
+//   https://foxhound87.github.io/mobx-react-form/  (root)
 // Forms without a dedicated page are omitted.
-const DOCS_BASE = 'https://foxhound87.github.io/mobx-react-form/docs';
+const DOCS_BASE = 'https://foxhound87.github.io/mobx-react-form';
 const DOCS_URLS: Record<string, string> = {
   // Basics
-  login: `${DOCS_BASE}/quick-start.html`,
-  registerSimple: `${DOCS_BASE}/quick-start.html`,
+  login: `${DOCS_BASE}/quick-start`,
+  registerSimple: `${DOCS_BASE}/quick-start`,
   // Validation
-  validationDvr: `${DOCS_BASE}/validation/plugins/DVR/setup.html`,
-  validationVjf: `${DOCS_BASE}/validation/plugins/VJF/setup.html`,
-  validationZod: `${DOCS_BASE}/validation/plugins/ZOD/setup.html`,
-  validationAsync: `${DOCS_BASE}/validation/plugins/VJF/async.html`,
+  validationDvr: `${DOCS_BASE}/validation/plugins/DVR/setup`,
+  validationVjf: `${DOCS_BASE}/validation/plugins/VJF/setup`,
+  validationZod: `${DOCS_BASE}/validation/plugins/ZOD/setup`,
+  validationAsync: `${DOCS_BASE}/validation/plugins/VJF/async`,
   // Fields
-  nestedFields: `${DOCS_BASE}/fields/README.html#nested-fields-unified-mode`,
+  nestedFields: `${DOCS_BASE}/fields/#nested-unified-mode`,
   // Advanced
-  interceptors: `${DOCS_BASE}/advanced/interceptors.html`,
-  observers: `${DOCS_BASE}/advanced/observers.html`,
-  reactiveComputed: `${DOCS_BASE}/extra/computed-props.html`,
-  crossValidation: `${DOCS_BASE}/advanced/cross-validation.html`,
-  nestedComposition: `${DOCS_BASE}/advanced/nested-composition.html`,
-  wizard: `${DOCS_BASE}/advanced/wizard.html`,
-  bindingsDemo: `${DOCS_BASE}/advanced/bindings-demo.html`,
-  composer: `${DOCS_BASE}/extra/composer.html`,
-  markdown: `${DOCS_BASE}/advanced/markdown.html`,
-  fileUpload: `${DOCS_BASE}/advanced/file-upload.html`,
-  sortableList: `${DOCS_BASE}/advanced/sortable.html`,
-  bubbleErrors: `${DOCS_BASE}/fields/README.html#nested-fields-unified-mode`,
+  interceptors: `${DOCS_BASE}/advanced/interceptors`,
+  observers: `${DOCS_BASE}/advanced/observers`,
+  reactiveComputed: `${DOCS_BASE}/extra/computed-props`,
+  crossValidation: `${DOCS_BASE}/advanced/cross-validation`,
+  nestedComposition: `${DOCS_BASE}/advanced/nested-composition`,
+  wizard: `${DOCS_BASE}/advanced/wizard`,
+  bindingsDemo: `${DOCS_BASE}/advanced/bindings-demo`,
+  composer: `${DOCS_BASE}/extra/composer`,
+  markdown: `${DOCS_BASE}/advanced/markdown`,
+  fileUpload: `${DOCS_BASE}/advanced/file-upload`,
+  sortableList: `${DOCS_BASE}/advanced/sortable`,
+  bubbleErrors: `${DOCS_BASE}/fields/#nested-unified-mode`,
 };
 
 export const getDocsUrl = (key: string): string | null => DOCS_URLS[key] || null;
